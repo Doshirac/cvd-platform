@@ -41,7 +41,7 @@ enum RiskDirection {
 
 model Disease {
   id           Int                 @id @default(autoincrement()) @map("disease_id")
-  code         String              @unique
+  code         String              @unique @db.VarChar(10)
   name         String
   description  String?
   prevention   String?
@@ -62,7 +62,7 @@ model Symptom {
 
 model RiskFactor {
   id           Int                 @id @default(autoincrement()) @map("risk_factor_id")
-  code         String?             @unique
+  code         String?             @unique @db.VarChar(10)
   name         String
   definition   String?
   diseases     DiseaseRiskFactor[]

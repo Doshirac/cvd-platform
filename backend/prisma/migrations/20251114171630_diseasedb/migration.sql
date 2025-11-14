@@ -14,14 +14,14 @@ CREATE TYPE "Typicality" AS ENUM ('typical', 'possible', 'rare');
 CREATE TYPE "RiskDirection" AS ENUM ('risk', 'protective');
 
 -- CreateTable
-CREATE TABLE "diseases" (
+CREATE TABLE "Disease" (
     "disease_id" SERIAL NOT NULL,
-    "code" TEXT NOT NULL,
+    "code" VARCHAR(10) NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT,
     "prevention" TEXT,
 
-    CONSTRAINT "diseases_pkey" PRIMARY KEY ("disease_id")
+    CONSTRAINT "Disease_pkey" PRIMARY KEY ("disease_id")
 );
 
 -- CreateTable
@@ -36,7 +36,7 @@ CREATE TABLE "Symptom" (
 -- CreateTable
 CREATE TABLE "RiskFactor" (
     "risk_factor_id" SERIAL NOT NULL,
-    "code" TEXT,
+    "code" VARCHAR(10),
     "name" TEXT NOT NULL,
     "definition" TEXT,
 
@@ -107,7 +107,7 @@ CREATE TABLE "risk_factor_translation" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "diseases_code_key" ON "diseases"("code");
+CREATE UNIQUE INDEX "Disease_code_key" ON "Disease"("code");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Symptom_term_key" ON "Symptom"("term");
@@ -149,19 +149,19 @@ CREATE UNIQUE INDEX "symptom_translation_symptom_id_locale_key" ON "symptom_tran
 CREATE UNIQUE INDEX "risk_factor_translation_risk_factor_id_locale_key" ON "risk_factor_translation"("risk_factor_id", "locale");
 
 -- AddForeignKey
-ALTER TABLE "DiseaseSymptom" ADD CONSTRAINT "DiseaseSymptom_disease_id_fkey" FOREIGN KEY ("disease_id") REFERENCES "diseases"("disease_id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "DiseaseSymptom" ADD CONSTRAINT "DiseaseSymptom_disease_id_fkey" FOREIGN KEY ("disease_id") REFERENCES "Disease"("disease_id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "DiseaseSymptom" ADD CONSTRAINT "DiseaseSymptom_symptom_id_fkey" FOREIGN KEY ("symptom_id") REFERENCES "Symptom"("symptom_id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "DiseaseRiskFactor" ADD CONSTRAINT "DiseaseRiskFactor_disease_id_fkey" FOREIGN KEY ("disease_id") REFERENCES "diseases"("disease_id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "DiseaseRiskFactor" ADD CONSTRAINT "DiseaseRiskFactor_disease_id_fkey" FOREIGN KEY ("disease_id") REFERENCES "Disease"("disease_id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "DiseaseRiskFactor" ADD CONSTRAINT "DiseaseRiskFactor_risk_factor_id_fkey" FOREIGN KEY ("risk_factor_id") REFERENCES "RiskFactor"("risk_factor_id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "disease_translation" ADD CONSTRAINT "disease_translation_disease_id_fkey" FOREIGN KEY ("disease_id") REFERENCES "diseases"("disease_id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "disease_translation" ADD CONSTRAINT "disease_translation_disease_id_fkey" FOREIGN KEY ("disease_id") REFERENCES "Disease"("disease_id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "symptom_translation" ADD CONSTRAINT "symptom_translation_symptom_id_fkey" FOREIGN KEY ("symptom_id") REFERENCES "Symptom"("symptom_id") ON DELETE CASCADE ON UPDATE CASCADE;
