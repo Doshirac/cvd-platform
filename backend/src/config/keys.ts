@@ -1,0 +1,9 @@
+export enum Keys {
+  PORT = "PORT",
+  NODE_ENV = "NODE_ENV",
+  API_URL = "API_URL",
+  CLIENT_URL = "CLIENT_URL",
+  CORS_ORIGIN = "CORS_ORIGIN",
+  LOG_LEVEL = "LOG_LEVEL",
+  SENTRY_DNS = "SENTRY_DNS",
+}

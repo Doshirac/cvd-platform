@@ -1,0 +1,8 @@
+{
+  "watch": ["src"],
+  "ext": "ts,js,json",
+  "exec": "swc src -d build && node -r dotenv/config -r tsconfig-paths/register build/src/server.js",
+  "ignore": ["node_modules"],
+  "delay": 500,
+  "verbose": true
+}

@@ -1,0 +1,140 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Locale {
+  en
+  ru
+}
+
+enum SymptomCategory {
+  sign
+  symptom
+}
+
+enum SymptomPriority {
+  primary
+  secondary
+}
+
+enum Typicality {
+  typical
+  possible
+  rare
+}
+
+enum RiskDirection {
+  risk
+  protective
+}
+
+model Disease {
+  id           Int                 @id @default(autoincrement()) @map("disease_id")
+  code         String              @unique
+  name         String
+  description  String?
+  prevention   String?
+  symptoms     DiseaseSymptom[]
+  risks        DiseaseRiskFactor[]
+
+  translations DiseaseTranslation[]
+}
+
+model Symptom {
+  id           Int              @id @default(autoincrement()) @map("symptom_id")
+  term         String           @unique
+  category     SymptomCategory?
+  diseases     DiseaseSymptom[]
+
+  translations SymptomTranslation[]
+}
+
+model RiskFactor {
+  id           Int                 @id @default(autoincrement()) @map("risk_factor_id")
+  code         String?             @unique
+  name         String
+  definition   String?
+  diseases     DiseaseRiskFactor[]
+
+  translations RiskFactorTranslation[]
+}
+
+model DiseaseSymptom {
+  id         Int             @id @default(autoincrement()) @map("disease_symptom_id")
+  diseaseId  Int             @map("disease_id")
+  symptomId  Int             @map("symptom_id")
+  priority   SymptomPriority
+  typicality Typicality      @default(typical)
+  disease    Disease         @relation(fields: [diseaseId], references: [id], onDelete: Cascade)
+  symptom    Symptom         @relation(fields: [symptomId], references: [id], onDelete: Cascade)
+
+  @@unique([diseaseId, symptomId])
+  @@index([diseaseId], map: "idx_disease_symptoms_d")
+  @@index([symptomId], map: "idx_disease_symptoms_s")
+}
+
+model DiseaseRiskFactor {
+  id           Int           @id @default(autoincrement()) @map("disease_risk_factor_id")
+  diseaseId    Int           @map("disease_id")
+  riskFactorId Int           @map("risk_factor_id")
+  direction    RiskDirection @default(risk)
+  disease      Disease       @relation(fields: [diseaseId], references: [id], onDelete: Cascade)
+  riskFactor   RiskFactor    @relation(fields: [riskFactorId], references: [id], onDelete: Cascade)
+
+  @@unique([diseaseId, riskFactorId])
+  @@index([diseaseId], map: "idx_disease_risk_d")
+  @@index([riskFactorId], map: "idx_disease_risk_rf")
+}
+
+model Source {
+  id   Int    @id @default(autoincrement()) @map("source_id")
+  name String @unique
+  link String @unique
+}
+
+model DiseaseTranslation {
+  id          Int     @id @default(autoincrement())
+  diseaseId   Int     @map("disease_id")
+  locale      Locale
+  name        String?
+  description String?
+  prevention  String?
+  disease     Disease @relation(fields: [diseaseId], references: [id], onDelete: Cascade)
+
+  @@unique([diseaseId, locale])
+  @@map("disease_translation")
+}
+
+model SymptomTranslation {
+  id        Int     @id @default(autoincrement())
+  symptomId Int     @map("symptom_id")
+  locale    Locale
+  term      String
+  symptom   Symptom @relation(fields: [symptomId], references: [id], onDelete: Cascade)
+
+  @@unique([symptomId, locale])
+  @@map("symptom_translation")
+}
+
+model RiskFactorTranslation {
+  id           Int        @id @default(autoincrement())
+  riskFactorId Int        @map("risk_factor_id")
+  locale       Locale
+  name         String?
+  definition   String?
+  riskFactor   RiskFactor @relation(fields: [riskFactorId], references: [id], onDelete: Cascade)
+
+  @@unique([riskFactorId, locale])
+  @@map("risk_factor_translation")
+}

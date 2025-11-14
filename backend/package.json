@@ -1,0 +1,68 @@
+{
+  "name": "cvd-api",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node build/src/server.js",
+    "build": "swc src -d build",
+    "dev": "npm run nodemon",
+    "nodemon": "nodemon",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "migrate": "prisma migrate dev",
+    "generate": "npx prisma generate",
+    "seed": "ts-node prisma/seed.ts",
+    "prismacore": "powershell -Command \"Remove-Item -Path 'prisma/migrations' -Recurse -Force -ErrorAction SilentlyContinue; npx prisma migrate reset --force; npm run migrate; npm run generate; npm run seed\"",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/**/*.{ts,tsx} --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,json,md}\"",
+    "check:outdated": "npm outdated",
+    "deps:update": "npm update",
+    "audit": "npm audit",
+    "prepare": "husky",
+    "proxy": "ts-node-dev --respawn src/proxyServer.ts"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,js,json,md}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "**/*.{json,md,css,scss}": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-jsdoc-swagger": "^1.8.0",
+    "http-proxy-middleware": "^3.0.5",
+    "inversify": "^7.10.4",
+    "morgan": "^1.10.1",
+    "winston": "^3.18.3"
+  },
+  "devDependencies": {
+    "@swc/cli": "^0.7.9",
+    "@swc/core": "^1.15.1",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.5",
+    "@types/jest": "^30.0.0",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^24.10.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.3",
+    "@typescript-eslint/parser": "^8.46.3",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "jest": "^30.2.0",
+    "lint-staged": "^16.2.6",
+    "nodemon": "^3.1.9",
+    "prettier": "^3.6.2",
+    "prisma": "^6.19.0",
+    "ts-jest": "^29.4.5",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.9.3"
+  }
+}
