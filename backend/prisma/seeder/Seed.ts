@@ -19,6 +19,7 @@ type Disease = {
 
 type Symptom = {
   id: number;
+  code?: string;
   term: string;
   category?: "sign" | "symptom";
 };
@@ -143,65 +144,80 @@ export class Seed implements ISeeder {
             await this.prisma.symptom.createMany({
                 skipDuplicates: true,
                 data: [
-                    { 
-                        term: 'Chest pain', 
-                        category: 'symptom' 
+                    {
+                        code: "CP",
+                        term: "Chest pain",
+                        category: "symptom",
                     },
-                    { 
-                        term: 'Dyspnea', 
-                        category: 'symptom' 
+                    {
+                        code: "SOB",
+                        term: "Dyspnea",
+                        category: "symptom",
                     },
-                    { 
-                        term: 'Orthopnea', 
-                        category: 'symptom' 
+                    {
+                        code: "ORTHO",
+                        term: "Orthopnea",
+                        category: "symptom",
                     },
-                    { 
-                        term: 'Paroxysmal nocturnal dyspnea', 
-                        category: 'symptom' 
+                    {
+                        code: "PND",
+                        term: "Paroxysmal nocturnal dyspnea",
+                        category: "symptom",
                     },
-                    { 
-                        term: 'Palpitations', 
-                        category: 'symptom' 
+                    {
+                        code: "PALP",
+                        term: "Palpitations",
+                        category: "symptom",
                     },
-                    { 
-                        term: 'Syncope', 
-                        category: 'symptom' 
+                    {
+                        code: "SYNC",
+                        term: "Syncope",
+                        category: "symptom",
                     },
-                    { 
-                        term: 'Claudication', 
-                        category: 'symptom' 
+                    {
+                        code: "CLAUD",
+                        term: "Claudication",
+                        category: "symptom",
                     },
-                    { 
-                        term: 'Leg swelling',
-                         category: 'sign' 
-                        },
-                    { 
-                        term: 'Pleuritic chest pain', 
-                        category: 'symptom' 
+                    {
+                        code: "LEG_SWELL",
+                        term: "Leg swelling",
+                        category: "sign",
                     },
-                    { 
-                        term: 'Unilateral weakness', 
-                        category: 'sign' 
+                    {
+                        code: "PL_CP",
+                        term: "Pleuritic chest pain",
+                        category: "symptom",
                     },
-                    { 
-                        term: 'Aphasia', 
-                        category: 'sign' 
+                    {
+                        code: "UNI_WEAK",
+                        term: "Unilateral weakness",
+                        category: "sign",
                     },
-                    { 
-                        term: 'Fever', 
-                        category: 'sign' 
+                    {
+                        code: "APH",
+                        term: "Aphasia",
+                        category: "sign",
                     },
-                    { 
-                        term: 'New murmur', 
-                        category: 'sign' 
+                    {
+                        code: "FEVER",
+                        term: "Fever",
+                        category: "sign",
                     },
-                    { 
-                        term: 'Pericardial rub', 
-                        category: 'sign' 
+                    {
+                        code: "MURMUR",
+                        term: "New murmur",
+                        category: "sign",
                     },
-                    { 
-                        term: 'Reduced exercise tolerance', 
-                        category: 'symptom' 
+                    {
+                        code: "PERI_RUB",
+                        term: "Pericardial rub",
+                        category: "sign",
+                    },
+                    {
+                        code: "LOW_EX_TOL",
+                        term: "Reduced exercise tolerance",
+                        category: "symptom",
                     },
                 ],
             });

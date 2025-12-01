@@ -1,4 +1,4 @@
-// import "./config/instrument.js";
+import "./config/instrument.js";
 import { container } from "./container.js";
 import { types } from "./types.js";
 import { App } from "./app/app.js";

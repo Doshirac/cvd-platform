@@ -27,6 +27,7 @@ CREATE TABLE "Disease" (
 -- CreateTable
 CREATE TABLE "Symptom" (
     "symptom_id" SERIAL NOT NULL,
+    "code" VARCHAR(10),
     "term" TEXT NOT NULL,
     "category" "SymptomCategory",
 
@@ -108,6 +109,9 @@ CREATE TABLE "risk_factor_translation" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Disease_code_key" ON "Disease"("code");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Symptom_code_key" ON "Symptom"("code");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Symptom_term_key" ON "Symptom"("term");

@@ -8,7 +8,7 @@ import { configService, Keys } from "./index";
  * @param app Express application instance
  */
 export const setupSwagger = (app: Application): void => {
-  const isProd = process.env.NODE_ENV === "production";
+  const isProd = configService.get(Keys.NODE_ENV) === "production";
 
   const options = {
     info: {
@@ -61,7 +61,7 @@ export const setupSwagger = (app: Application): void => {
       },
     ],
     // Force file re-scanning
-    watch: process.env.NODE_ENV === "development",
+    watch: configService.get(Keys.NODE_ENV) === "development",
   };
 
   // Initialize express-jsdoc-swagger -> returns validated Swagger spec in JSON format

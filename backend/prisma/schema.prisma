@@ -53,6 +53,7 @@ model Disease {
 
 model Symptom {
   id           Int              @id @default(autoincrement()) @map("symptom_id")
+  code         String?          @unique @db.VarChar(10)
   term         String           @unique
   category     SymptomCategory?
   diseases     DiseaseSymptom[]

@@ -4,7 +4,11 @@ export const types = {
   Logger: Symbol.for("Logger"),
   Router: Symbol.for("Router"),
 
-  ArticleController: Symbol.for("ArticleController"),
-  ArticleService: Symbol.for("ArticleService"),
-  ArticleRepository: Symbol.for("ArticleRepository"),
+  DiseaseController: Symbol.for("DiseaseController"),
+  DiseaseService: Symbol.for("DiseaseService"),
+  DiseaseRepository: Symbol.for("DiseaseRepository"),
+
+  SourceController: Symbol.for("SourceController"),
+  SourceService: Symbol.for("SourceService"),
+  SourceRepository: Symbol.for("SourceRepository"),
 };

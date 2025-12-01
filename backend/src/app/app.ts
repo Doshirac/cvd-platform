@@ -1,9 +1,9 @@
-// import * as Sentry from "@sentry/node";
-// import cookieParser from "cookie-parser";
-
+import * as Sentry from "@sentry/node";
 import express, { Express, Router } from "express";
 import cors from "cors";
 import { injectable, inject } from "inversify";
+import "reflect-metadata";
+import "../config/instrument.js";
 import { ErrorMiddleware } from "../middlewares/errorMiddleware.js";
 import { NotFoundMiddleware } from "../middlewares/notFoundMiddleware.js";
 import { setupRequestLogger } from "../utils/requestLogger.js";
@@ -27,7 +27,6 @@ export class App {
     @inject(types.Logger) logger: Logger,
   ) {
     this.app = express();
-    // this.app.use(Sentry.Handlers.requestHandler());
     setupRequestLogger(this.app);
     setupSwagger(this.app);
 
@@ -60,6 +59,8 @@ export class App {
   public useExceptionFilters() {
     const errorHandler = new ErrorMiddleware();
     const notFoundHandler = new NotFoundMiddleware();
+
+    Sentry.setupExpressErrorHandler(this.app);
 
     this.app.use(notFoundHandler.execute.bind(notFoundHandler));
     this.app.use(errorHandler.execute.bind(errorHandler));
