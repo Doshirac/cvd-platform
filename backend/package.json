@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "start": "node build/src/server.js",
-    "build": "swc src -d build",
+    "build": "swc src prisma -d build",
     "dev": "npm run nodemon",
     "nodemon": "nodemon",
     "test": "jest",
@@ -12,6 +12,7 @@
     "migrate": "prisma migrate dev",
     "generate": "npx prisma generate",
     "seed": "ts-node prisma/seed.ts",
+    "seed:prod": "node build/prisma/seed.js",
     "prismacore": "powershell -Command \"Remove-Item -Path 'prisma/migrations' -Recurse -Force -ErrorAction SilentlyContinue; npx prisma migrate reset --force; npm run migrate; npm run generate; npm run seed\"",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src/**/*.{ts,tsx} --fix",

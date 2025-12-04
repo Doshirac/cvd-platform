@@ -1,6 +1,8 @@
+import { PrismaClient} from "@prisma/client";
 import { appInstance } from "./main.js";
 import { configService, Keys } from "./config/index.js";
 import { logger } from "./utils/logger";
+import { redis } from "./cache/redisClient.js";
 import { systemMessages } from "../src/constants/messages.js";
 
 const port = configService.getNumber(Keys.PORT, 3000);
@@ -9,6 +11,8 @@ let isShuttingDown = false;
 const server = appInstance.app.listen(port, () => {
   logger.log(`${systemMessages.SERVER_STARTED}${port}`);
 });
+
+const prisma = new PrismaClient();
 
 // Graceful shutdown handler
 const gracefulShutdown = async (signal: string) => {
@@ -49,10 +53,8 @@ const gracefulShutdown = async (signal: string) => {
 
 // Cleanup function for closing resources
 const cleanupResources = async () => {
-  // Example placeholders – replace with your actual cleanup logic
-  // await dbConnection.close();
-  // await redisClient.quit();
-  // await someBackgroundWorker.stop();
+  await prisma.$disconnect();
+  await redis.quit();
 };
 
 ["SIGINT", "SIGTERM"].forEach((signal) => {

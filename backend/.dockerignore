@@ -1,0 +1,9 @@
+node_modules
+.husky
+dist
+.git
+Dockerfile*
+docker-compose*
+.env
+*.log
+coverage
