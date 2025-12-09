@@ -1,5 +1,5 @@
 import { ApiError } from "./ApiError";
-import { apiErrors as msg } from "../constants/messages"
+import { apiErrors as msg } from "../constants/messages";
 
 /**
  * Function to create specific API errors

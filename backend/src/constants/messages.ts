@@ -32,4 +32,4 @@ export const apiErrors = {
   METHOD_NOT_ALLOWED: "Method Not Allowed",
   CONFLICT: "Conflict",
   INTERNAL_SERVER_ERROR: "Internal Server Error",
-}
+};

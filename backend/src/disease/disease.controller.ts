@@ -103,7 +103,7 @@ export class DiseaseController extends BaseController {
         res.status(200).json({ message: msg.DISEASES_NOT_FOUND });
         return;
       }
-      
+
       res.status(200).json(diseases);
     } catch (error) {
       Sentry.captureException(error);
