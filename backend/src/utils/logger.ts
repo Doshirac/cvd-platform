@@ -20,7 +20,7 @@ export class Logger {
           configService.get(Keys.NODE_ENV) === "development" ? developmentFormat : winston.format.combine(...formats),
       }),
       // file transport removed to avoid writing logs inside container
-      // new winston.transports.File({ filename: "logs/error.log", level: "error" }),
+      new winston.transports.File({ filename: "logs/error.log", level: "error" }),
     ],
   });
 

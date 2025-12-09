@@ -14,8 +14,22 @@ export const systemMessages = {
 
 export const diseaseMessages = {
   DISEASES_NOT_FOUND: "No disease found.",
+  TAKE_PARAM_INCORRECT: "Parameter 'take' must be between 1 and 100",
+  SKIP_PARAM_INCORRECT: "Parameter 'skip' must be a non-negative integer",
 };
 
 export const sourceMessages = {
   SOURCES_NOT_FOUND: "No source found.",
+  SKIP_PARAM_INCORRECT: "Parameter 'skip' must be a non-negative integer",
+  TAKE_PARAM_INCORRECT: "Parameter 'take' must be between 1 and 100",
 };
+
+export const apiErrors = {
+  BAD_REQUEST: "Bad Request",
+  UNAUTHORIZED: "Unauthorized",
+  FORBIDDEN: "Forbidden",
+  NOT_FOUND: "Not Found",
+  METHOD_NOT_ALLOWED: "Method Not Allowed",
+  CONFLICT: "Conflict",
+  INTERNAL_SERVER_ERROR: "Internal Server Error",
+}
