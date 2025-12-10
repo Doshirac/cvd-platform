@@ -147,6 +147,160 @@ export class DiseaseRepository implements IDiseaseRepository {
     }));
   }
 
+  public async findByAlphabet(params: {
+    pagination: PaginationParams;
+    filter: DiseaseFilterParams;
+    language: string;
+  }): Promise<Disease[]> {
+    const { pagination, filter, language } = params;
+
+    const where: Prisma.DiseaseWhereInput = {};
+
+    if (filter.symptom) {
+      where.symptoms = {
+        some: {
+          symptom: {
+            OR: [
+              {
+                term: {
+                  equals: filter.symptom,
+                  mode: "insensitive",
+                },
+              },
+              {
+                code: {
+                  equals: filter.symptom,
+                  mode: "insensitive",
+                },
+              },
+            ],
+          },
+        },
+      };
+    }
+
+    if (filter.riskFactor) {
+      where.risks = {
+        some: {
+          riskFactor: {
+            OR: [
+              {
+                name: {
+                  equals: filter.riskFactor,
+                  mode: "insensitive",
+                },
+              },
+              {
+                code: {
+                  equals: filter.riskFactor,
+                  mode: "insensitive",
+                },
+              },
+            ],
+          },
+        },
+      };
+    }
+
+    if (filter.search) {
+      const q = filter.search;
+
+      const orClauses: Prisma.DiseaseWhereInput[] = [
+        { name: { contains: q, mode: "insensitive" } },
+        { code: { contains: q, mode: "insensitive" } },
+        { prevention: { contains: q, mode: "insensitive" } },
+        {
+          symptoms: {
+            some: {
+              symptom: {
+                OR: [{ term: { contains: q, mode: "insensitive" } }, { code: { contains: q, mode: "insensitive" } }],
+              },
+            },
+          },
+        },
+        {
+          risks: {
+            some: {
+              riskFactor: {
+                OR: [{ name: { contains: q, mode: "insensitive" } }, { code: { contains: q, mode: "insensitive" } }],
+              },
+            },
+          },
+        },
+      ];
+
+      if (language === "ru") {
+        orClauses.push(
+          {
+            translations: {
+              some: {
+                locale: "ru",
+                name: { contains: q, mode: "insensitive" },
+              },
+            },
+          },
+          {
+            translations: {
+              some: {
+                locale: "ru",
+                description: { contains: q, mode: "insensitive" },
+              },
+            },
+          },
+          {
+            translations: {
+              some: {
+                locale: "ru",
+                prevention: { contains: q, mode: "insensitive" },
+              },
+            },
+          },
+        );
+      }
+
+      where.AND = [{ OR: orClauses }];
+    }
+
+    if (filter.letter) {
+      const l = filter.letter;
+      where.AND = where.AND ?? [];
+      (where.AND as Prisma.DiseaseWhereInput[]).push({
+        OR: [
+          { name: { startsWith: l, mode: "insensitive" } },
+          {
+            translations: {
+              some: {
+                locale: language === "ru" ? "ru" : "en",
+                name: { startsWith: l, mode: "insensitive" },
+              },
+            },
+          },
+        ],
+      });
+    }
+
+    const diseases = await this.prisma.disease.findMany({
+      where,
+      skip: pagination.skip,
+      take: pagination.take,
+      include: {
+        symptoms: { include: { symptom: true } },
+        risks: { include: { riskFactor: true } },
+        translations: language === "ru" ? true : false,
+      },
+    });
+
+    return diseases.map((disease) => ({
+      id: disease.id,
+      code: disease.code,
+      name: language === "ru" && disease.translations?.[0]?.name ? disease.translations[0].name : disease.name,
+      description: (language === "ru" && disease.translations?.[0]?.description) || undefined,
+      prevention: (language === "ru" && disease.translations?.[0]?.prevention) || undefined,
+      symptoms: disease.symptoms.map((s) => s.symptom.term),
+      risks: disease.risks.map((r) => r.riskFactor.name),
+    }));
+  }
+
   public async findAllRiskFactors(language: string): Promise<RiskFactorDTO[]> {
     const factors = await this.prisma.riskFactor.findMany({
       orderBy: { name: "asc" },

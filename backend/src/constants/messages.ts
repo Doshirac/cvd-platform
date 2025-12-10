@@ -16,6 +16,7 @@ export const diseaseMessages = {
   DISEASES_NOT_FOUND: "No disease found.",
   TAKE_PARAM_INCORRECT: "Parameter 'take' must be between 1 and 100",
   SKIP_PARAM_INCORRECT: "Parameter 'skip' must be a non-negative integer",
+  LETTER_PARAM_INCORRECT: "Parameter 'letter' must be a single character (Latin or Cyrillic)",
 };
 
 export const sourceMessages = {

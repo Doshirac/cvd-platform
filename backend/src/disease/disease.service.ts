@@ -8,7 +8,12 @@ import {
   SymptomDTO,
 } from "./disease.interfaces";
 import { DiseaseRepository } from "./disease.repository";
-import { getCachedDiseases, setCachedDiseases } from "./disease.cache";
+import {
+  getCachedDiseases,
+  setCachedDiseases,
+  getCachedDiseasesByLetter,
+  setCachedDiseasesByLetter,
+} from "./disease.cache";
 import { types } from "../types";
 
 @injectable()
@@ -38,6 +43,29 @@ export class DiseaseService implements IDiseaseService {
 
     if (diseases.length) {
       await setCachedDiseases(pagination, filter, language, diseases);
+    }
+
+    return diseases;
+  }
+
+  public async findByAlphabet(params: {
+    pagination: PaginationParams;
+    filter: DiseaseFilterParams;
+    language: string;
+  }): Promise<Disease[]> {
+    const { pagination, filter, language } = params;
+
+    const letter = filter.letter ?? "";
+
+    const cached = await getCachedDiseasesByLetter(pagination, letter, language);
+    if (cached) {
+      return cached;
+    }
+
+    const diseases = await this.diseaseRepository.findByAlphabet({ pagination, filter, language });
+
+    if (diseases.length) {
+      await setCachedDiseasesByLetter(pagination, letter, language, diseases);
     }
 
     return diseases;

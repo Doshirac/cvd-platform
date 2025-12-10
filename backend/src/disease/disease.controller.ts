@@ -19,6 +19,7 @@ export class DiseaseController extends BaseController {
 
     this.bindRoutes([
       { path: "/", method: "get", func: this.getDiseases },
+      { path: "/by-letter", method: "get", func: this.getDiseasesByLetter },
       { path: "/risk-factors", method: "get", func: this.getRiskFactors },
       { path: "/symptoms", method: "get", func: this.getSymptoms },
     ]);
@@ -144,6 +145,62 @@ export class DiseaseController extends BaseController {
 
       const riskFactors = await this.diseaseService.findAllRiskFactors(language);
       res.status(200).json(riskFactors);
+    } catch (error) {
+      Sentry.captureException(error);
+      next(error);
+    }
+  }
+
+  public async getDiseasesByLetter(req: Request, res: Response, next: NextFunction): Promise<void> {
+    /**
+     * GET /diseases/by-letter
+     * @summary Retrieve diseases by initial letter (locale-aware)
+     * @tags Diseases
+     * @param {string} letter.query - Initial letter to filter by (single character)
+     * @param {integer} skip.query - Number of records to skip (default: 0)
+     * @param {integer} take.query - Number of records to take (default: 6)
+     * @param {string} locale.query - Language locale ("en" or "ru", default: "en")
+     * @return {array<Disease>} 200 - List of diseases - application/json
+     * @return {ErrorResponse} 400 - Invalid query parameters - application/json
+     */
+    try {
+      const { skip, take, locale, letter } = req.query;
+
+      const skipValue = skip ? parseInt(skip as string, 10) : 0;
+      const takeValue = take ? parseInt(take as string, 10) : 6;
+
+      if (isNaN(skipValue) || skipValue < 0) {
+        throw createApiError.badRequest(msg.SKIP_PARAM_INCORRECT);
+      }
+
+      if (isNaN(takeValue) || takeValue < 1 || takeValue > 100) {
+        throw createApiError.badRequest(msg.TAKE_PARAM_INCORRECT);
+      }
+
+      const letterStr = typeof letter === "string" ? letter.trim() : "";
+      if (!letterStr || letterStr.length !== 1) {
+        throw createApiError.badRequest(msg.LETTER_PARAM_INCORRECT || "Parameter 'letter' must be a single character");
+      }
+
+      const pagination: PaginationParams = {
+        skip: skipValue,
+        take: takeValue,
+      };
+
+      const filter: DiseaseFilterParams = {
+        letter: letterStr,
+      };
+
+      const language = locale === "ru" ? "ru" : "en";
+
+      const diseases = await this.diseaseService.findByAlphabet({ pagination, filter, language });
+
+      if (!diseases.length) {
+        res.status(200).json({ message: msg.DISEASES_NOT_FOUND });
+        return;
+      }
+
+      res.status(200).json(diseases);
     } catch (error) {
       Sentry.captureException(error);
       next(error);

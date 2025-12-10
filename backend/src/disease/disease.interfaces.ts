@@ -1,6 +1,12 @@
 export interface IDiseaseService {
   findAll(params: { pagination: PaginationParams; filter: DiseaseFilterParams; language: string }): Promise<Disease[]>;
 
+  findByAlphabet(params: {
+    pagination: PaginationParams;
+    filter: DiseaseFilterParams;
+    language: string;
+  }): Promise<Disease[]>;
+
   findAllRiskFactors(language: string): Promise<RiskFactorDTO[]>;
   findAllSymptoms(language: string): Promise<SymptomDTO[]>;
 }
@@ -14,6 +20,7 @@ export interface DiseaseFilterParams {
   symptom?: string;
   riskFactor?: string;
   search?: string;
+  letter?: string;
 }
 
 export interface Disease {
@@ -40,6 +47,11 @@ export interface SymptomDTO {
 
 export interface IDiseaseRepository {
   findAll(params: { pagination: PaginationParams; filter: DiseaseFilterParams; language: string }): Promise<Disease[]>;
+  findByAlphabet(params: {
+    pagination: PaginationParams;
+    filter: DiseaseFilterParams;
+    language: string;
+  }): Promise<Disease[]>;
   findAllRiskFactors(language: string): Promise<RiskFactorDTO[]>;
   findAllSymptoms(language: string): Promise<SymptomDTO[]>;
 }

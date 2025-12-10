@@ -16,6 +16,7 @@ describe("DiseaseController (e2e)", () => {
       findAll: jest.fn(),
       findAllRiskFactors: jest.fn(),
       findAllSymptoms: jest.fn(),
+      findByAlphabet: jest.fn(),
     } as unknown as jest.Mocked<IDiseaseService>;
 
     const logger = new Logger();
@@ -90,6 +91,37 @@ describe("DiseaseController (e2e)", () => {
 
       expect(res.statusCode).toBe(200);
       expect(res.body.message).toBeDefined();
+    });
+  });
+
+  describe("GET /diseases/by-letter and /diseases/letters", () => {
+    it("returns diseases for a given letter", async () => {
+      serviceMock.findByAlphabet.mockResolvedValue([
+        { id: 1, code: "I10", name: "Hypertension", symptoms: ["Headache"], risks: ["Smoking"] },
+      ]);
+
+      const res = await request(app).get("/diseases/by-letter?letter=H");
+
+      expect(res.statusCode).toBe(200);
+      expect(res.body.length).toBe(1);
+    });
+
+    it("forwards locale to service for letter search", async () => {
+      serviceMock.findByAlphabet.mockResolvedValue([]);
+
+      await request(app).get("/diseases/by-letter?letter=Г&locale=ru");
+
+      expect(serviceMock.findByAlphabet).toHaveBeenCalledWith({
+        pagination: { skip: 0, take: 6 },
+        filter: { letter: "Г" },
+        language: "ru",
+      });
+    });
+
+    it("validates letter parameter", async () => {
+      const res = await request(app).get("/diseases/by-letter?letter=AB");
+
+      expect(res.statusCode).toBe(400);
     });
   });
 
