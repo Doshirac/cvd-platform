@@ -1,0 +1,107 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+@use '@styles/theme' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.label {
+  color: var(--theme-text-secondary);
+}
+
+.disabled-label {
+  color: var(--theme-border);
+}
+
+.input {
+  padding: 0.5rem 0.75rem;
+  border: 0.0625rem solid var(--theme-border);
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+  background-color: var(--theme-bg-primary);
+  color: var(--theme-text-primary);
+  width: 12rem;
+
+  &:hover:not(:disabled, .error),
+  &:focus:not(:disabled, .error),
+  &:active:not(:disabled, .error) {
+    border-color: var(--theme-accent-primary);
+  }
+
+  &:active:not(:disabled, .error),
+  &:focus:not(:disabled, .error) {
+    color: var(--theme-text-primary);
+  }
+
+  &:focus:not(:disabled, .error) {
+    outline: none;
+    box-shadow: 0 0 0.375rem 0 var(--theme-accent-primary);
+  }
+
+  &:active:not(:disabled, .error) {
+    box-shadow: none;
+  }
+
+  &.full-width {
+    width: 100%;
+  }
+}
+
+.disabled {
+  background-color: var(--theme-bg-tertiary);
+  color: var(--theme-text-secondary);
+  border-color: var(--theme-border);
+  cursor: not-allowed;
+}
+
+.error {
+  border-color: var(--theme-danger);
+  color: var(--theme-text-primary);
+}
+
+.helper {
+  color: var(--theme-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.helper > div {
+  display: flex;
+  align-items: center;
+}
+
+.error-helper {
+  color: var(--theme-danger);
+}
+
+@include responsive(xs) {
+  .input {
+    font-size: $font-size-xs;
+    width: 8rem;
+  }
+}
+
+@include responsive(sm) {
+  .input {
+    font-size: $font-size-sm;
+    width: 10rem;
+  }
+}
+
+@include responsive(md) {
+  .input {
+    font-size: $font-size-md;
+    width: 12rem;
+  }
+}
+
+@include responsive(lg) {
+  .input {
+    font-size: $font-size-lg;
+    width: 14rem;
+  }
+}

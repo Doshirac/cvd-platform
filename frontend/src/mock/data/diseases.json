@@ -1,0 +1,166 @@
+{
+  "diseases": [
+    {
+      "id": 1,
+      "code": "IHD",
+      "name": "Ischaemic Heart Disease",
+      "description": "Coronary atherosclerosis → decreased myocardial blood flow.",
+      "prevention": "Stop smoking, control BP/LDL, exercise, diet.",
+      "symptoms": ["S001", "S002"],
+      "risks": ["R001", "R002"]
+    },
+    {
+      "id": 2,
+      "code": "AMI",
+      "name": "Acute Myocardial Infarction",
+      "description": "Acute coronary artery occlusion with myocardial necrosis.",
+      "prevention": "Aggressive risk-factor control; GDMT.",
+      "symptoms": ["S003", "S004"],
+      "risks": ["R003", "R004"]
+    },
+    {
+      "id": 3,
+      "code": "HF",
+      "name": "Heart Failure",
+      "description": "Pump failure with inadequate cardiac output.",
+      "prevention": "Treat HTN/CAD; salt restriction; weight control.",
+      "symptoms": ["S005", "S006"],
+      "risks": ["R005", "R006"]
+    },
+    {
+      "id": 4,
+      "code": "AF",
+      "name": "Atrial Fibrillation",
+      "description": "Irregular supraventricular tachyarrhythmia.",
+      "prevention": "BP control, weight loss, limit alcohol.",
+      "symptoms": ["S007", "S008"],
+      "risks": ["R007", "R008"]
+    },
+    {
+      "id": 5,
+      "code": "STROKE",
+      "name": "Stroke (Ischaemic)",
+      "description": "Cerebral ischaemia → focal neurological deficit.",
+      "prevention": "BP control, AF anticoagulation, statins, no smoking.",
+      "symptoms": ["S009", "S010"],
+      "risks": ["R009", "R010"]
+    },
+    {
+      "id": 6,
+      "code": "PAD",
+      "name": "Peripheral Artery Disease",
+      "description": "Atherosclerosis of peripheral arteries; claudication.",
+      "prevention": "Smoking cessation, statins, antiplatelets, walking.",
+      "symptoms": ["S011", "S012"],
+      "risks": ["R011", "R012"]
+    },
+    {
+      "id": 7,
+      "code": "HHD",
+      "name": "Hypertensive Heart Disease",
+      "description": "Cardiac changes from chronic hypertension.",
+      "prevention": "Tight BP control; lifestyle.",
+      "symptoms": ["S013", "S014"],
+      "risks": ["R013", "R014"]
+    },
+    {
+      "id": 8,
+      "code": "HCM",
+      "name": "Hypertrophic Cardiomyopathy",
+      "description": "Genetic LV hypertrophy; possible LVOT obstruction.",
+      "prevention": "Family screening, SCD risk stratification.",
+      "symptoms": ["S015", "S016"],
+      "risks": ["R015", "R016"]
+    },
+    {
+      "id": 9,
+      "code": "DCM",
+      "name": "Dilated Cardiomyopathy",
+      "description": "LV dilation with systolic dysfunction.",
+      "prevention": "Avoid alcohol/toxins; treat causes.",
+      "symptoms": ["S017", "S018"],
+      "risks": ["R017", "R018"]
+    },
+    {
+      "id": 10,
+      "code": "VHD",
+      "name": "Valvular Heart Disease",
+      "description": "Valve stenosis/regurgitation (AS, MR, etc.).",
+      "prevention": "IE prevention; treat rheumatic disease early.",
+      "symptoms": ["S019", "S020"],
+      "risks": ["R019", "R020"]
+    },
+    {
+      "id": 11,
+      "code": "MYO",
+      "name": "Myocarditis",
+      "description": "Inflammation of myocardium (often viral/immune).",
+      "prevention": "Vaccination; infection prevention; rest in acute phase.",
+      "symptoms": ["S021", "S022"],
+      "risks": ["R021", "R022"]
+    },
+    {
+      "id": 12,
+      "code": "PERI",
+      "name": "Pericarditis",
+      "description": "Inflammation of pericardium with pleuritic chest pain.",
+      "prevention": "Treat triggers; avoid exertion during acute phase.",
+      "symptoms": ["S023", "S024"],
+      "risks": ["R023", "R024"]
+    },
+    {
+      "id": 13,
+      "code": "ENDO",
+      "name": "Infective Endocarditis",
+      "description": "Endocardial/valvular infection by microorganisms.",
+      "prevention": "Dental hygiene; targeted prophylaxis in high risk.",
+      "symptoms": ["S025", "S026"],
+      "risks": ["R025", "R026"]
+    },
+    {
+      "id": 14,
+      "code": "PE",
+      "name": "Pulmonary Embolism",
+      "description": "Pulmonary artery thromboembolism.",
+      "prevention": "VTE prophylaxis; early mobilization.",
+      "symptoms": ["S027", "S028"],
+      "risks": ["R027", "R028"]
+    },
+    {
+      "id": 15,
+      "code": "DVT",
+      "name": "Deep Vein Thrombosis",
+      "description": "Thrombus in deep veins (often legs).",
+      "prevention": "VTE prophylaxis; hydration; movement.",
+      "symptoms": ["S029", "S030"],
+      "risks": ["R029", "R030"]
+    },
+    {
+      "id": 16,
+      "code": "ARVC",
+      "name": "Arrhythmogenic Right Ventricular Cardiomyopathy",
+      "description": "Fibrofatty replacement of RV myocardium.",
+      "prevention": "Family screening; avoid competitive sports.",
+      "symptoms": ["S031", "S032"],
+      "risks": ["R031", "R032"]
+    },
+    {
+      "id": 17,
+      "code": "TTS",
+      "name": "Takotsubo Syndrome",
+      "description": "Transient LV dysfunction after stress.",
+      "prevention": "Stress management; treat triggers.",
+      "symptoms": ["S033", "S034"],
+      "risks": ["R033", "R034"]
+    },
+    {
+      "id": 18,
+      "code": "CHD",
+      "name": "Congenital Heart Disease",
+      "description": "Structural heart defects present at birth.",
+      "prevention": "Prenatal care; folic acid; avoid teratogens.",
+      "symptoms": ["S035", "S036"],
+      "risks": ["R035", "R036"]
+    }
+  ]
+}

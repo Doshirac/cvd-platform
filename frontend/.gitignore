@@ -1,0 +1,44 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+.env
+coverage
+
+# BMAD
+.bmad-core/config.yaml  # If has API keys (add your keys post-clone)
+.bmad-core/history.log  # Personal run logs
+.bmad-core/outputs/     # Generated files—recreate per task
+.vscode/                # Optional: IDE-specific; ignore if team varies (teammates can regenerate)
+.github/                # Optional: If not using GitHub Actions in GitLab
+
+# Spec Kit
+.specify/outputs/
+.specify/config.local.yaml
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+*storybook.log
+storybook-static
+
+# Test results
+test-results
+playwright-report

@@ -1,0 +1,44 @@
+@use '@styles/mixins' as *;
+@use '@styles/variables' as *;
+@use '@styles/theme' as *;
+
+.scroll-container {
+  @include flex(column, flex-start, stretch);
+
+  gap: 1rem;
+  padding-bottom: 2rem;
+}
+
+.error {
+  color: var(--theme-danger);
+  text-align: center;
+  padding: 1rem;
+
+  @include typography($weight: $font-weight-semibold);
+}
+
+.end {
+  text-align: center;
+  padding: 1rem;
+  color: var(--theme-text-secondary);
+
+  @include typography($size: $font-size-sm, $weight: $font-weight-regular);
+}
+
+.load-more-wrapper {
+  @include flex(row, center, center);
+}
+
+.loader {
+  margin: 20vh auto 0;
+}
+
+.last-element {
+  padding-bottom: 6rem;
+}
+
+@media (max-width: $breakpoint-md) {
+  .last-element {
+    padding-bottom: 4rem;
+  }
+}

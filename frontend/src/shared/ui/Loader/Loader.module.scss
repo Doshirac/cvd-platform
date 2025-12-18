@@ -1,0 +1,51 @@
+@use '@styles/mixins' as *;
+@use '@styles/variables' as *;
+
+.wrapper {
+  @include flex(inline-flex, center, center);
+}
+
+.loader {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+  width: 2rem;
+  height: 2rem;
+
+  @include responsive(xs) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  @include responsive(md) {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  @include responsive(lg) {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  @include responsive(xl) {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
+
+:global(html.theme-light) {
+  .wrapper {
+    color: $light-primary;
+  }
+}
+
+:global(html.theme-dark) {
+  .wrapper {
+    color: $dark-primary;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

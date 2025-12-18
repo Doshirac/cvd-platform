@@ -1,0 +1,142 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.page {
+  min-height: 100vh;
+  padding: 3rem 1rem;
+
+  @include flex(column, center, center);
+}
+
+.content {
+  width: 100%;
+  max-width: 42rem;
+  text-align: center;
+}
+
+.icon-wrapper {
+  margin: 2rem auto;
+
+  @include flex(row, center, center);
+
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: $light-muted-bg;
+
+  :global(html.theme-dark) & {
+    background-color: $dark-muted-bg;
+  }
+}
+
+.code {
+  font-size: 4rem;
+  font-weight: 700;
+  color: $light-primary;
+  margin-bottom: 0.5rem;
+
+  :global(html.theme-dark) & {
+    color: $dark-primary;
+  }
+
+  @include responsive(md) {
+    font-size: 5rem;
+  }
+
+  @include responsive(lg) {
+    font-size: 6rem;
+  }
+}
+
+.title {
+  margin-bottom: 1rem;
+}
+
+.description {
+  color: $light-muted-text;
+  margin-bottom: 2rem;
+
+  :global(html.theme-dark) & {
+    color: $dark-muted-text;
+  }
+}
+
+.actions {
+  @include flex(row, center, center);
+
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+
+  @include responsive(xs) {
+    flex-direction: column;
+  }
+
+  button {
+    @include flex(row, center, center);
+
+    @include responsive(xs) {
+      width: 100%;
+    }
+  }
+
+  button:nth-child(2) {
+    border: 0.063rem solid $light-border;
+
+    :global(html.theme-dark) & {
+      background-color: $dark-card-bg;
+      border-color: $dark-border;
+    }
+
+    span {
+      color: $light-text;
+
+      :global(html.theme-dark) & {
+        color: $dark-text;
+      }
+    }
+  }
+}
+
+.links {
+  padding: 1.4rem;
+  border-radius: $radius-lg;
+  text-align: left;
+  background-color: $light-card-bg;
+  border: 0.063rem solid $light-border;
+
+  :global(html.theme-dark) & {
+    background-color: $dark-card-bg;
+    border-color: $dark-border;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li + li {
+    margin-top: 0.5rem;
+  }
+
+  a {
+    background: none;
+    border: none;
+    padding: 0;
+    color: $light-primary;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    :global(html.theme-dark) & {
+      color: $dark-primary;
+    }
+  }
+}

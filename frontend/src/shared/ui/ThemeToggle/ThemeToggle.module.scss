@@ -1,0 +1,36 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.theme-toggle {
+  @include responsive(xs) {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+
+  @include responsive(sm) {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+/* Light Theme */
+:global(html.theme-light) {
+  .icon {
+    color: $light-text;
+
+    &:hover {
+      color: $dark-text;
+    }
+
+    &:active {
+      color: $dark-text;
+    }
+  }
+}
+
+/* Dark Theme */
+:global(html.theme-dark) {
+  .icon {
+    color: $dark-text;
+  }
+}

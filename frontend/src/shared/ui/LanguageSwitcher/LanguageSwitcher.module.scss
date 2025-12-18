@@ -1,0 +1,110 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.language-switcher {
+  position: relative;
+}
+
+.button {
+  @include responsive(xs) {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+
+  @include responsive(sm) {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+:global(html.theme-light) {
+  .icon {
+    color: $light-text;
+
+    &:hover {
+      color: $dark-text;
+    }
+
+    &:active {
+      color: $dark-text;
+    }
+  }
+
+  .button:focus {
+    @include focus-ring($light-border, $light-focus);
+  }
+
+  .dropdown {
+    background-color: $light-popover-bg;
+    border: 0.063rem solid $light-border;
+    box-shadow: 0 0.25rem 0.5rem $dropdown-shadow;
+  }
+
+  .dropdown-item {
+    color: $light-popover-text;
+
+    &:hover {
+      background-color: $light-primary;
+      color: $light-primary-text;
+    }
+
+    &:focus {
+      background-color: $light-primary;
+      color: $light-primary-text;
+      outline: none;
+    }
+  }
+}
+
+:global(html.theme-dark) {
+  .icon {
+    color: $dark-text;
+  }
+
+  .button:focus {
+    @include focus-ring($dark-border, $dark-focus);
+  }
+
+  .dropdown {
+    background-color: $dark-popover-bg;
+    border: 0.063rem solid $dark-border;
+    box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 30%);
+  }
+
+  .dropdown-item {
+    color: $dark-popover-text;
+
+    &:hover {
+      background-color: $dark-primary;
+      color: $dark-primary-text;
+    }
+
+    &:focus {
+      background-color: $dark-primary;
+      color: $dark-primary-text;
+      outline: none;
+    }
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  border-radius: $radius-md;
+  z-index: 10;
+  padding: 0.25rem;
+  min-width: 9rem;
+}
+
+.dropdown-item {
+  @include typography($font-sans, $fs-md, $fw-regular);
+
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  border-radius: $radius-sm;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+  white-space: nowrap;
+}

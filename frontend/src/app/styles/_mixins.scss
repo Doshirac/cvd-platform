@@ -1,0 +1,45 @@
+@use './variables' as *;
+
+@mixin focus-ring($border, $ring) {
+  outline: none;
+  box-shadow:
+    0 0 0 0.063rem $border,
+    0 0 0 0.25rem $ring;
+}
+
+@mixin typography($family: $font-sans, $size: $fs-md, $weight: $fw-regular) {
+  font-family: $family;
+  font-size: $size;
+  font-weight: $weight;
+}
+
+@mixin flex($direction: row, $justify: flex-start, $align: flex-start, $wrap: nowrap) {
+  display: flex;
+  flex-flow: $direction $wrap;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint ==xs {
+    @media (max-width: $breakpoint-sm) {
+      @content;
+    }
+  } @else if $breakpoint ==sm {
+    @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $breakpoint ==md {
+    @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
+      @content;
+    }
+  } @else if $breakpoint ==lg {
+    @media (min-width: $breakpoint-lg) and (max-width: $breakpoint-xl) {
+      @content;
+    }
+  } @else if $breakpoint ==xl {
+    @media (min-width: $breakpoint-xl) {
+      @content;
+    }
+  }
+}

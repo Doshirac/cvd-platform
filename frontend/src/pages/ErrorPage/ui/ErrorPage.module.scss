@@ -1,0 +1,23 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.wrapper {
+  min-height: 100vh;
+  padding: 2rem;
+
+  @include flex(column, center, center);
+
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.description {
+  max-width: 28rem;
+  margin-bottom: 2rem;
+  color: $light-muted-text;
+}

@@ -1,0 +1,147 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+/* Base */
+.button {
+  @include flex(row, center, center);
+
+  gap: 0.5rem;
+  height: 2.5rem;
+  padding: 0 1.25rem;
+  border-radius: $radius-lg;
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.05s ease;
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+/* Sizes */
+.default {
+  height: 2.5rem;
+}
+
+.sm {
+  height: 2.25rem;
+  padding: 0 1rem;
+}
+
+.lg {
+  height: 3rem;
+  padding: 0 1.5rem;
+}
+
+.icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+}
+
+/* Light Theme */
+:global(html.theme-light) {
+  .button.primary {
+    background-color: $light-primary;
+    color: $light-primary-text;
+
+    &:hover {
+      background-color: $light-primary-hover;
+    }
+
+    &:active {
+      background-color: $light-primary-hover;
+      transform: translateY(0.063rem);
+    }
+
+    &:focus-visible {
+      @include focus-ring($light-primary, $light-focus);
+    }
+  }
+
+  .button.secondary {
+    background-color: $light-secondary-bg;
+    color: $light-text;
+
+    &:hover {
+      background-color: $dark-primary;
+      color: $light-secondary-bg;
+    }
+
+    &:active {
+      background-color: $dark-primary;
+      transform: translateY(0.063rem);
+    }
+
+    &:focus-visible {
+      @include focus-ring($light-focus, $light-focus);
+    }
+  }
+}
+
+/* Dark Theme */
+:global(html.theme-dark) {
+  .button.primary {
+    background-color: $dark-primary;
+    color: $dark-primary-text;
+
+    &:hover {
+      background-color: $dark-primary-hover;
+    }
+
+    &:active {
+      background-color: $dark-primary-hover;
+      transform: translateY(0.063rem);
+    }
+
+    &:focus-visible {
+      @include focus-ring($dark-secondary-hover, $dark-secondary-hover);
+    }
+  }
+
+  .button.secondary {
+    background-color: $dark-secondary-bg;
+    color: $dark-text;
+
+    &:hover {
+      background-color: $dark-secondary-hover;
+    }
+
+    &:active {
+      background-color: $dark-secondary-hover;
+      transform: translateY(0.063rem);
+    }
+
+    &:focus-visible {
+      @include focus-ring($dark-secondary-hover, $dark-secondary-hover);
+    }
+  }
+}
+
+/* Layout */
+.full-width {
+  width: 100%;
+}
+
+/* Responsive */
+@include responsive(xs) {
+  .button {
+    font-size: $fs-sm;
+  }
+}
+
+@include responsive(md) {
+  .button {
+    font-size: $fs-md;
+  }
+}
+
+@include responsive(lg) {
+  .button {
+    font-size: $fs-lg;
+  }
+}

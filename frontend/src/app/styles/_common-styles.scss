@@ -1,0 +1,47 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+/* Global */
+body {
+  @include typography($font-sans, $fs-md, $fw-regular);
+}
+
+/* Typoрraphy */
+
+/* Regular */
+.regular-14 {
+  @include typography($font-sans, $fs-sm, $fw-regular);
+}
+
+.regular-16 {
+  @include typography($font-sans, $fs-md, $fw-regular);
+}
+
+.regular-18 {
+  @include typography($font-sans, $fs-lg, $fw-medium);
+}
+
+/* Medium */
+.medium-14 {
+  @include typography($font-sans, 0.875rem, $fw-medium);
+}
+
+.medium-16 {
+  @include typography($font-sans, $fs-md, $fw-medium);
+}
+
+.medium-18 {
+  @include typography($font-sans, $fs-lg, $fw-medium);
+}
+
+/* Light Theme */
+html.theme-light {
+  background-color: $light-bg;
+  color: $light-text;
+}
+
+/* Dark Theme */
+html.theme-dark {
+  background-color: $dark-bg;
+  color: $dark-text;
+}

@@ -1,0 +1,107 @@
+{
+  "riskFactors": [
+    {
+      "id": 1,
+      "code": "R001",
+      "name": "Hypertension",
+      "definition": "High blood pressure increases risk of CVD."
+    },
+    {
+      "id": 2,
+      "code": "R002",
+      "name": "Hyperlipidemia",
+      "definition": "Elevated cholesterol or triglycerides."
+    },
+    {
+      "id": 3,
+      "code": "R003",
+      "name": "Diabetes Mellitus",
+      "definition": "Chronic high blood sugar damages vessels."
+    },
+    {
+      "id": 4,
+      "code": "R004",
+      "name": "Smoking",
+      "definition": "Tobacco use accelerates atherosclerosis."
+    },
+    {
+      "id": 5,
+      "code": "R005",
+      "name": "Obesity",
+      "definition": "Excess body weight increases CVD risk."
+    },
+    {
+      "id": 6,
+      "code": "R006",
+      "name": "Physical Inactivity",
+      "definition": "Lack of exercise is a major risk factor."
+    },
+    {
+      "id": 7,
+      "code": "R007",
+      "name": "Family History",
+      "definition": "Genetic predisposition to CVD."
+    },
+    { "id": 8, "code": "R008", "name": "Age", "definition": "Risk increases with age." },
+    {
+      "id": 9,
+      "code": "R009",
+      "name": "Male Sex",
+      "definition": "Men have higher risk at younger ages."
+    },
+    {
+      "id": 10,
+      "code": "R010",
+      "name": "Chronic Kidney Disease",
+      "definition": "CKD increases CVD risk."
+    },
+    {
+      "id": 11,
+      "code": "R011",
+      "name": "Alcohol Use",
+      "definition": "Excessive alcohol increases risk."
+    },
+    {
+      "id": 12,
+      "code": "R012",
+      "name": "Poor Diet",
+      "definition": "Unhealthy diet increases CVD risk."
+    },
+    {
+      "id": 13,
+      "code": "R013",
+      "name": "Stress",
+      "definition": "Chronic stress is a risk factor."
+    },
+    {
+      "id": 14,
+      "code": "R014",
+      "name": "Sleep Apnea",
+      "definition": "Sleep apnea increases CVD risk."
+    },
+    {
+      "id": 15,
+      "code": "R015",
+      "name": "Inflammatory Disease",
+      "definition": "Chronic inflammation increases risk."
+    },
+    {
+      "id": 16,
+      "code": "R016",
+      "name": "Atrial Fibrillation",
+      "definition": "AF increases risk of stroke."
+    },
+    {
+      "id": 17,
+      "code": "R017",
+      "name": "Autoimmune Disease",
+      "definition": "Autoimmune conditions increase risk."
+    },
+    {
+      "id": 18,
+      "code": "R018",
+      "name": "Low Socioeconomic Status",
+      "definition": "Associated with higher CVD risk."
+    }
+  ]
+}

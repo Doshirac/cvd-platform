@@ -1,0 +1,54 @@
+{
+  "sources": [
+    { "id": 1, "name": "World Health Organization", "link": "https://www.who.int/" },
+    { "id": 2, "name": "American Heart Association", "link": "https://www.heart.org/" },
+    { "id": 3, "name": "European Society of Cardiology", "link": "https://www.escardio.org/" },
+    { "id": 4, "name": "CDC Heart Disease", "link": "https://www.cdc.gov/heartdisease/" },
+    {
+      "id": 5,
+      "name": "NHS Heart Conditions",
+      "link": "https://www.nhs.uk/conditions/heart-disease/"
+    },
+    { "id": 6, "name": "UpToDate", "link": "https://www.uptodate.com/" },
+    { "id": 7, "name": "MedlinePlus", "link": "https://medlineplus.gov/heartdiseases.html" },
+    {
+      "id": 8,
+      "name": "Johns Hopkins Medicine",
+      "link": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/heart-disease"
+    },
+    {
+      "id": 9,
+      "name": "Mayo Clinic",
+      "link": "https://www.mayoclinic.org/diseases-conditions/heart-disease/"
+    },
+    {
+      "id": 10,
+      "name": "Cleveland Clinic",
+      "link": "https://my.clevelandclinic.org/health/diseases/16898-heart-disease"
+    },
+    {
+      "id": 11,
+      "name": "Harvard Health Publishing",
+      "link": "https://www.health.harvard.edu/topics/heart-health"
+    },
+    {
+      "id": 12,
+      "name": "National Heart, Lung, and Blood Institute",
+      "link": "https://www.nhlbi.nih.gov/"
+    },
+    {
+      "id": 13,
+      "name": "Heart Foundation Australia",
+      "link": "https://www.heartfoundation.org.au/"
+    },
+    { "id": 14, "name": "Canadian Cardiovascular Society", "link": "https://www.ccs.ca/" },
+    { "id": 15, "name": "British Heart Foundation", "link": "https://www.bhf.org.uk/" },
+    { "id": 16, "name": "CardioSmart (ACC)", "link": "https://www.cardiosmart.org/" },
+    { "id": 17, "name": "Texas Heart Institute", "link": "https://www.texasheart.org/" },
+    {
+      "id": 18,
+      "name": "SCAI (Society for Cardiovascular Angiography and Interventions)",
+      "link": "https://www.scai.org/"
+    }
+  ]
+}

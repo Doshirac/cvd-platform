@@ -1,0 +1,125 @@
+/* Light Theme */
+$light-bg: #f7f9fc;
+$light-text: #1c1f25;
+
+/* Surfaces */
+$light-card-bg: #fff;
+$light-card-text: #1c1f25;
+$light-popover-bg: #fff;
+$light-popover-text: #1c1f25;
+
+/* Brand */
+$light-primary: #2a4e8a;
+$light-primary-text: #fff;
+$light-primary-hover: #3e5e95;
+$light-primary-active: #1f3f70;
+
+/* Secondary */
+$light-secondary-bg: #fff;
+$light-secondary-text: #2a4e8a;
+$light-secondary-border: #e1e5eb;
+$light-secondary-hover: #eef2f8;
+
+/* Muted / UI */
+$light-muted-bg: #e1e5eb;
+$light-muted-text: #4d5665;
+
+/* Accent */
+$light-accent-bg: #2a4e8a;
+$light-accent-text: #fff;
+
+/* Destructive */
+$light-destructive-bg: #b12a2a;
+$light-destructive-text: #fff;
+
+/* Borders / Inputs */
+$light-border: #e1e5eb;
+$light-input-bg: #fff;
+
+/* Focus / Ring */
+$light-focus: rgb(63 108 188 / 40%);
+
+/* Dark theme */
+$dark-bg: #0f1419;
+$dark-text: #f7f9fc;
+
+/* Surfaces */
+$dark-card-bg: #1c1f25;
+$dark-card-text: #f7f9fc;
+$dark-popover-bg: #1c1f25;
+$dark-popover-text: #f7f9fc;
+
+/* Brand */
+$dark-primary: #3f6cbc;
+$dark-primary-text: #fff;
+$dark-primary-hover: #3a63ab;
+$dark-primary-active: #5a8ae0;
+
+/* Secondary */
+$dark-secondary-bg: #0f1419;
+$dark-secondary-text: #f7f9fc;
+$dark-secondary-border: #2a2f38;
+$dark-secondary-hover: #1c3151;
+
+/* Muted / UI */
+$dark-muted-bg: #2a2f38;
+$dark-muted-text: #9ca3af;
+
+/* Accent */
+$dark-accent-bg: #2a4e8a;
+$dark-accent-text: #fff;
+
+/* Destructive */
+$dark-destructive-bg: #e56f6f;
+$dark-destructive-text: #fff;
+
+/* Borders / Inputs */
+$dark-border: #2a2f38;
+$dark-input-bg: #1c1f25;
+
+/* Focus / Ring */
+$dark-focus: rgb(59 130 246 / 50%);
+
+/* Shadows */
+$dropdown-shadow: rgb(0 0 0 / 10%);
+
+/* Chart Colors */
+$chart-1: #e88b2c;
+$chart-2: #4fb6a3;
+$chart-3: #3a5ba0;
+$chart-4: #f0c84b;
+$chart-5: #e6b94f;
+
+/* Sidebar */
+$light-sidebar-bg: #fff;
+$light-sidebar-text: #1c1f25;
+$light-sidebar-border: #e1e5eb;
+$dark-sidebar-bg: #1c1f25;
+$dark-sidebar-text: #f7f9fc;
+$dark-sidebar-border: #2a2f38;
+
+/* Typography */
+
+$font-sans: 'Inter', system-ui, sans-serif;
+$font-mono: 'Geist Mono', 'Geist Mono Fallback';
+
+/* Font Size */
+$fs-sm: 0.875rem;
+$fs-md: 1rem;
+$fs-lg: 1.125rem;
+
+/* Font Weight */
+$fw-regular: 400;
+$fw-medium: 500;
+
+/* Radius */
+$radius-sm: 0.25rem;
+$radius-md: 0.375rem;
+$radius-lg: 0.625rem;
+$radius-xl: 0.875rem;
+
+/* Breakpoints */
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
