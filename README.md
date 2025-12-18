@@ -452,29 +452,80 @@ This repo follows Feature-Sliced Design (FSD). Key folders/files:
 
 ```
 frontend/
-  .env.example
-  vite.config.ts
-  jest.config.js
-  playwright.config.ts
-  src/
-    main.tsx                 # App bootstrap
-    app/                     # App-level providers, layouts, global styles
-      providers/
-        StoreProvider/       # Redux store configuration + Provider wrapper
-        Router/              # Router provider
-        ErrorBoundary/       # Error boundary provider
-      styles/                # Global SCSS (reset, variables, mixins)
-    pages/                   # Route-level pages (ErrorPage, NotFoundPage, ...)
-    shared/                  # Reusable infrastructure
-      api/                   # Axios config + thunks/slices/queries
-      ui/                    # Shared UI kit components
-      utils/                 # Shared helpers (e.g., thunk error handling)
-      constants/             # App-wide constant strings
-    mock/                    # Local JSON mock data and docs
-      data/                  # diseases.json, symptoms.json, ...
-  tests/
-    e2e/                     # Playwright E2E specs
-  .storybook/                # Storybook configuration
+├── .env                         # Local environment overrides (do not commit secrets)
+├── .env.example                 # Template for required env vars
+├── index.html                   # Vite HTML entry
+├── package.json                 # Scripts + dependencies
+├── package-lock.json            # Locked dependency tree
+├── vite.config.ts               # Vite config (plugins, aliases, test projects)
+├── tsconfig.json                # Base TS config
+├── tsconfig.app.json            # TS config for app build
+├── tsconfig.node.json           # TS config for Node tooling (Vite config, etc.)
+├── tsconfig.test.json           # TS config for Jest tests
+├── jest.config.js               # Jest config (jsdom, alias mapping, transforms)
+├── jest.setup.ts                # Jest setup (testing-library/jest-dom, etc.)
+├── playwright.config.ts         # Playwright E2E config (baseURL, webServer)
+├── postcss.config.mjs           # PostCSS pipeline config
+├── eslint.config.mjs            # ESLint flat config
+├── .eslintrc.json               # ESLint legacy config (if still used by tooling)
+├── .stylelintrc                 # Stylelint config for SCSS
+├── .prettierrc                  # Prettier formatting rules
+├── .storybook/                  # Storybook config + addons
+├── public/                      # Public static files copied as-is
+├── src/
+│   ├── main.tsx                 # App bootstrap (Sentry init, ThemeProvider, mount App)
+│   ├── vite-env.d.ts            # Vite/TS typings for import.meta.env
+│   ├── app/                     # App shell: root component, layouts, global providers/styles
+│   │   ├── App.tsx              # Root app component
+│   │   ├── layouts/             # App layouts used by routing
+│   │   │   └── MainLayout/      # Primary layout wrapper (Outlet, header/footer, etc.)
+│   │   ├── providers/           # App-level providers (router/store/error boundary)
+│   │   │   ├── ErrorBoundary/   # Error boundary provider layer
+│   │   │   ├── Router/          # Router provider + route constants
+│   │   │   │   ├── config/
+│   │   │   │   │   └── routes.ts# Intended routes constants
+│   │   │   │   └── ui/
+│   │   │   │       └── Router.tsx # React Router wiring (some routes commented out)
+│   │   │   └── StoreProvider/   # Redux store configuration + Provider wrapper
+│   │   ├── styles/              # Global SCSS layer (tokens, mixins, reset, themes)
+│   │   │   ├── index.scss       # Global styles entrypoint (composes partials via @use)
+│   │   │   ├── _reset.scss      # CSS reset
+│   │   │   ├── _variables.scss  # Design tokens (colors, etc.)
+│   │   │   ├── _mixins.scss     # Reusable SCSS mixins (typography, flex, etc.)
+│   │   │   └── _common-styles.scss # Global typography + theme base rules
+│   │   └── __tests__/
+│   │       └── App.test.tsx     # App-level unit/component tests
+│   ├── pages/                   # Route-level pages (screen compositions)
+│   │   ├── ErrorPage/           # Error route page
+│   │   └── NotFoundPage/        # 404 route page
+│   ├── shared/                  # Shared infra: API, UI kit, hooks, utils, constants
+│   │   ├── api/                 # Axios config + request layer / thunks (where implemented)
+│   │   ├── assets/              # Shared assets (icons/images used across UI)
+│   │   ├── constants/           # Shared constant values
+│   │   ├── context/             # React contexts
+│   │   ├── hooks/               # Reusable hooks (e.g., theme hook/provider)
+│   │   ├── lib/                 # Generic libs/helpers (non-UI)
+│   │   ├── ui/                  # Shared UI components
+│   │   └── utils/               # Utilities (logging, error handling, etc.)
+│   ├── mock/                    # Local mock API data + helpers
+│   │   ├── README.md            # Mock data notes
+│   │   ├── svgMock.ts           # SVG mock used by Jest mapping
+│   │   └── data/                # json-server datasets + route mapping
+│   │       ├── diseases.json
+│   │       ├── riskFactors.json
+│   │       ├── symptoms.json
+│   │       ├── sources.json
+│   │       └── routes.json      # json-server route rewrites
+│   └── assets/                  # App-level static assets bundled by Vite
+│       ├── favicon.svg
+│       ├── loader.svg
+│       └── react.svg
+├── tests/
+│   └── e2e/                     # Playwright E2E specs
+├── storybook-static/            # Built Storybook output (generated)
+├── playwright-report/           # Playwright HTML report output (generated)
+├── test-results/                # Playwright artifacts (generated)
+└── node_modules/                # Installed dependencies (generated)
 ```
 
 ## Redux Toolkit Architecture
