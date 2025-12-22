@@ -1,0 +1,136 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.container {
+  position: relative;
+  display: inline-block;
+}
+
+.badge {
+  @include flex(row, center, center);
+
+  padding: 0.375rem 0.75rem;
+  border-radius: $radius-md;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+
+  &:hover {
+    transform: translateY(-0.125rem);
+  }
+
+  &:focus {
+    outline: 0.125rem solid;
+    outline-offset: 0.125rem;
+  }
+
+  @include responsive(xs) {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+}
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 0.75rem;
+  border-radius: $radius-md;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 1000;
+  animation: fade-in 0.2s ease;
+
+  /* Tooltip arrow */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 0.5rem solid transparent;
+    border-right: 0.5rem solid transparent;
+  }
+
+  @include responsive(xs) {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.625rem;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-0.25rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Light Theme */
+:global(html.theme-light) {
+  .badge {
+    &:focus {
+      outline-color: $light-primary;
+    }
+  }
+
+  .primary {
+    background-color: $light-primary;
+    color: $light-primary-text;
+  }
+
+  .secondary {
+    background-color: $light-destructive-bg;
+    color: $light-destructive-text;
+  }
+
+  .tooltip {
+    background-color: $light-card-text;
+    color: $light-card-bg;
+    box-shadow: 0 0.25rem 0.5rem $dropdown-shadow;
+
+    &::after {
+      border-top: 0.5rem solid $light-card-text;
+    }
+  }
+}
+
+/* Dark Theme */
+:global(html.theme-dark) {
+  .badge {
+    &:focus {
+      outline-color: $dark-primary;
+    }
+  }
+
+  .primary {
+    background-color: $dark-primary;
+    color: $dark-primary-text;
+  }
+
+  .secondary {
+    background-color: $dark-destructive-bg;
+    color: $dark-destructive-text;
+  }
+
+  .tooltip {
+    background-color: $dark-card-bg;
+    color: $dark-card-text;
+    box-shadow: 0 0.25rem 0.5rem $shadow-dark-subtle;
+    border: 0.063rem solid $dark-border;
+
+    &::after {
+      border-top: 0.5rem solid $dark-card-bg;
+    }
+  }
+}

@@ -57,6 +57,10 @@
 }
 
 :global(html.theme-dark) {
+  .button {
+    background-color: transparent;
+  }
+
   .icon {
     color: $dark-text;
   }

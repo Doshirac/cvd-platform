@@ -30,6 +30,10 @@
 
 /* Dark Theme */
 :global(html.theme-dark) {
+  .theme-toggle {
+    background-color: transparent;
+  }
+
   .icon {
     color: $dark-text;
   }

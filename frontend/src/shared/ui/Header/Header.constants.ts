@@ -1,12 +1,17 @@
 export const mobileBreakpoint = 'mobile';
 export const desktopBreakpoint = 'desktop';
 export const breakpointWidth = 768;
-export const optionToRoute: Record<string, string> = {
-  'Create new article': '/articles/create',
-  'Create new category': '/categories/create',
-  Categories: '/categories',
-  Credentials: '/credentials',
-  'Unpublished articles': '/articles/unpublished',
-  'Unpublished comments': '/comments/unpublished',
-  'Change password': '/change-password',
-};
+
+// Navigation routes
+export const ROUTES = {
+  HOME: '/',
+  SOURCES: '/sources',
+  RESEARCH: '/research',
+} as const;
+
+// Navigation items configuration
+export const navItems = [
+  { path: ROUTES.HOME, label: 'Home', icon: 'HOME' as const },
+  { path: ROUTES.SOURCES, label: 'Sources', icon: 'BUILDING' as const },
+  { path: ROUTES.RESEARCH, label: 'Research', icon: 'ACTIVITY' as const },
+] as const;

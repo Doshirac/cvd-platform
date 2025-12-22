@@ -1,6 +1,7 @@
 /* Light Theme */
 $light-bg: #f7f9fc;
 $light-text: #1c1f25;
+$light-header: rgb(255 255 255 / 95%);
 
 /* Surfaces */
 $light-card-bg: #fff;
@@ -82,6 +83,8 @@ $dark-focus: rgb(59 130 246 / 50%);
 
 /* Shadows */
 $dropdown-shadow: rgb(0 0 0 / 10%);
+$backdrop-overlay: rgb(0 0 0 / 50%);
+$shadow-dark-subtle: rgb(0 0 0 / 30%);
 
 /* Chart Colors */
 $chart-1: #e88b2c;

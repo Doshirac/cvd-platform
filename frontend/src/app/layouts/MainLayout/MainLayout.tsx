@@ -3,24 +3,24 @@ import styles from './MainLayout.module.scss';
 import Header from '@shared/ui/Header/Header';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-// import { fetchCategories } from '@shared/api/categories/categoriesThunks';
-// import { getArticles } from '@shared/api/articles/articlesThunks';
-// import { fetchCurrentUser } from '@shared/api/auth/authThunks';
 import type { AppDispatch } from '@app/providers/StoreProvider/config/store';
-import { Icon, iconNames, iconColors, iconSizes } from '@shared/ui/Icon';
+import { fetchSources } from '@shared/api/sources/sourcesThunks';
+import {
+  fetchDiseases,
+  fetchRiskFactors,
+  fetchSymptoms,
+} from '@shared/api/diseases/diseasesThunks';
+import { ScrollToTop } from '@shared/ui/ScrollToTop';
 
 export const MainLayout = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    // dispatch(getArticles());
-    // dispatch(fetchCategories());
-    // dispatch(fetchCurrentUser());
+    dispatch(fetchSources({}));
+    dispatch(fetchDiseases({}));
+    dispatch(fetchRiskFactors());
+    dispatch(fetchSymptoms());
   }, [dispatch]);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   return (
     <div data-testid="layout-wrapper" className={styles.wrapper}>
@@ -28,9 +28,7 @@ export const MainLayout = () => {
       <main className={styles.main}>
         <Outlet />
       </main>
-      <button className={styles.fab} onClick={scrollToTop} aria-label="Scroll to top">
-        <Icon name={iconNames.ARROW_UP} size={iconSizes.MEDIUM} color={iconColors.WHITE} />
-      </button>
+      <ScrollToTop />
     </div>
   );
 };
