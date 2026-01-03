@@ -1,0 +1,1 @@
+export { AlphabetPanel } from './AlphabetPanel';

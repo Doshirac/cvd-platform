@@ -1,0 +1,182 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.scroll-area {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-radius: $radius-lg;
+  padding: 0.5rem;
+  padding-bottom: 0.75rem;
+
+  /* Custom scrollbar for Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    height: 0.375rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: $radius-sm;
+    margin: 0 0.5rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: $radius-sm;
+    transition: background-color 0.2s ease;
+  }
+
+  /* Scrollbar for Firefox */
+  scrollbar-width: thin;
+}
+
+.panel {
+  @include flex(row, flex-start, center, nowrap);
+
+  gap: 0.25rem;
+  min-width: min-content;
+}
+
+.button {
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.75rem;
+  flex-shrink: 0;
+
+  @include responsive(xs) {
+    min-width: 1.75rem;
+    height: 1.75rem;
+    padding: 0 0.5rem;
+    font-size: $fs-sm;
+  }
+
+  @include responsive(sm) {
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.75rem;
+  }
+}
+
+/* Light Theme */
+:global(html.theme-light) {
+  .scroll-area {
+    background-color: $light-card-bg;
+    border: 0.063rem solid $light-border;
+
+    &::-webkit-scrollbar-track {
+      background-color: rgb(0 0 0 / 3%);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgb(0 0 0 / 12%);
+
+      &:hover {
+        background-color: rgb(0 0 0 / 20%);
+      }
+    }
+
+    scrollbar-color: rgb(0 0 0 / 12%) rgb(0 0 0 / 3%);
+  }
+
+  .button {
+    &.secondary {
+      background-color: transparent;
+      color: $light-text;
+
+      &:hover {
+        background-color: $light-primary;
+        color: $light-primary-text;
+      }
+
+      &:active {
+        background-color: $light-primary-active;
+        color: $light-primary-text;
+      }
+
+      &:focus-visible {
+        @include focus-ring($light-border, $light-focus);
+      }
+    }
+
+    &.primary {
+      background-color: $light-primary;
+      color: $light-primary-text;
+
+      &:hover {
+        background-color: $light-primary-hover;
+      }
+
+      &:active {
+        background-color: $light-primary-active;
+      }
+
+      &:focus-visible {
+        @include focus-ring($light-primary, $light-focus);
+      }
+    }
+  }
+}
+
+/* Dark Theme */
+:global(html.theme-dark) {
+  .scroll-area {
+    background-color: $dark-card-bg;
+    border: 0.063rem solid $dark-border;
+
+    &::-webkit-scrollbar-track {
+      background-color: rgb(255 255 255 / 5%);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgb(255 255 255 / 15%);
+
+      &:hover {
+        background-color: rgb(255 255 255 / 25%);
+      }
+    }
+
+    scrollbar-color: rgb(255 255 255 / 15%) rgb(255 255 255 / 5%);
+  }
+
+  .button {
+    &.secondary {
+      background-color: transparent;
+      color: $dark-text;
+
+      &:hover {
+        background-color: $dark-primary;
+        color: $dark-primary-text;
+      }
+
+      &:active {
+        background-color: $dark-primary-active;
+        color: $dark-primary-text;
+      }
+
+      &:focus-visible {
+        @include focus-ring($dark-border, $dark-focus);
+      }
+    }
+
+    &.primary {
+      background-color: $dark-primary;
+      color: $dark-primary-text;
+
+      &:hover {
+        background-color: $dark-primary-hover;
+      }
+
+      &:active {
+        background-color: $dark-primary-active;
+      }
+
+      &:focus-visible {
+        @include focus-ring($dark-primary, $dark-focus);
+      }
+    }
+  }
+}
