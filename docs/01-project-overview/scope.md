@@ -2,17 +2,12 @@
 
 ## In Scope ✅
 
-| Feature | Description | Priority |
-|---------|-------------|----------|
-| Disease Library (≥25 CVD cards) | Disease cards with description, primary/secondary symptoms, prevention, and references. | Must |
-| Localization | UI available in English (default) and Russian. | Must |
-| Search & Filters | Full-text search; filters by category (type, risk factors, severity). | Must |
-| Research Cards (view-only) | Research content can be viewed on the website via read-only research cards (title + short summary). | Should |
-| Data Integration | Ingest ≥2 official datasets; show source and last updated. | Must |
-| References Center | Dedicated page with sources/guidelines/datasets. | Should |
-| Platform | React FE, Node.js (Express) API, Python analytics, PostgreSQL, Docker, Swagger docs of the BE core endpoints. | Must |
-| UX/UI | Responsive (desktop/tablet/phone), Dark/Light theme. | Should |
-| Ops | Basic monitoring/logs; SEO basics (e.g., sitemap, meta/OG). | Could |
+- Disease library (≥25 entries) with standardized content and references.
+- Search and filters for discovery.
+- EN/RU locale support.
+- Sources/references page with provenance (source + last updated).
+- Optional research summaries/cards (read-only).
+- Platform: React frontend + Express/Prisma backend + PostgreSQL + Docker + OpenAPI.
 
 ## Out of Scope ❌
 

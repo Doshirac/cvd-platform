@@ -1,7 +1,6 @@
 # 3. User Guide
 
-This section provides instructions for end users on how to use the application.
-It covers the core flows (navigation, disease browsing, search/filters, sources, and research cards where available) and basic troubleshooting.
+This chapter is a practical guide to using the CVD Platform as an end user (read-only browsing) and as a reviewer running it locally.
 
 ## Contents
 
@@ -10,7 +9,7 @@ It covers the core flows (navigation, disease browsing, search/filters, sources,
 
 ## Getting Started
 
-### System Requirements
+### System requirements
 
 | Requirement | Minimum | Recommended |
 |-------------|---------|-------------|
@@ -27,47 +26,43 @@ It covers the core flows (navigation, disease browsing, search/filters, sources,
 	- **Local development:** start the frontend and open `http://localhost:5173`
 3. If you are running locally, ensure the API is available at `http://localhost:4000/api`
 
-### First Launch
+### Run locally (recommended)
 
-#### Step 1: Open the application (no account required)
+1. Start the stack with Docker Compose (API + DB + Redis).
+2. Seed the database.
+3. Start the frontend dev server.
 
-[Screenshot placeholder: `![App entry](../assets/images/app-entry.png)`]
+Expected local URLs:
 
-1. Open the app URL in your browser.
-2. You should see the main layout with a header.
-3. If you land on a **Not Found** page, it may mean some routes are not enabled in the current build.
+- Frontend: `http://localhost:5173`
+- API: `http://localhost:4000/api`
+- Swagger: `http://localhost:4000/api-docs`
 
-#### Step 2: Set preferences (theme and language)
+### First launch checklist
 
-[Screenshot placeholder: `![Preferences](../assets/images/preferences.png)`]
+1. Open the app URL and verify the header/navigation renders.
+2. Toggle theme (light/dark) and confirm it persists on refresh.
+3. Browse the disease list, open at least one disease entry, and verify loading/empty states are understandable.
 
-1. Use the theme toggle in the header to switch between Light/Dark.
-2. Open the language selector (globe icon) and choose a language option.
-3. Continue browsing; the theme preference is persisted across visits.
+## Quick start (most common tasks)
 
-#### Step 3: Explore content
+- Browse diseases: open **Home** and scroll the list.
+- Search/filter: use the page controls (if present). If testing the API directly, use `GET /api/diseases` with `search`, `symptom`, `riskFactor`, `skip`, `take`, `locale`.
+- Verify sources: open **Sources** and follow the external resource link.
+- Check system health: `GET /api/health` (liveness) and `GET /api/health/details` (details).
 
-[Screenshot placeholder: `![Home](../assets/images/home.png)`]
+If the UI shows “Not Found” for a linked page, treat it as an implementation gap in the current build and continue testing via available pages or the Swagger UI.
 
-After setup, you will see the main dashboard with:
-- **Header navigation**: links to Home, Sources, Research (where available)
-- **Content area**: the current page content (disease library, sources list, etc.)
-- **Helper UI**: loading states and “no results” states when a query returns zero items
+## Verifying via API (optional)
 
-## Quick Start Guide
+If you need to validate functionality without relying on the UI wiring, use Swagger (`/api-docs`) or call the endpoints directly:
 
-| Task | How To |
-|------|--------|
-| Browse diseases | Open **Home** and scroll the disease list |
-| Search diseases | Use the search input (if present) or apply keyword search via the UI; otherwise use the API `GET /api/diseases?search=...` |
-| Filter by symptom/risk factor | Apply filters in the UI (if present) or call `GET /api/diseases?symptom=...` / `riskFactor=...` |
-| Verify sources | Open **Sources** and click a source link to view the original dataset/organization |
-| Troubleshoot a broken page | Check [FAQ & Troubleshooting](faq.md), then confirm `/api/health` is reachable |
+- Health: `GET /api/health/details`
+- Diseases list: `GET /api/diseases?take=10&skip=0&locale=en`
+- Search: `GET /api/diseases?search=heart&locale=en`
+- Sources: `GET /api/sources?take=10&skip=0`
 
-## User Roles
+## Roles
 
-| Role | Permissions | Access Level |
-|------|-------------|--------------|
-| **Visitor / Reader** | Browse disease content, view sources, read research cards (if enabled), switch theme/language | Read-only |
-| **Developer (local run)** | Run frontend/backend, seed DB, verify API via Swagger/OpenAPI, debug errors via logs | Full (development environment) |
-| **Academic reviewer / supervisor** | Review functionality against requirements and documentation, verify reproducibility of setup | Read-only |
+- Visitor/Reader: read-only browsing, theme/language preference.
+- Developer/Reviewer: runs services locally, seeds DB, verifies endpoints via Swagger (`http://localhost:4000/api-docs`).

@@ -10,45 +10,36 @@
 
 ### Context
 
-The system requires a reliable REST API to serve a read-heavy disease library with pagination, filtering, and bilingual content (EN/RU). It must be maintainable for a single-developer project, support clear error responses, and be easy to run locally in a containerized environment.
-
-Key forces:
-- Clean separation of controller/service/repository responsibilities
-- Predictable error handling and observability
-- OpenAPI documentation for thesis-grade API description
-- Ability to scale read performance (caching)
+The platform needs a simple, reliable REST API for a read-heavy disease library (pagination, filtering, search) with bilingual content (EN/RU). The backend must be maintainable for a single-developer project and easy to run locally in Docker.
 
 ### Decision
 
-Implement a TypeScript backend on Node.js with Express, using:
-- Layered architecture (controllers → services → repositories)
-- Prisma client for database access
-- Redis for caching (via ioredis)
-- OpenAPI generation via JSDoc annotations (`express-jsdoc-swagger`)
-- Sentry + Winston + Morgan for error tracking and logging
+Implement a TypeScript backend on Node.js with Express using a layered structure (controllers → services → repositories), Prisma for DB access, optional Redis caching, centralized error handling, and OpenAPI docs generated from JSDoc.
 
 ### Alternatives Considered
 
 | Alternative | Pros | Cons | Why Not Chosen |
 |---|---|---|---|
-| Fastify | Fast; schema-first patterns | Refactor cost; different middleware ecosystem | Express already integrated with Swagger tooling and middleware patterns |
-| NestJS | Strong structure, DI, decorators | More framework overhead and conventions | MVP benefits from lighter structure and incremental layering |
-| Python API (FastAPI) | Fits analytics language | Two stacks for FE/BE would shift complexity; existing TS codebase | API already implemented in Node/TS and aligns with FE tooling |
+| Fastify | High performance; schema-first | Refactor cost | Express already fits the project tooling and patterns |
+| NestJS | Strong structure; DI patterns | More framework overhead | MVP benefits from lighter architecture |
+| FastAPI (Python) | Great for APIs; fits analytics language | Two-stack FE/BE split | Backend already implemented in TS and integrates with FE tooling |
 
 ### Consequences
 
-**Positive:**
-- Clear API boundaries with documented endpoints
-- Stable error response mechanism and middleware pipeline
-- Local reproducibility through Docker (API + DB + Redis)
+**Positive:** predictable request lifecycle, documented endpoints, reproducible local stack.
 
-**Negative:**
-- Some DI patterns are present (Inversify) but not consistently applied across all instantiation paths
+**Negative:** DI (Inversify) is not consistently applied across all modules.
 
-**Neutral:**
-- Cache layer can be incrementally expanded based on endpoint hot paths
+**Neutral:** Redis caching can be expanded only for hot paths.
 
 ## Implementation Details
+
+### Key Implementation Decisions
+
+- Middleware pipeline: JSON → CORS → routes → notFound → error middleware.
+- Explicit domain modules (`disease`, `source`) with services and repositories.
+- OpenAPI generated close to route/controller definitions.
+- Redis cache as an optimization layer (safe fallback to DB on miss).
 
 ### Project Structure
 

@@ -43,5 +43,5 @@ A Cardiovascular Disease Prevention Platform is a web-based library that curates
 
 ---
 
-*Document created: [Date]*
-*Last updated: [Date]*
+*Document created: 05.01.2026*
+*Last updated: 05.01.2026*

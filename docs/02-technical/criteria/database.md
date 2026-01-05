@@ -10,21 +10,11 @@
 
 ### Context
 
-The platform stores structured clinical knowledge (diseases, symptoms, risk factors) with bilingual content support (EN/RU) and many-to-many relationships (disease ↔ symptom; disease ↔ risk factor). The schema should enforce integrity, support fast read queries, and remain evolvable during thesis development.
-
-Key forces:
-- Relational integrity and explicit relationships
-- Locale-aware content without duplicating base entities
-- Efficient queries for list pages (pagination/filtering)
-- Maintainable schema evolution (migrations + seeding)
+The platform stores structured disease content (diseases, symptoms, risk factors, sources) with bilingual support (EN/RU) and many-to-many relationships. The schema must enforce integrity while staying easy to evolve during thesis development.
 
 ### Decision
 
-Use PostgreSQL with Prisma ORM and a normalized schema:
-- Core tables: `Disease`, `Symptom`, `RiskFactor`, `Source`
-- Junction tables for M:N: `DiseaseSymptom`, `DiseaseRiskFactor`
-- Translation tables per locale: `DiseaseTranslation`, `SymptomTranslation`, `RiskFactorTranslation`
-- Enums for controlled vocabularies: `Locale`, `SymptomPriority`, `Typicality`, `RiskDirection`
+Use PostgreSQL with Prisma and a normalized schema: core entities (`Disease`, `Symptom`, `RiskFactor`, `Source`), junction tables for M:N relationships with metadata, and translation tables keyed by `locale`.
 
 ### Alternatives Considered
 

@@ -52,16 +52,6 @@ Locale-aware content is handled by selecting translations (EN/RU) at the API/ser
 | Redis caching for read-heavy endpoints | Improves latency and reduces DB load for repeated requests. | No cache, in-memory cache |
 | Observability via Sentry + structured logs | Practical debugging and error reporting without heavy APM tooling. | Console-only logs, full APM suites |
 
-## Security Overview
-
-| Aspect | Implementation |
-|--------|----------------|
-| **Authentication** | Not implemented (MVP is read-only; no user accounts). |
-| **Authorization** | Not implemented (public content API; no roles/permissions). |
-| **Data Protection** | No PII/PHI stored by design; DB credentials provided via environment variables; TLS expected at the reverse proxy/hosting layer if deployed publicly. |
-| **Input Validation** | Controller-level validation of query parameters (e.g., pagination bounds) with centralized error handling middleware and consistent error payloads. |
-| **Secrets Management** | Environment variables via `.env` / Docker Compose (`SENTRY_DSN`, `DATABASE_URL`, etc.); sensitive values should be stored outside git and injected at runtime for staging/production. |
-
 ## Criteria Documentation
 
 The evaluation criteria ADRs are located in [criteria/](criteria/) and include:
@@ -72,3 +62,4 @@ The evaluation criteria ADRs are located in [criteria/](criteria/) and include:
 - [Research](criteria/research.md)
 - [Deployment](criteria/deployment.md)
 - [Observability](criteria/observability.md)
+- [Testing](criteria/testing.md)

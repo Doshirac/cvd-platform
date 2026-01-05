@@ -10,21 +10,11 @@
 
 ### Context
 
-The platform needs a fast-to-iterate, responsive single-page application (SPA) that can present a disease library with search/filters, bilingual UI (EN/RU), and a consistent layout (header + content) while remaining testable and maintainable for a single-developer thesis timeline.
-
-Key forces:
-- Rapid UI iteration (content-heavy cards, layout refinements)
-- Reliability and graceful failure handling (error pages, boundaries)
-- Clear separation between UI, routing, and data fetching
-- Good developer ergonomics (TypeScript, component isolation via Storybook)
+The project needs a responsive UI to browse/read disease content with search/filters and EN/RU support. The frontend should be fast to iterate and testable in a single-developer timeline.
 
 ### Decision
 
-Use a React + TypeScript SPA built with Vite, with:
-- React Router for navigation
-- Redux Toolkit for shared app state and async data fetching
-- A global Error Boundary and Sentry integration for error capture
-- SCSS Modules for styling and theme support
+Build a React + TypeScript SPA using Vite. Use React Router for navigation, Redux Toolkit for shared data flow, an Error Boundary + Sentry for crash handling, and SCSS modules for themeable styling.
 
 ### Alternatives Considered
 

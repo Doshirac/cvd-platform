@@ -1,18 +1,14 @@
 # FAQ & Troubleshooting
 
-## Frequently Asked Questions
+## FAQ
 
-### General
+**What is this platform for?**
 
-**Q: What is this platform and who is it for?**
+It is a read-only CVD knowledge platform: diseases are presented as standardized entries (symptoms, risk factors, prevention guidance) with attribution to sources. It is intended for education and exploration.
 
-A: The CVD Platform is a web-based knowledge platform that presents cardiovascular diseases as standardized “cards” (description, symptoms, risk factors, and prevention guidance) and links the content to reputable data sources. It is intended for medical education, quick reference, and prevention-focused exploration rather than clinical diagnosis.
+**Is it medical advice?**
 
----
-
-**Q: Is this medical advice? Can I use it to diagnose myself?**
-
-A: No. The platform is informational and supports education and prevention awareness. It does not replace professional medical advice, diagnosis, or treatment.
+No. It does not replace professional medical advice, diagnosis, or treatment.
 
 ---
 
