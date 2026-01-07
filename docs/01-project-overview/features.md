@@ -70,7 +70,7 @@
 
 ## Use Case Diagram
 
-[View Diagram](docs/assets/diagrams/use_case_diagram.jpg)
+[View Diagram](assets/diagrams/use_case_diagram.jpg)
 
 ## Non-Functional Requirements
 

@@ -35,7 +35,7 @@ frontend/tests/
 
 ## Conclusion
 
-[Testing Coverage](docs/assets/screenshots/testing_coverage_BE.jpg)
+[Testing Coverage](assets/screenshots/testing_coverage_BE.jpg)
 
 As of the latest run, the project achieves **94.02% line coverage** and **93.65% statement coverage** across all source files.
 

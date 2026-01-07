@@ -19,9 +19,9 @@ Technical architecture, design decisions, and implementation details of the CVD 
 
 ### Diagrams
 
-- [High-Level Architecture](docs/assets/diagrams/high_level_architecture.jpg)
-- [ER Diagram](docs/assets/diagrams/er_diagram.jpg)
-- [Deployment Diagram](docs/assets/diagrams/deployment_architecture_diagram.jpg)
+- [High-Level Architecture](assets/diagrams/high_level_architecture.jpg)
+- [ER Diagram](assets/diagrams/er_diagram.jpg)
+- [Deployment Diagram](assets/diagrams/deployment_architecture_diagram.jpg)
 
 ### System Components
 

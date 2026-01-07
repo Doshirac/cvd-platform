@@ -15,7 +15,7 @@ Use the header to navigate sections and adjust preferences.
 2. Toggle theme via the icon — persists across sessions
 3. Select language via globe icon
 
-[Header navigation](docs/assets/screenshots/header_navigation.jpg) | [Mobile nav](docs/assets/images/mobile_navigation.jpg) | [Desktop nav](docs/assets/images/desktop_navigation.jpg)
+[Header navigation](assets/screenshots/header_navigation.jpg) | [Mobile nav](assets/images/mobile_navigation.jpg) | [Desktop nav](assets/images/desktop_navigation.jpg)
 
 **Tip:** If theme seems stuck, hard-refresh and check localStorage.
 
@@ -30,7 +30,7 @@ Browse cardiovascular diseases as standardized cards.
 2. Scroll/paginate through disease list
 3. Click a card to view details (if enabled)
 
-[Disease library](docs/assets/screenshots/disease_library.jpg) | [Navigation flow](docs/assets/images/disease_page_navigation.jpg)
+[Disease library](assets/screenshots/disease_library.jpg) | [Navigation flow](assets/images/disease_page_navigation.jpg)
 
 ---
 
@@ -44,7 +44,7 @@ Find diseases by symptoms, risk factors, or keywords.
 3. Use **Alphabet filter** (A–Z) if available
 4. Click **See more** to load additional results
 
-[Search/filters](docs/assets/screenshots/search_and_filters.jpg) | [Filter panel](docs/assets/images/filter_panel_hide_list.jpg) | [Mobile filters](docs/assets/images/mobile_open_filter_panel.jpg)
+[Search/filters](assets/screenshots/search_and_filters.jpg) | [Filter panel](assets/images/filter_panel_hide_list.jpg) | [Mobile filters](assets/images/mobile_open_filter_panel.jpg)
 
 **API:** `GET /api/diseases?search=...&symptom=...&riskFactor=...&skip=0&take=10&locale=en`
 
@@ -58,7 +58,7 @@ View attribution sources and research summaries.
 1. Navigate to **Sources** — click **View Resource** to open external links
 2. Navigate to **Research** — browse research cards (if enabled)
 
-[View source](docs/assets/images/view_source.jpg) | [Research cards](docs/assets/images/research_cards.jpg)
+[View source](assets/images/view_source.jpg) | [Research cards](assets/images/research_cards.jpg)
 
 ---
 
@@ -66,9 +66,9 @@ View attribution sources and research summaries.
 
 | Feature | Description |
 |---------|-------------|
-| **Back to Diseases** | Quick return button — [Image](docs/assets/images/back_to_diseases_list.jpg) |
-| **Scroll-to-Top** | Return to top on long pages — [Image](docs/assets/images/scroll_to_top.jpg) |
-| **Tooltip Badges** | Hover/long-press codes for full names — [Image](docs/assets/images/tooltip_badge.jpg) |
+| **Back to Diseases** | Quick return button — [Image](assets/images/back_to_diseases_list.jpg) |
+| **Scroll-to-Top** | Return to top on long pages — [Image](assets/images/scroll_to_top.jpg) |
+| **Tooltip Badges** | Hover/long-press codes for full names — [Image](assets/images/tooltip_badge.jpg) |
 
 ---
 

@@ -8,7 +8,7 @@
 
 ## ER Diagram
 
-[View Diagram](docs/assets/diagrams/er_diagram.jpg)
+[View Diagram](assets/diagrams/er_diagram.jpg)
 
 ## Core Tables
 

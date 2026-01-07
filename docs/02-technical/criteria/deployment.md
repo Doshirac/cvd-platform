@@ -8,7 +8,7 @@ The platform runs as three services via Docker Compose: API (Node/Express), Post
 
 ## Diagram
 
-[Deployment diagram](docs/assets/diagrams/deployment_architecture_diagram.jpg)
+[Deployment diagram](assets/diagrams/deployment_architecture_diagram.jpg)
 
 ## How to Run (Local)
 
