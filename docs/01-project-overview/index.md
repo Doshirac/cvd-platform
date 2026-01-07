@@ -1,6 +1,6 @@
-# 1. Project Overview
+# Project Overview
 
-This section covers the business context, goals, and requirements for the project.
+Business context, goals, and requirements for the CVD knowledge platform.
 
 ## Contents
 
@@ -12,10 +12,16 @@ This section covers the business context, goals, and requirements for the projec
 
 ## Executive Summary
 
-This project delivers a web platform that consolidates fragmented cardiovascular disease (CVD) information into a standardized, referenced disease library. It targets clinicians/educators and public-health analysts who need fast lookup with transparent sources. The solution is a React SPA backed by an Express + Prisma + PostgreSQL API, with bilingual UI (EN/RU), search, filters, and a references/research area.
+Web platform consolidating fragmented CVD information into a standardized, referenced disease library for clinicians, educators, and public-health analysts.
+
+**Architecture:** React SPA + Express/Prisma + PostgreSQL + Docker
 
 ## Key Highlights
 
-- Problem: inconsistent structure and weak source transparency in CVD info.
-- Solution: standardized disease cards with references + lightweight dataset-driven analytics.
-- MVP outcomes: ≥25 disease cards; ≥2 datasets with provenance (source + last updated).
+| Aspect | Description |
+|--------|-------------|
+| Problem | Inconsistent structure and weak source transparency in CVD info |
+| Solution | Standardized disease cards with references + dataset-driven analytics |
+| Target Users | Clinicians, educators, public-health analysts |
+| Key Capabilities | Search, filters, EN/RU localization, references page |
+| MVP Outcomes | ≥25 disease cards; ≥2 datasets with provenance |

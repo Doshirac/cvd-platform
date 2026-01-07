@@ -8,7 +8,7 @@ The platform runs as three services via Docker Compose: API (Node/Express), Post
 
 ## Diagram
 
-Deployment diagram is stored in `docs/assets/diagrams/deployment_architecture_diagram.jpg`.
+[Deployment diagram](docs/assets/diagrams/deployment_architecture_diagram.jpg)
 
 ## How to Run (Local)
 
@@ -38,3 +38,14 @@ Deployment diagram is stored in `docs/assets/diagrams/deployment_architecture_di
 
 - Health checks are configured for API/DB/Redis in `docker-compose.yml`.
 - Persistent data is stored in Docker volumes for PostgreSQL and Redis.
+
+## Conclusion
+
+The CVD platform containerization implementation demonstrates a production-ready Docker Compose architecture with three core services: backend API (cvd-api), PostgreSQL database (db-1), and Redis cache (redis-1). The configuration adheres to containerization best practices including multi-stage builds, resource limits, health checks, and persistent volume management.
+
+**Key Achievements:**
+- Multi-stage Dockerfile reduces API image size from ~1.5 GB to 891 MB by eliminating build tools and devDependencies from the final image
+- Named volumes (pgdata, redisdata) ensure data persistence across container restarts and deployments
+- Health checks monitor service availability every 30 seconds with automatic recovery after 3 consecutive failures
+- Resource limits (CPU: 0.5 cores API/DB, 0.25 cores Redis; Memory: 512 MB API/DB, 256 MB Redis) prevent resource exhaustion on shared infrastructure
+- Non-root user execution enhances security posture

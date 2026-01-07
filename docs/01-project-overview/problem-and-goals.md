@@ -2,7 +2,7 @@
 
 ## Context
 
-This thesis project is a read-only CVD knowledge platform for education and public-health exploration. It focuses on evidence-linked summaries and lightweight dataset-driven indicators (not diagnosis or clinical decision support).
+Read-only CVD knowledge platform for education and public-health exploration. Focuses on evidence-linked summaries and dataset-driven indicators (not diagnosis or clinical decision support).
 
 ## Vision Statement
 
@@ -10,11 +10,39 @@ Build a clear, reliable platform with standardized cards for cardiovascular dise
 
 ## Problem Statement
 
-**Who:** Clinicians, medical educators, public-health analysts, and readers who need structured, referenced CVD information and basic analytics.
+**Who:**  
+Clinicians, medical educators, public-health analysts, and readers needing structured CVD information.
 
-**What:** Cardiovascular disease information is fragmented, inconsistently structured, and often lacks analytical context (prevalence/indicator breakdowns) and clear separation of primary symptoms vs. secondary (symptom-related) factors.
+**What:**  
+CVD information is fragmented, inconsistently structured, and lacks clear separation of primary symptoms vs. secondary factors.
 
-**Why:** Clinicians and educators spend time reconciling disparate sources; analysts lack a unified, transparent view of prevalence and indicators; and readers struggle to interpret symptoms vs. risk/prevention factors. This leads to slower information retrieval, unclear prevention guidance, and missed insights.
+**Why:**  
+Users spend time reconciling disparate sources, leading to slower information retrieval and unclear prevention guidance.
+
+## Business Goals
+
+| Goal | Description | KPI |
+|------|-------------|-----|
+| Content Coverage | Standardized disease cards with references | ≥25 cards |
+| Data Transparency | Dataset provenance (source + last updated) | ≥2 datasets |
+| Discoverability | Fast search and filters, bilingual UI | EN/RU support |
+| Maintainability | Reproducible system | Docker, OpenAPI |
+| Privacy | No personal data processing | No PII/PHI |
+
+## Objectives (MVP Targets)
+
+- Content: ≥25 disease cards
+- Data: ≥2 official datasets with provenance
+- UX: Search + filters + EN/RU toggle
+- API: OpenAPI documentation
+
+## Non-Goals
+
+The project does **not** aim to:
+- Provide diagnosis/treatment advice or symptom checker
+- Implement user accounts
+- Build real-time BI stack or ML prediction
+- Develop native apps/offline mode
 
 ### Pain Points
 
@@ -25,25 +53,3 @@ Build a clear, reliable platform with standardized cards for cardiovascular dise
 | 3 | Lack of a single place to read curated research summaries and supporting context linked to transparent sources. | Medium | Searching publications manually; bookmarking links; assembling summaries in notes. |
 | 4 | Unclear data provenance (source, last updated, licensing) reduces trust and reusability. | Medium | Checking dataset websites and PDFs manually; storing links outside the workflow. |
 | 5 | Hard to quickly find relevant diseases and compare them without strong search/filters. | Medium | Browser search; bookmark lists; manual scanning. |
-
-## Business Goals
-
-- Provide ≥25 standardized disease cards with references.
-- Make discovery fast (search + filters) and bilingual (EN/RU).
-- Publish a references area with dataset provenance (source + last updated).
-- Keep the system reproducible and maintainable (Docker, migrations/seed, OpenAPI).
-- No PII/PHI processing.
-
-## Objectives (MVP Targets)
-
-- Content: ≥25 disease cards.
-- Data: ≥2 official datasets integrated with provenance.
-- UX: search + filters + EN/RU toggle on core pages.
-- API: documented core endpoints via OpenAPI.
-
-## Non-Goals
-
-- No diagnosis/treatment advice or symptom checker.
-- No user accounts.
-- No real-time BI stack or ML prediction.
-- No native apps/offline mode.

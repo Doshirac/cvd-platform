@@ -1,56 +1,54 @@
-# 2. Technical Implementation
+# Technical Implementation
 
-This section describes how the CVD platform is implemented: the frontend SPA, the backend REST API, the database schema, the research/analytics workflow, and the deployment/runtime setup.
+Technical architecture, design decisions, and implementation details of the CVD Platform.
 
 ## Contents
 
 - [Tech Stack](tech-stack.md)
-- [Criteria Documentation](criteria/) - ADRs for evaluation criteria
+- [Criteria Documentation](criteria/)
 - [Deployment](deployment.md)
 
-## Solution Architecture
+## Original Documentation
 
-### High-Level Architecture
+- [Backend Documentation](https://docs.google.com/document/d/1UAZhbPh1Rj8UjTQB2ZCpyM1jcoRafcPedou2hYEtP60/edit?usp=sharing)
+- [Database Documentation](https://docs.google.com/document/d/1FeM152YZaFifvUPv-9Nsqit8NmtA2ZMBfu1xeoPYsN0/edit?usp=sharing)
+- [Containerization Documentation](https://docs.google.com/document/d/1yJLejGVrdJQ4Gq0f72P750_r9pzv-XMS-WSrUH_jQEI/edit?usp=sharing)
+- [API Documentation](https://app.gitbook.com/invite/YJjvuHTqbLlvmjZEzQci/J36lOoZ1hCDc4L4xnq64)
 
-[Diagram](assets/diagrams/high_level_architecture.jpg) - High-level architecture diagram
+## Architecture
 
-Additional diagrams:
-- [ER Diagram](assets/diagrams/er_diagram.jpg)
-- [Deployment Diagram](assets/diagrams/deployment_architecture_diagram.jpg)
+### Diagrams
+
+- [High-Level Architecture](docs/assets/diagrams/high_level_architecture.jpg)
+- [ER Diagram](docs/assets/diagrams/er_diagram.jpg)
+- [Deployment Diagram](docs/assets/diagrams/deployment_architecture_diagram.jpg)
 
 ### System Components
 
-| Component | Description | Technology |
-|-----------|-------------|------------|
-| **Frontend** | Single-page application (disease library UI, theming, routing, error boundaries). | React + TypeScript + Vite |
-| **Backend** | REST API for diseases/symptoms/risk factors/sources, pagination/filtering, locale-aware responses, OpenAPI docs. | Node.js + TypeScript + Express |
-| **Database** | Persistent, normalized content store (diseases, symptoms, risk factors, translations, junction tables). | PostgreSQL 16 + Prisma |
-| **Cache** | Optional read caching to reduce DB load for frequently accessed data. | Redis 7 (ioredis client) |
-| **External Services** | Error monitoring and performance tracking (optional via env). | Sentry |
+| Component | Technology | Description |
+|-----------|------------|-------------|
+| Frontend | React + Vite | SPA with theming, routing, error boundaries |
+| Backend | Express + Prisma | REST API with pagination, filtering, i18n |
+| Database | PostgreSQL 16 | Normalized content store |
+| Cache | Redis 7 | Read caching layer |
+| Monitoring | Sentry | Error tracking (optional) |
 
 ### Data Flow
 
 ```
-[User Action] → [Frontend (React)] → [HTTP Request] → [Backend (Express)]
-                                                      │
-                                                      ├─▶ [Cache (Redis)] ──(hit)──▶ [Response]
-                                                      │
-                                                      └─▶ (miss) [Prisma] → [PostgreSQL] → [Response]
-                                                                              
-[UI Update] ← [Frontend renders data] ←───────────────────────────────┘
+[User] → [React SPA] → [Express API] → [Redis Cache] → [PostgreSQL]
+                                    └─▶ (cache miss) ──▶ [Prisma] → [DB]
 ```
 
-Locale-aware content is handled by selecting translations (EN/RU) at the API/service layer based on the `locale` query parameter.
+## Key Decisions
 
-## Key Technical Decisions
-
-| Decision | Rationale | Alternatives Considered |
-|----------|-----------|------------------------|
-| React + Vite SPA | Fast iteration and simple deployment for a content-focused UI. | Next.js SSR/ISR |
-| Express + Prisma API | Lightweight REST API with type-safe DB access and migrations. | Fastify, NestJS, Python (FastAPI/Django) |
-| PostgreSQL normalized schema + translation tables | Data integrity, M:N modeling (with metadata), and bilingual support. | Single-table MVP, MongoDB |
-| Redis caching for read-heavy endpoints | Improves latency and reduces DB load for repeated requests. | No cache, in-memory cache |
-| Observability via Sentry + structured logs | Practical debugging and error reporting without heavy APM tooling. | Console-only logs, full APM suites |
+| Decision | Rationale | Alternative |
+|----------|-----------|-------------|
+| React + Vite SPA | Fast iteration, simple deployment | Next.js SSR |
+| Express + Prisma | Lightweight, type-safe API | Fastify, NestJS |
+| Normalized schema | Data integrity, M:N, i18n | Single-table MVP |
+| Redis caching | Reduces DB load | In-memory cache |
+| Sentry + logs | Practical debugging | Console-only |
 
 ## Criteria Documentation
 

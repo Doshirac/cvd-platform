@@ -1,62 +1,46 @@
-# Criterion: Testing & Quality Assurance
+# Testing & Quality Assurance
 
-## Architecture Decision Record
+## Decision
 
-### Status
+**Status:** Accepted | **Date:** 2026-01-05
 
-**Status:** Accepted
+Jest for unit tests (backend + frontend) focused on error handling/config/utilities. Playwright for E2E smoke coverage.
 
-**Date:** 2026-01-05
+| Alternative | Why Not Chosen |
+|-------------|----------------|
+| No tests | Regressions likely |
+| Only E2E | Too slow/brittle |
+| Only unit | Miss integration issues |
 
-### Context
-
-The project needs basic automated tests to reduce regressions while iterating quickly across a full-stack codebase (frontend + backend). Tests must be lightweight and runnable locally.
-
-### Decision
-
-Use Jest for unit tests in both backend and frontend, with focused tests around error handling/config/utilities. Use Playwright for end-to-end smoke coverage in the frontend where applicable.
-
-### Alternatives Considered
-
-| Alternative | Pros | Cons | Why Not Chosen |
-|---|---|---|---|
-| No tests | Fastest to write features | Regressions likely | Not suitable for thesis-quality delivery |
-| Only E2E tests | Real user flows | Slower, brittle | Too heavy for quick iteration |
-| Only unit tests | Fast, stable | Miss integration issues | Add E2E later for key flows |
-
-### Consequences
-
-**Positive:** faster refactors, confidence in core helpers.
-
-**Negative:** some UI routes are not fully wired, limiting E2E value.
-
-**Neutral:** test coverage can be expanded when routes stabilize.
-
-## Implementation Details
-
-### Key Implementation Decisions
-
-- Keep unit tests small and deterministic (no external network calls).
-- Prefer testing error factories/config parsing and domain services.
-
-### Project Structure
+## Structure
 
 ```
 backend/tests/
 frontend/tests/
 ```
 
-## Requirements Checklist
+## Requirements
 
-| # | Requirement | Status | Evidence/Notes |
-|---:|---|:---:|---|
-| 1 | Backend unit tests exist | ✅ | `backend/tests/*` |
-| 2 | Frontend unit test setup exists | ✅ | Jest/RTL config + setup |
-| 3 | E2E test harness exists | ✅ | Playwright config + tests folder |
-| 4 | CI-friendly commands available | ⚠️ | Depends on project scripts |
+| # | Requirement | Status |
+|--:|-------------|:------:|
+| 1 | Backend unit tests | Done |
+| 2 | Frontend unit test setup | Done |
+| 3 | E2E test harness | Done |
 
-## Known Limitations
+## Limitations
 
-| Limitation | Impact | Potential Solution |
-|---|---|---|
-| Limited coverage of user stories | Regressions possible in unwired routes | Add tests as routes/features are completed |
+| Limitation | Solution |
+|------------|----------|
+| Limited user story coverage | Add tests as routes complete |
+
+## Conclusion
+
+[Testing Coverage](docs/assets/screenshots/testing_coverage_BE.jpg)
+
+As of the latest run, the project achieves **94.02% line coverage** and **93.65% statement coverage** across all source files.
+
+**Key Coverage Highlights:**
+- **Controllers:** 92.3% statement coverage (base controller fully covered on a line level, with partial branch and function coverage due to conditional flows)
+- **Disease module:** 90.22% statement coverage (controller well covered; repository and service layers partially covered with several uncovered edge and error-handling paths)
+- **Source module:** 97.95% statement coverage (comprehensive controller, repository, and service coverage with minimal uncovered service logic)
+- **Config & Constants:** 100% coverage for `types.ts`, `configService.ts`, `keys.ts`, and `messages.ts`
