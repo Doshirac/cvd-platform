@@ -20,6 +20,67 @@ This README focuses on the **backend** service (`cvd-api`).
 - **Logging & Observability:** Winston, Morgan, Sentry (`@sentry/node`, `@sentry/profiling-node`).
 - **Tooling:** SWC, Jest + `@swc/jest`, ESLint + `@typescript-eslint`, Prettier, Husky, lint-staged.
 
+### Architecture Diagram
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                              Host Machine                                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  docker-compose.yml          .env file           backend/ source code       │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         Docker Build Pipeline                                │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │                    Dockerfile (Multi-stage)                           │  │
+│  │  ┌─────────────────────┐      ┌─────────────────────────────────┐    │  │
+│  │  │    Build Stage      │      │       Runtime Stage             │    │  │
+│  │  │  node:20-alpine     │ ───► │     node:20-alpine              │    │  │
+│  │  │  - npm ci           │      │  - Copy build artifacts         │    │  │
+│  │  │  - SWC compile      │      │  - Copy node_modules            │    │  │
+│  │  │  - Prisma generate  │      │  - Non-root user (app)          │    │  │
+│  │  └─────────────────────┘      └─────────────────────────────────┘    │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    Docker Compose Services (cvd-network)                     │
+│                                                                              │
+│   ┌──────────────────┐   ┌──────────────────┐   ┌──────────────────┐        │
+│   │       api        │   │        db        │   │      redis       │        │
+│   │   cvd-api        │   │  PostgreSQL 16   │   │  Redis 7-alpine  │        │
+│   │   Port: 4000     │   │  Port: 5431→5432 │   │   Port: 6379     │        │
+│   │                  │   │                  │   │                  │        │
+│   │  Healthcheck:    │   │  Healthcheck:    │   │  Healthcheck:    │        │
+│   │  /api/health     │   │  pg_isready      │   │  redis-cli ping  │        │
+│   │                  │   │                  │   │                  │        │
+│   │  CPU: 0.5        │   │  CPU: 0.5        │   │  CPU: 0.25       │        │
+│   │  Mem: 512M       │   │  Mem: 512M       │   │  Mem: 256M       │        │
+│   └────────┬─────────┘   └────────┬─────────┘   └────────┬─────────┘        │
+│            │    depends_on        │                      │                  │
+│            └──────────────────────┴──────────────────────┘                  │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           Persistent Storage                                 │
+│   ┌──────────────────────┐              ┌──────────────────────┐            │
+│   │   pgdata (volume)    │              │  redisdata (volume)  │            │
+│   │   PostgreSQL data    │              │   Redis snapshots    │            │
+│   └──────────────────────┘              └──────────────────────┘            │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+┌───────────────────────────────────────┐    ┌────────────────────────────────┐
+│          External Access              │    │        Docker Network          │
+│   Host:4000 ──► API                   │    │   cvd-network (bridge)         │
+│   Host:5431 ──► PostgreSQL            │    │   - Service discovery          │
+│   Host:6379 ──► Redis                 │    │   - Container isolation        │
+└───────────────────────────────────────┘    └────────────────────────────────┘
+```
+
 ## Backend Commands
 
 From the `backend/` directory:

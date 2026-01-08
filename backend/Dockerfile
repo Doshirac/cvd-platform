@@ -8,8 +8,8 @@ RUN npm ci
 
 COPY . .
 
-# env only for the Prisma Client generation during the build
-ENV DATABASE_URL=postgres://cvd_user:cvd_password@db:5432/cvd_db
+# ARG for build-time Prisma generation (dummy value, not used at runtime)
+ARG DATABASE_URL="postgresql://dummy:dummy@localhost:5432/dummy"
 
 # generate + build (build → папка ./build)
 RUN npx prisma generate \
