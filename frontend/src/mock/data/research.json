@@ -1,0 +1,109 @@
+{
+  "research": [
+    {
+      "id": 1,
+      "title": "Heart Attack Prediction using Machine Learning",
+      "description": "Comprehensive analysis of cardiovascular risk factors using ensemble learning methods to predict heart attack probability.",
+      "category": "prediction",
+      "methodology": "We employed a combination of Random Forest, Gradient Boosting, and Neural Networks to build an ensemble model. The dataset was preprocessed using feature engineering techniques including normalization and handling missing values.",
+      "findings": [
+        "Age and cholesterol levels are the strongest predictors",
+        "Ensemble methods outperform single classifiers by 12%",
+        "Early detection can reduce mortality by 40%"
+      ],
+      "tools": ["Python", "Scikit-learn", "TensorFlow", "Pandas"],
+      "dataset": "UCI Heart Disease Dataset",
+      "accuracy": 94,
+      "samples": 303,
+      "features": 14,
+      "date": "2024-12-15"
+    },
+    {
+      "id": 2,
+      "title": "Cardiovascular Disease Risk Visualization",
+      "description": "Interactive visualizations exploring correlations between lifestyle factors and heart disease risk across different demographics.",
+      "category": "visualization",
+      "methodology": "Data visualization using D3.js and Plotly to create interactive dashboards showing relationships between variables.",
+      "findings": [
+        "Strong correlation between smoking and heart disease",
+        "Physical activity reduces risk by 30%",
+        "Gender differences in risk factors identified"
+      ],
+      "tools": ["D3.js", "Plotly", "Python", "Tableau"],
+      "dataset": "Framingham Heart Study",
+      "samples": 4240,
+      "features": 16,
+      "date": "2024-11-20"
+    },
+    {
+      "id": 3,
+      "title": "Statistical Analysis of CVD Symptoms",
+      "description": "In-depth statistical analysis of symptom presentation patterns across different cardiovascular conditions.",
+      "category": "analysis",
+      "methodology": "Statistical analysis using hypothesis testing, correlation analysis, and regression modeling to identify symptom patterns.",
+      "findings": [
+        "Chest pain is present in 85% of acute cases",
+        "Fatigue as early warning sign often overlooked",
+        "Symptom clustering varies by age group"
+      ],
+      "tools": ["R", "SPSS", "Python", "NumPy"],
+      "dataset": "Cleveland Heart Disease Database",
+      "accuracy": 89,
+      "samples": 920,
+      "features": 76,
+      "date": "2024-10-05"
+    },
+    {
+      "id": 4,
+      "title": "Heart Disease UCI Dataset",
+      "description": "Curated dataset combining heart disease data from Cleveland, Hungary, Switzerland, and VA Long Beach.",
+      "category": "dataset",
+      "methodology": "Data cleaning, integration, and standardization of multiple international heart disease databases.",
+      "findings": [
+        "Standardized format for cross-study analysis",
+        "Missing values handled using imputation",
+        "Ready for machine learning applications"
+      ],
+      "tools": ["Python", "Pandas", "SQL"],
+      "dataset": "Combined UCI Repository",
+      "samples": 920,
+      "features": 14,
+      "date": "2024-09-12"
+    },
+    {
+      "id": 5,
+      "title": "Deep Learning for ECG Analysis",
+      "description": "Convolutional neural network model for automated detection of arrhythmias from ECG signals.",
+      "category": "prediction",
+      "methodology": "CNN architecture with residual connections trained on PhysioNet ECG database for multi-class arrhythmia classification.",
+      "findings": [
+        "97% accuracy on arrhythmia detection",
+        "Real-time processing capability achieved",
+        "Reduces diagnosis time by 60%"
+      ],
+      "tools": ["PyTorch", "CUDA", "NumPy", "SciPy"],
+      "dataset": "MIT-BIH Arrhythmia Database",
+      "accuracy": 97,
+      "samples": 109446,
+      "features": 360,
+      "date": "2024-08-28"
+    },
+    {
+      "id": 6,
+      "title": "Global CVD Mortality Trends",
+      "description": "Analysis of cardiovascular disease mortality trends across different countries and time periods.",
+      "category": "analysis",
+      "methodology": "Time series analysis and geospatial visualization of WHO mortality data spanning 30 years.",
+      "findings": [
+        "Mortality rates declining in developed nations",
+        "Rising trends in low-income countries",
+        "Healthcare access key determinant"
+      ],
+      "tools": ["Python", "GeoPandas", "Matplotlib", "Seaborn"],
+      "dataset": "WHO Global Health Observatory",
+      "samples": 194,
+      "features": 45,
+      "date": "2024-07-15"
+    }
+  ]
+}

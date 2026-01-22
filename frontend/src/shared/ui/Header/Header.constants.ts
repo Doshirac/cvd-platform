@@ -9,9 +9,9 @@ export const ROUTES = {
   RESEARCH: '/research',
 } as const;
 
-// Navigation items configuration
+// Navigation items configuration - labels are i18n keys
 export const navItems = [
-  { path: ROUTES.HOME, label: 'Home', icon: 'HOME' as const },
-  { path: ROUTES.SOURCES, label: 'Sources', icon: 'BUILDING' as const },
-  { path: ROUTES.RESEARCH, label: 'Research', icon: 'ACTIVITY' as const },
+  { path: ROUTES.HOME, labelKey: 'navigation.home', icon: 'HOME' as const },
+  { path: ROUTES.SOURCES, labelKey: 'navigation.sources', icon: 'BUILDING' as const },
+  { path: ROUTES.RESEARCH, labelKey: 'navigation.research', icon: 'ACTIVITY' as const },
 ] as const;

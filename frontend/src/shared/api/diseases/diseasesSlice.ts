@@ -60,6 +60,6 @@ const diseasesSlice = createSlice({
 });
 
 export default diseasesSlice.reducer;
-export const selectDiseases = (state: RootState) => state.diseases.items;
-export const selectSymptoms = (state: RootState) => state.diseases.symptomList;
-export const selectRiskFactors = (state: RootState) => state.diseases.riskFactors;
+export const selectDiseases = (state: RootState) => state.diseases.items || [];
+export const selectSymptoms = (state: RootState) => state.diseases.symptomList || [];
+export const selectRiskFactors = (state: RootState) => state.diseases.riskFactors || [];

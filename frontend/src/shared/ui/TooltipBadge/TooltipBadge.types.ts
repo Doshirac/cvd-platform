@@ -1,6 +1,7 @@
 export interface TooltipBadgeProps {
   code: string;
-  tooltip: string;
+  fullName?: string;
+  tooltip?: string;
   variant?: 'primary' | 'secondary';
   className?: string;
 }

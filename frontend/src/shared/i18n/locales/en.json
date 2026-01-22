@@ -1,0 +1,114 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "search": "Search",
+    "filter": "Filter",
+    "clear": "Clear",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "loadMore": "Load More",
+    "noMoreItems": "No more items",
+    "noResults": "No results found",
+    "goBack": "Go Back",
+    "goHome": "Go to Homepage"
+  },
+  "navigation": {
+    "home": "Home",
+    "diseases": "Diseases",
+    "sources": "Sources",
+    "research": "Research",
+    "menu": "Menu"
+  },
+  "header": {
+    "title": "CVD Platform",
+    "toggleMenu": "Toggle mobile menu",
+    "closeMenu": "Close mobile menu",
+    "languageSelection": "Language selection"
+  },
+  "mainPage": {
+    "title": "Cardiovascular Diseases",
+    "subtitle": "Explore comprehensive information about cardiovascular conditions",
+    "searchPlaceholder": "Search diseases by name or code...",
+    "filterBySymptom": "Filter by Symptom",
+    "filterByRiskFactor": "Filter by Risk Factor",
+    "filterByLetter": "Filter by Letter",
+    "allSymptoms": "All Symptoms",
+    "allRiskFactors": "All Risk Factors",
+    "diseasesFound": "{{count}} disease found",
+    "diseasesFound_other": "{{count}} diseases found",
+    "noDiseasesFound": "No diseases match your search criteria",
+    "clearFilters": "Clear all filters"
+  },
+  "diseaseCard": {
+    "code": "Code",
+    "description": "Description",
+    "prevention": "Prevention",
+    "symptoms": "Symptoms",
+    "primarySymptoms": "Primary Symptoms",
+    "riskFactors": "Risk Factors",
+    "viewDetails": "View Details",
+    "showMore": "Show more",
+    "showLess": "Show less"
+  },
+  "sourcesPage": {
+    "title": "Medical Sources",
+    "subtitle": "Trusted medical resources and references",
+    "searchPlaceholder": "Search sources by name...",
+    "sourcesFound": "{{count}} source found",
+    "sourcesFound_other": "{{count}} sources found",
+    "noSourcesFound": "No sources match your search criteria",
+    "visitSource": "Visit Source",
+    "externalLink": "Opens in new tab"
+  },
+  "researchPage": {
+    "title": "Research Gallery",
+    "subtitle": "Explore our cardiovascular research and analysis",
+    "searchPlaceholder": "Search research...",
+    "categories": {
+      "all": "All",
+      "analysis": "Analysis",
+      "visualization": "Visualization",
+      "prediction": "Prediction",
+      "dataset": "Dataset"
+    },
+    "viewDetails": "View Details",
+    "methodology": "Methodology",
+    "findings": "Key Findings",
+    "dataset": "Dataset",
+    "tools": "Tools Used",
+    "accuracy": "Accuracy",
+    "samples": "Samples",
+    "features": "Features",
+    "noResearchFound": "No research matches your search criteria"
+  },
+  "errorPage": {
+    "title": "Something went wrong",
+    "description": "Please try refreshing the page or contact support if the problem persists.",
+    "refresh": "Refresh"
+  },
+  "notFoundPage": {
+    "code": "404",
+    "title": "Page Not Found",
+    "description": "The page you're looking for doesn't exist or has been moved. Please check the URL or return to the homepage.",
+    "helpfulLinks": "Helpful Links",
+    "exploreDiseasesLink": "Explore Cardiovascular Diseases",
+    "browseSourcesLink": "Browse Medical Sources",
+    "viewResearchLink": "View Research Gallery"
+  },
+  "alphabet": {
+    "filterByLetter": "Filter by letter {{letter}}"
+  },
+  "theme": {
+    "light": "Light mode",
+    "dark": "Dark mode",
+    "toggle": "Toggle theme"
+  },
+  "language": {
+    "en": "English",
+    "ru": "Русский",
+    "select": "Select language"
+  }
+}

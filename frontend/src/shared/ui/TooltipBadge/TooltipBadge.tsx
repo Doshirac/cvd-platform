@@ -4,6 +4,7 @@ import type { TooltipBadgeProps } from './TooltipBadge.types';
 
 export const TooltipBadge = ({
   code,
+  fullName,
   tooltip,
   variant = 'primary',
   className,
@@ -37,6 +38,9 @@ export const TooltipBadge = ({
     checkTouchDevice();
   }, []);
 
+  const displayText = fullName ? code : code;
+  const tooltipText = tooltip || (fullName ? `${code} - ${fullName}` : code);
+
   return (
     <div className={styles.container}>
       <div
@@ -46,13 +50,13 @@ export const TooltipBadge = ({
         onClick={handleClick}
         role="button"
         tabIndex={0}
-        aria-label={`${code}: ${tooltip}`}
+        aria-label={tooltipText}
       >
-        {code}
+        {displayText}
       </div>
       {isHovered && (
         <div className={styles.tooltip} role="tooltip">
-          {tooltip}
+          {tooltipText}
         </div>
       )}
     </div>

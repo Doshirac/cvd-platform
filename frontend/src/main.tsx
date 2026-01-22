@@ -5,6 +5,7 @@ import App from '@app/App';
 import { ThemeProvider } from '@shared/hooks/useTheme';
 import { logger, setupGlobalErrorLogging } from '@shared/utils';
 import { logMessages } from '@shared/constants/constants';
+import '@shared/i18n';
 
 Sentry.init({
   dsn: import.meta.env.SENTRY_DSN,

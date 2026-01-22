@@ -10,18 +10,24 @@ const ErrorPage = lazy(() =>
 const NotFoundPage = lazy(() =>
   import('@pages/NotFoundPage').then(module => ({ default: module.NotFoundPage }))
 );
-// const MainPage = lazy(() => import('@pages/MainPage').then(module => ({ default: module.MainPage })));
-// const SourcePage = lazy(() => import('@pages/SourcePage').then(module => ({ default: module.SourcePage })));
-// const DiseasePage = lazy(() => import('@pages/DiseasePage').then(module => ({ default: module.DiseasePage })));
+const MainPage = lazy(() =>
+  import('@pages/MainPage').then(module => ({ default: module.MainPage }))
+);
+const SourcesPage = lazy(() =>
+  import('@pages/SourcesPage').then(module => ({ default: module.SourcesPage }))
+);
+const ResearchPage = lazy(() =>
+  import('@pages/ResearchPage').then(module => ({ default: module.ResearchPage }))
+);
 
 export const Router = () => {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route element={<MainLayout />}>
-          {/* <Route path={AppRoutes.MAIN} element={<MainPage />} />
-          <Route path={AppRoutes.SOURCE} element={<SourcePage />} />
-          <Route path={AppRoutes.DISEASE} element={<DiseasePage />} /> */}
+          <Route path={AppRoutes.MAIN} element={<MainPage />} />
+          <Route path={AppRoutes.SOURCE} element={<SourcesPage />} />
+          <Route path={AppRoutes.RESEARCH} element={<ResearchPage />} />
           <Route path={AppRoutes.ERROR} element={<ErrorPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>

@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Router } from '../Router';
 import { MemoryRouter } from 'react-router-dom';
@@ -26,12 +26,12 @@ jest.mock('@shared/hooks/useBreakpoint', () => ({
   useBreakpoint: () => 'desktop',
 }));
 
-jest.mock('@pages/CategoriesPage', () => ({
-  CategoriesPage: () => <div data-testid="categories-page">Categories Page Content</div>,
+jest.mock('@pages/SourcesPage', () => ({
+  SourcesPage: () => <div data-testid="sources-page">Sources Page Content</div>,
 }));
 
-jest.mock('@pages/ArticlePage/ui/ArticlePage', () => ({
-  ArticlePage: () => <div data-testid="article-page">Article Page Content</div>,
+jest.mock('@pages/ResearchPage', () => ({
+  ResearchPage: () => <div data-testid="research-page">Research Page Content</div>,
 }));
 
 jest.mock('@shared/ui/Header/Header', () => () => <div data-testid="header" />);
@@ -50,7 +50,7 @@ jest.mock('react-markdown', () => (props: ReactMarkdownProps) => (
 ));
 
 describe('Router Component', () => {
-  test('renders MainPage on main route', () => {
+  test('renders MainPage on main route', async () => {
     // Override the mock for this specific test
     render(
       <Provider store={store}>
@@ -60,13 +60,15 @@ describe('Router Component', () => {
       </Provider>
     );
 
-    expect(screen.getByTestId('main-page')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByTestId('main-page')).toBeInTheDocument();
+    });
 
     expect(screen.queryByTestId('error-page')).not.toBeInTheDocument();
     expect(screen.queryByTestId('not-found-page')).not.toBeInTheDocument();
   });
 
-  test('renders ErrorPage on error route', () => {
+  test('renders ErrorPage on error route', async () => {
     render(
       <Provider store={store}>
         <MemoryRouter initialEntries={['/error']}>
@@ -75,11 +77,13 @@ describe('Router Component', () => {
       </Provider>
     );
 
-    expect(screen.getByTestId('error-page')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByTestId('error-page')).toBeInTheDocument();
+    });
     expect(screen.queryByTestId('main-page')).not.toBeInTheDocument();
   });
 
-  test('renders NotFoundPage on non-existent route', () => {
+  test('renders NotFoundPage on non-existent route', async () => {
     render(
       <Provider store={store}>
         <MemoryRouter initialEntries={['/non-existent-route']}>
@@ -88,21 +92,9 @@ describe('Router Component', () => {
       </Provider>
     );
 
-    expect(screen.getByTestId('not-found-page')).toBeInTheDocument();
-    expect(screen.queryByTestId('main-page')).not.toBeInTheDocument();
-  });
-
-  test('renders RegistrationLayout on registration route', () => {
-    render(
-      <Provider store={store}>
-        <MemoryRouter initialEntries={['/registration']}>
-          <Router />
-        </MemoryRouter>
-      </Provider>
-    );
-
-    expect(screen.getByTestId('registration-page')).toBeInTheDocument();
-    expect(screen.getByText('Registration Layout Content')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByTestId('not-found-page')).toBeInTheDocument();
+    });
     expect(screen.queryByTestId('main-page')).not.toBeInTheDocument();
   });
 });

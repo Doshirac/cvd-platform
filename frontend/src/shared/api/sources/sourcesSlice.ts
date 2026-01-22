@@ -32,4 +32,4 @@ const sourcesSlice = createSlice({
 });
 
 export default sourcesSlice.reducer;
-export const selectSources = (state: RootState) => state.sources.items;
+export const selectSources = (state: RootState) => state.sources.items || [];

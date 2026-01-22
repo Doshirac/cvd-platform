@@ -1,0 +1,163 @@
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { DiseaseCard } from '../DiseaseCard';
+import type { Disease } from '@shared/api/diseases/diseases.types';
+
+// Mock the diseases slice selectors
+jest.mock('@shared/api/diseases/diseasesSlice', () => ({
+  selectSymptoms: jest.fn(() => []),
+  selectRiskFactors: jest.fn(() => []),
+}));
+
+// Mock i18next
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string) => {
+      const translations: Record<string, string> = {
+        'diseaseCard.primarySymptoms': 'Primary Symptoms',
+        'diseaseCard.riskFactors': 'Risk Factors',
+      };
+      return translations[key] || key;
+    },
+  }),
+}));
+
+// Mock react-redux
+jest.mock('react-redux', () => ({
+  useSelector: jest.fn(() => {
+    return [];
+  }),
+}));
+
+// Mock Icon component
+jest.mock('@shared/ui/Icon', () => ({
+  Icon: ({ name }: { name: string }) => <span data-testid="icon">{name}</span>,
+}));
+
+// Mock Badge component
+jest.mock('@shared/ui/Badge', () => ({
+  Badge: ({ children, className, variant }: { children: React.ReactNode; className?: string; variant?: string }) => (
+    <span className={className} data-testid="badge" data-variant={variant}>{children}</span>
+  ),
+}));
+
+// Mock TooltipBadge component
+jest.mock('@shared/ui/TooltipBadge', () => ({
+  TooltipBadge: ({ code, variant }: { code: string; variant: string; fullName?: string; category?: string }) => (
+    <span data-testid={`tooltip-badge-${variant}`}>{code}</span>
+  ),
+}));
+
+const mockDisease: Disease = {
+  id: 1,
+  code: 'IHD',
+  name: 'Ischemic Heart Disease',
+  description: 'A condition where blood flow to the heart is reduced, usually due to coronary artery disease.',
+  prevention: 'Regular exercise, healthy diet, no smoking, control blood pressure.',
+  symptoms: ['S001', 'S002', 'S003'],
+  risks: ['R001', 'R002'],
+};
+
+describe('<DiseaseCard /> component', () => {
+  test('renders disease name and ID badge', () => {
+    render(<DiseaseCard disease={mockDisease} />);
+    
+    expect(screen.getByText('Ischemic Heart Disease')).toBeInTheDocument();
+    expect(screen.getByText('#1')).toBeInTheDocument();
+  });
+
+  test('renders icon container with correct icon', () => {
+    render(<DiseaseCard disease={mockDisease} />);
+    
+    const icon = screen.getByTestId('icon');
+    expect(icon).toBeInTheDocument();
+    // Disease ID 1 % 8 = 1 -> 'ACTIVITY'
+    expect(icon).toHaveTextContent('ACTIVITY');
+  });
+
+  test('renders primary symptoms section', () => {
+    render(<DiseaseCard disease={mockDisease} />);
+    
+    expect(screen.getByText('Primary Symptoms')).toBeInTheDocument();
+    
+    const symptomBadges = screen.getAllByTestId('tooltip-badge-primary');
+    expect(symptomBadges).toHaveLength(3);
+    expect(screen.getByText('S001')).toBeInTheDocument();
+    expect(screen.getByText('S002')).toBeInTheDocument();
+    expect(screen.getByText('S003')).toBeInTheDocument();
+  });
+
+  test('renders risk factors section', () => {
+    render(<DiseaseCard disease={mockDisease} />);
+    
+    expect(screen.getByText('Risk Factors')).toBeInTheDocument();
+    
+    const riskBadges = screen.getAllByTestId('tooltip-badge-secondary');
+    expect(riskBadges).toHaveLength(2);
+    expect(screen.getByText('R001')).toBeInTheDocument();
+    expect(screen.getByText('R002')).toBeInTheDocument();
+  });
+
+  test('shows "+N more" badge when there are more than 3 symptoms', () => {
+    const diseaseWithManySymptoms: Disease = {
+      ...mockDisease,
+      symptoms: ['S001', 'S002', 'S003', 'S004', 'S005'],
+    };
+    
+    render(<DiseaseCard disease={diseaseWithManySymptoms} />);
+    
+    expect(screen.getByText('+2')).toBeInTheDocument();
+  });
+
+  test('shows "+N more" badge when there are more than 3 risks', () => {
+    const diseaseWithManyRisks: Disease = {
+      ...mockDisease,
+      risks: ['R001', 'R002', 'R003', 'R004'],
+    };
+    
+    render(<DiseaseCard disease={diseaseWithManyRisks} />);
+    
+    expect(screen.getByText('+1')).toBeInTheDocument();
+  });
+
+  test('does not render symptoms section when symptoms array is empty', () => {
+    const diseaseWithoutSymptoms: Disease = {
+      ...mockDisease,
+      symptoms: [],
+    };
+    
+    render(<DiseaseCard disease={diseaseWithoutSymptoms} />);
+    
+    expect(screen.queryByText('Primary Symptoms')).not.toBeInTheDocument();
+  });
+
+  test('does not render risk factors section when risks array is empty', () => {
+    const diseaseWithoutRisks: Disease = {
+      ...mockDisease,
+      risks: [],
+    };
+    
+    render(<DiseaseCard disease={diseaseWithoutRisks} />);
+    
+    expect(screen.queryByText('Risk Factors')).not.toBeInTheDocument();
+  });
+
+  test('applies custom className', () => {
+    const { container } = render(<DiseaseCard disease={mockDisease} className="custom-class" />);
+    
+    expect(container.querySelector('.custom-class')).toBeInTheDocument();
+  });
+
+  test('renders correctly with different disease IDs for icon selection', () => {
+    const diseaseWithDifferentId: Disease = {
+      ...mockDisease,
+      id: 5,
+    };
+    
+    render(<DiseaseCard disease={diseaseWithDifferentId} />);
+    
+    const icon = screen.getByTestId('icon');
+    // Disease ID 5 % 8 = 5 -> 'PILL'
+    expect(icon).toHaveTextContent('PILL');
+  });
+});

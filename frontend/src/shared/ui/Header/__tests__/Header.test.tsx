@@ -9,6 +9,23 @@ jest.mock('@shared/hooks/useBreakpoint', () => ({
   useBreakpoint: jest.fn(),
 }));
 
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string) => {
+      const translations: Record<string, string> = {
+        'header.title': 'CVD Platform',
+        'header.toggleMenu': 'Toggle mobile menu',
+        'header.closeMenu': 'Close mobile menu',
+        'navigation.home': 'Home',
+        'navigation.sources': 'Sources',
+        'navigation.research': 'Research',
+        'navigation.menu': 'Menu',
+      };
+      return translations[key] || key;
+    },
+  }),
+}));
+
 jest.mock('@shared/ui/Icon', () => ({
   Icon: ({ name, ariaLabel }: { name: string; ariaLabel?: string }) => (
     <div data-testid={`icon-${name}`} aria-label={ariaLabel}>

@@ -7,6 +7,19 @@ jest.mock('@shared/ui/Button', () => ({
   ),
 }));
 
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string) => {
+      const translations: Record<string, string> = {
+        'errorPage.title': 'Something went wrong',
+        'errorPage.description': 'Please try refreshing the page or contact support',
+        'errorPage.refresh': 'Refresh',
+      };
+      return translations[key] || key;
+    },
+  }),
+}));
+
 describe('ErrorPage', () => {
   it('renders title and description', () => {
     render(<ErrorPage />);

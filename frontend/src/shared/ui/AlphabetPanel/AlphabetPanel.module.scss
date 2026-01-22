@@ -8,8 +8,7 @@
 
 .scroll-area {
   width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: auto hidden;
   border-radius: $radius-lg;
   padding: 0.5rem;
   padding-bottom: 0.75rem;

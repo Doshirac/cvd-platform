@@ -40,6 +40,14 @@ $light-input-bg: #fff;
 /* Focus / Ring */
 $light-focus: rgb(63 108 188 / 40%);
 
+/* Card hover states */
+$light-card-hover-border: rgb(42 78 138 / 50%);
+$light-card-hover-shadow: rgb(0 0 0 / 10%);
+$light-card-icon-bg-from: rgb(42 78 138 / 10%);
+$light-card-icon-bg-to: rgb(42 78 138 / 5%);
+$light-card-icon-hover-from: rgb(42 78 138 / 15%);
+$light-card-icon-hover-to: rgb(42 78 138 / 5%);
+
 /* Dark theme */
 $dark-bg: #0f1419;
 $dark-text: #f7f9fc;
@@ -80,6 +88,14 @@ $dark-input-bg: #1c1f25;
 
 /* Focus / Ring */
 $dark-focus: rgb(59 130 246 / 50%);
+
+/* Card hover states */
+$dark-card-hover-border: rgb(63 108 188 / 50%);
+$dark-card-hover-shadow: rgb(0 0 0 / 30%);
+$dark-card-icon-bg-from: rgb(63 108 188 / 10%);
+$dark-card-icon-bg-to: rgb(63 108 188 / 5%);
+$dark-card-icon-hover-from: rgb(63 108 188 / 15%);
+$dark-card-icon-hover-to: rgb(63 108 188 / 10%);
 
 /* Shadows */
 $dropdown-shadow: rgb(0 0 0 / 10%);

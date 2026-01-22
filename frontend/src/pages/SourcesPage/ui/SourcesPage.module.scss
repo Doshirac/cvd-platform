@@ -1,0 +1,151 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.page {
+  @include flex(column, flex-start, stretch);
+
+  gap: 2rem;
+  padding: 2rem 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+
+  @include responsive(xs) {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+}
+
+.hero {
+  @include flex(column, center, center);
+
+  gap: 1rem;
+  text-align: center;
+  padding: 2rem 0;
+
+  @include responsive(xs) {
+    padding: 1rem 0;
+  }
+}
+
+.hero-icon {
+  @include flex(row, center, center);
+
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  background: var(--accent-bg);
+  margin-bottom: 0.5rem;
+
+  svg {
+    width: 3rem;
+    height: 3rem;
+    color: var(--accent);
+  }
+
+  @include responsive(xs) {
+    width: 5rem;
+    height: 5rem;
+
+    svg {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+}
+
+.header {
+  @include flex(column, flex-start, stretch);
+
+  gap: 0.5rem;
+}
+
+.title {
+  @include typography($font-sans, 3rem, $fw-medium);
+
+  color: var(--text);
+  margin: 0;
+
+  @include responsive(md) {
+    font-size: 2.5rem;
+  }
+
+  @include responsive(xs) {
+    font-size: 1.75rem;
+  }
+}
+
+.subtitle {
+  @include typography($font-sans, 1.125rem, $fw-regular);
+
+  color: var(--muted-text);
+  margin: 0;
+
+  @include responsive(xs) {
+    font-size: $fs-md;
+  }
+}
+
+.controls {
+  @include flex(column, flex-start, center);
+
+  gap: 1.5rem;
+  max-width: 80rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.search-row {
+  @include flex(row, center, center);
+
+  width: 100%;
+  max-width: 40rem;
+}
+
+.search {
+  flex: 1;
+}
+
+.count {
+  @include typography($font-sans, $fs-sm, $fw-medium);
+
+  color: var(--muted-text);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.content {
+  @include flex(column, flex-start, stretch);
+
+  min-height: 400px;
+  max-width: 88rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.loading,
+.error,
+.no-results {
+  @include flex(row, center, center);
+
+  min-height: 400px;
+  width: 100%;
+}
+
+:global([data-theme='light']) {
+  .page {
+    --text: #{$light-text};
+    --muted-text: #{$light-muted-text};
+    --accent: #{$light-primary};
+    --accent-bg: rgba(59, 130, 246, 0.1);
+  }
+}
+
+:global([data-theme='dark']) {
+  .page {
+    --text: #{$dark-text};
+    --muted-text: #{$dark-muted-text};
+    --accent: #{$dark-primary};
+    --accent-bg: rgba(96, 165, 250, 0.1);
+  }
+}

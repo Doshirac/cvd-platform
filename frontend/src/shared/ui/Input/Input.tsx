@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { type InputProps } from '@shared/ui/Input';
-import { Icon, iconNames, iconSizes, iconColors } from '@shared/ui/Icon';
+import { Icon, iconSizes, iconColors } from '@shared/ui/Icon';
 import styles from './Input.module.scss';
 
 export const Input = ({
@@ -84,9 +84,9 @@ export const Input = ({
           })}
         >
           <Icon
-            name={iconNames.INFO_CIRCLE}
+            name="INFO"
             size={iconSizes.SMALL}
-            color={error ? iconColors.DANGER : iconColors.TERTIARY}
+            color={error ? iconColors.DANGER : iconColors.MUTED}
           />
           {helperText}
         </span>

@@ -26,6 +26,15 @@ export default defineConfig({
   define: {
     'process.env.VITE_API_URL': JSON.stringify(process.env.VITE_API_URL),
   },
+  server: {
+    port: 5173,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:4000',
+        changeOrigin: true,
+      },
+    },
+  },
   resolve: {
     alias: {
       '@app': path.resolve(__dirname, './src/app'),

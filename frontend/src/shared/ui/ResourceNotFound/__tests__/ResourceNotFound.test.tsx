@@ -6,7 +6,7 @@ describe('<ResourceNotFound /> component unit-tests', () => {
   test('renders with default message', () => {
     render(<ResourceNotFound />);
 
-    expect(screen.getByText('No diseases found')).toBeInTheDocument();
+    expect(screen.getByText('No results found')).toBeInTheDocument();
     expect(screen.getByText('Try adjusting your search or filters')).toBeInTheDocument();
   });
 
@@ -15,7 +15,13 @@ describe('<ResourceNotFound /> component unit-tests', () => {
     render(<ResourceNotFound message={customMessage} />);
 
     expect(screen.getByText(customMessage)).toBeInTheDocument();
-    expect(screen.getByText('Try adjusting your search or filters')).toBeInTheDocument();
+  });
+
+  test('renders with custom title', () => {
+    const customTitle = 'No diseases found';
+    render(<ResourceNotFound title={customTitle} />);
+
+    expect(screen.getByText(customTitle)).toBeInTheDocument();
   });
 
   test('applies custom className', () => {
@@ -35,7 +41,7 @@ describe('<ResourceNotFound /> component unit-tests', () => {
   test('applies correct typography classes', () => {
     render(<ResourceNotFound />);
 
-    const title = screen.getByText('No diseases found');
+    const title = screen.getByText('No results found');
     const subtitle = screen.getByText('Try adjusting your search or filters');
 
     expect(title).toHaveClass('medium-18');

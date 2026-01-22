@@ -1,6 +1,7 @@
 import styles from './Header.module.scss';
 import classNames from 'classnames';
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { useBreakpoint } from '@shared/hooks';
@@ -11,6 +12,7 @@ import * as motion from 'motion/react-client';
 import { navItems, ROUTES, desktopBreakpoint, mobileBreakpoint } from './Header.constants';
 
 export default function Header() {
+  const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const breakpoint = useBreakpoint();
   const toggleMenu = () => setIsMobileMenuOpen(prev => !prev);
@@ -40,7 +42,7 @@ export default function Header() {
                   ariaLabel="CVD Platform logo"
                 />
               </div>
-              <span className={styles['logo-text']}>CVD Platform</span>
+              <span className={styles['logo-text']}>{t('header.title')}</span>
             </NavLink>
 
             {breakpoint === desktopBreakpoint && (
@@ -53,8 +55,8 @@ export default function Header() {
                       classNames(styles['nav-link'], { [styles.active]: isActive })
                     }
                   >
-                    <Icon name={item.icon} size="small" ariaLabel={item.label} />
-                    {item.label}
+                    <Icon name={item.icon} size="small" ariaLabel={t(item.labelKey)} />
+                    {t(item.labelKey)}
                   </NavLink>
                 ))}
               </nav>
@@ -71,7 +73,7 @@ export default function Header() {
                 variant="secondary"
                 className={styles['burger-button']}
                 onClick={toggleMenu}
-                aria-label="Toggle mobile menu"
+                aria-label={t('header.toggleMenu')}
               >
                 <Icon name="MENU" size="medium" ariaLabel="Menu icon" />
               </Button>
@@ -103,12 +105,12 @@ export default function Header() {
             transition={{ type: 'spring', damping: 30, stiffness: 300 }}
           >
             <div className={styles['mobile-menu-header']}>
-              <span className={classNames(styles['mobile-menu-title'], 'medium-18')}>Menu</span>
+              <span className={classNames(styles['mobile-menu-title'], 'medium-18')}>{t('navigation.menu')}</span>
               <Button
                 size="icon"
                 variant="secondary"
                 onClick={toggleMenu}
-                aria-label="Close mobile menu"
+                aria-label={t('header.closeMenu')}
               >
                 <Icon name="CLOSE" size="medium" ariaLabel="Close icon" />
               </Button>
@@ -124,8 +126,8 @@ export default function Header() {
                   }
                   onClick={toggleMenu}
                 >
-                  <Icon name={item.icon} size="small" ariaLabel={item.label} />
-                  <span>{item.label}</span>
+                  <Icon name={item.icon} size="small" ariaLabel={t(item.labelKey)} />
+                  <span>{t(item.labelKey)}</span>
                 </NavLink>
               ))}
             </div>
