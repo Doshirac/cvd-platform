@@ -44,6 +44,10 @@
   color: $light-accent-text;
 }
 
+.inherit {
+  color: inherit;
+}
+
 /* Dark theme overrides */
 :global(html.theme-dark) {
   .primary {

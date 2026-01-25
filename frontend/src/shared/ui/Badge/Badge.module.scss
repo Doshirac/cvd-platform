@@ -12,6 +12,7 @@
   white-space: nowrap;
   flex-shrink: 0;
   transition: background-color 0.2s ease, color 0.2s ease;
+  border: 0.063rem solid $dark-bg;
 }
 
 /* Light Theme */
@@ -22,7 +23,7 @@
   }
 
   .badge.outline {
-    background: transparent;
+    background: rgb(42 78 138 / 5%);
     border: 0.063rem solid $light-border;
     color: $light-text;
   }
@@ -31,6 +32,11 @@
     background: $light-secondary-bg;
     color: $light-secondary-text;
     border: 0.063rem solid $light-secondary-border;
+  }
+
+  .badge.muted {
+    background: $light-muted-bg;
+    color: $light-muted-text;
   }
 }
 
@@ -42,7 +48,7 @@
   }
 
   .badge.outline {
-    background: transparent;
+    background: rgb(63 108 188 / 10%);
     border: 0.063rem solid $dark-border;
     color: $dark-text;
   }
@@ -51,5 +57,10 @@
     background: $dark-secondary-bg;
     color: $dark-secondary-text;
     border: 0.063rem solid $dark-secondary-border;
+  }
+
+  .badge.muted {
+    background: $dark-muted-bg;
+    color: $dark-muted-text;
   }
 }

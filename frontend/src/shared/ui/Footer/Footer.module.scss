@@ -1,0 +1,105 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.footer {
+  width: 100%;
+  padding: 1.5rem 1rem;
+  margin-top: auto;
+}
+
+.container {
+  @include flex(column, center, center);
+
+  max-width: 80rem;
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+.disclaimer {
+  @include flex(row, center, flex-start);
+
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border-radius: $radius-lg;
+  max-width: 50rem;
+  text-align: center;
+
+  @include responsive(xs) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+  }
+}
+
+.icon {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+
+  @include responsive(xs) {
+    margin-top: 0;
+  }
+}
+
+.text {
+  @include typography($font-sans, $fs-sm, $fw-regular);
+
+  margin: 0;
+  line-height: 1.5;
+}
+
+.copyright {
+  @include typography($font-sans, $fs-xs, $fw-regular);
+
+  opacity: 0.7;
+}
+
+/* Light Theme */
+:global(html.theme-light) {
+  .footer {
+    background-color: $light-bg;
+    border-top: 1px solid $light-border;
+  }
+
+  .disclaimer {
+    background-color: rgba($light-warning-bg, 0.5);
+    border: 1px solid $light-warning-border;
+  }
+
+  .icon {
+    color: $light-warning-text;
+  }
+
+  .text {
+    color: $light-text;
+  }
+
+  .copyright {
+    color: $light-muted-text;
+  }
+}
+
+/* Dark Theme */
+:global(html.theme-dark) {
+  .footer {
+    background-color: $dark-bg;
+    border-top: 1px solid $dark-border;
+  }
+
+  .disclaimer {
+    background-color: rgba($dark-warning-bg, 0.3);
+    border: 1px solid $dark-warning-border;
+  }
+
+  .icon {
+    color: $dark-warning-text;
+  }
+
+  .text {
+    color: $dark-text;
+  }
+
+  .copyright {
+    color: $dark-muted-text;
+  }
+}

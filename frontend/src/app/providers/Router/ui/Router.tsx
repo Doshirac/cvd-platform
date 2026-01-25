@@ -13,6 +13,9 @@ const NotFoundPage = lazy(() =>
 const MainPage = lazy(() =>
   import('@pages/MainPage').then(module => ({ default: module.MainPage }))
 );
+const DiseasePage = lazy(() =>
+  import('@pages/DiseasePage').then(module => ({ default: module.DiseasePage }))
+);
 const SourcesPage = lazy(() =>
   import('@pages/SourcesPage').then(module => ({ default: module.SourcesPage }))
 );
@@ -26,6 +29,7 @@ export const Router = () => {
       <Routes>
         <Route element={<MainLayout />}>
           <Route path={AppRoutes.MAIN} element={<MainPage />} />
+          <Route path={AppRoutes.DISEASE} element={<DiseasePage />} />
           <Route path={AppRoutes.SOURCE} element={<SourcesPage />} />
           <Route path={AppRoutes.RESEARCH} element={<ResearchPage />} />
           <Route path={AppRoutes.ERROR} element={<ErrorPage />} />

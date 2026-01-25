@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { InfinityScroll } from '../InfinityScroll';
 
@@ -36,7 +36,7 @@ describe('InfinityScroll', () => {
     const mockRenderItem = jest.fn(() => <div>Test Item</div>);
 
     render(<InfinityScroll fetchPage={mockFetchPage} renderItem={mockRenderItem} />);
-    expect(screen.getByText('Load More')).toBeInTheDocument();
+    expect(screen.getByText('See more')).toBeInTheDocument();
   });
 
   test('should show load more button with custom label', () => {
@@ -55,7 +55,7 @@ describe('InfinityScroll', () => {
     expect(screen.getByText(customLabel)).toBeInTheDocument();
   });
 
-  test('should disable button when hasMore is false', () => {
+  test('should hide button when hasMore is false', () => {
     const mockFetchPage = jest.fn();
     const mockRenderItem = jest.fn(() => <div>Test Item</div>);
 
@@ -70,9 +70,8 @@ describe('InfinityScroll', () => {
 
     render(<InfinityScroll fetchPage={mockFetchPage} renderItem={mockRenderItem} />);
 
-    const button = screen.getByRole('button');
-    expect(button).toBeDisabled();
-    expect(screen.getByText('No more items')).toBeInTheDocument();
+    // Button should not be rendered when hasMore is false
+    expect(screen.queryByRole('button')).not.toBeInTheDocument();
   });
 
   test('should render with grid layout when gridColumns is provided', () => {

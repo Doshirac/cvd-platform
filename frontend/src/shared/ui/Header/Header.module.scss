@@ -63,7 +63,7 @@
     }
 
     .mobile-nav-link {
-      color: $light-text;
+      color: $light-muted-text;
 
       &:hover {
         background-color: $light-secondary-hover;
@@ -124,7 +124,7 @@
     }
 
     .mobile-nav-link {
-      color: $dark-text;
+      color: $dark-accent-text;
 
       &:hover {
         background-color: $dark-secondary-hover;

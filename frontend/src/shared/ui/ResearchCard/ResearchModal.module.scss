@@ -158,7 +158,7 @@
   border-top: 1px solid var(--border);
 }
 
-:global([data-theme='light']) {
+:global(html.theme-light) {
   .modal {
     --modal-bg: #{$light-popover-bg};
     --text: #{$light-text};
@@ -169,7 +169,7 @@
   }
 }
 
-:global([data-theme='dark']) {
+:global(html.theme-dark) {
   .modal {
     --modal-bg: #{$dark-popover-bg};
     --text: #{$dark-text};

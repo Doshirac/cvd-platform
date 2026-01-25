@@ -29,9 +29,21 @@ $light-muted-text: #4d5665;
 $light-accent-bg: #2a4e8a;
 $light-accent-text: #fff;
 
-/* Destructive */
+/* Destructive / Danger */
 $light-destructive-bg: #b12a2a;
 $light-destructive-text: #fff;
+$light-danger: #c62828;
+$light-danger-text: #fff;
+
+/* Status Colors */
+$light-success: #2e8b57;
+$light-success-text: #fff;
+$light-warning: #d98e04;
+$light-warning-text: #7c4a03;
+$light-warning-bg: #fef3c7;
+$light-warning-border: #f59e0b;
+$light-info: #0288d1;
+$light-info-text: #fff;
 
 /* Borders / Inputs */
 $light-border: #e1e5eb;
@@ -78,9 +90,21 @@ $dark-muted-text: #9ca3af;
 $dark-accent-bg: #2a4e8a;
 $dark-accent-text: #fff;
 
-/* Destructive */
+/* Destructive / Danger */
 $dark-destructive-bg: #e56f6f;
 $dark-destructive-text: #fff;
+$dark-danger: #ef4444;
+$dark-danger-text: #fff;
+
+/* Status Colors */
+$dark-success: #10b981;
+$dark-success-text: #fff;
+$dark-warning: #f59e0b;
+$dark-warning-text: #fbbf24;
+$dark-warning-bg: #78350f;
+$dark-warning-border: #b45309;
+$dark-info: #3b82f6;
+$dark-info-text: #fff;
 
 /* Borders / Inputs */
 $dark-border: #2a2f38;
@@ -123,6 +147,7 @@ $font-sans: 'Inter', system-ui, sans-serif;
 $font-mono: 'Geist Mono', 'Geist Mono Fallback';
 
 /* Font Size */
+$fs-xs: 0.75rem;
 $fs-sm: 0.875rem;
 $fs-md: 1rem;
 $fs-lg: 1.125rem;
@@ -130,6 +155,8 @@ $fs-lg: 1.125rem;
 /* Font Weight */
 $fw-regular: 400;
 $fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
 
 /* Radius */
 $radius-sm: 0.25rem;

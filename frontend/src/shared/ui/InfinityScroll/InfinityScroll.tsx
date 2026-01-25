@@ -10,8 +10,9 @@ export function InfinityScroll<T>({
   fetchPage,
   renderItem,
   itemsPerPage = 5,
-  buttonLabel = 'Load More',
+  buttonLabel = 'See more',
   gridColumns,
+  endMessage,
 }: InfinityScrollProps<T>) {
   const { items, hasMore, error, loadMore, loading } = useInfiniteScroll<T>({
     fetchPage,
@@ -60,16 +61,21 @@ export function InfinityScroll<T>({
               </div>
             ))}
           </div>
-          {items.length > 0 && (
+          {items.length > 0 && hasMore && (
             <div className={styles['load-more-wrapper']}>
               <Button
-                variant="secondary"
-                disabled={!hasMore || isLoading}
+                variant="primary"
+                size="lg"
+                disabled={isLoading}
                 onClick={throttledLoadMore}
+                className={styles['see-more-button']}
               >
-                {isLoading ? <Loader /> : hasMore ? buttonLabel : 'No more items'}
+                {isLoading ? <Loader /> : buttonLabel}
               </Button>
             </div>
+          )}
+          {items.length > 0 && !hasMore && endMessage && (
+            <p className={styles.end}>{endMessage}</p>
           )}
         </>
       )}

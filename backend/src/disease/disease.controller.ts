@@ -100,11 +100,7 @@ export class DiseaseController extends BaseController {
 
       const diseases = await this.diseaseService.findAll({ pagination, filter, language });
 
-      if (!diseases.length) {
-        res.status(200).json({ message: msg.DISEASES_NOT_FOUND });
-        return;
-      }
-
+      // Always return array (even empty) for consistent API response
       res.status(200).json(diseases);
     } catch (error) {
       Sentry.captureException(error);

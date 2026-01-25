@@ -14,7 +14,6 @@
 }
 
 .error {
-  color: var(--theme-danger);
   text-align: center;
   padding: 1rem;
 
@@ -24,13 +23,21 @@
 .end {
   text-align: center;
   padding: 1rem;
-  color: var(--theme-text-secondary);
 
   @include typography($size: $fs-sm, $weight: $fw-regular);
 }
 
 .load-more-wrapper {
   @include flex(row, center, center);
+
+  margin-top: 2rem;
+  padding: 1rem 0;
+}
+
+.see-more-button {
+  min-width: 10rem;
+  padding: 0.75rem 2rem;
+  border-radius: $radius-lg;
 }
 
 .loader {
@@ -44,5 +51,27 @@
 @media (max-width: $breakpoint-md) {
   .last-element {
     padding-bottom: 4rem;
+  }
+}
+
+/* Light Theme */
+:global(html.theme-light) {
+  .error {
+    color: $light-danger;
+  }
+
+  .end {
+    color: $light-muted-text;
+  }
+}
+
+/* Dark Theme */
+:global(html.theme-dark) {
+  .error {
+    color: $dark-danger;
+  }
+
+  .end {
+    color: $dark-muted-text;
   }
 }

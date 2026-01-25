@@ -10,7 +10,5 @@ export interface SourcesState {
   items: Source[];
   loading: boolean;
   error: string | null;
-  skip?: number;
-  take?: number;
-  search?: string;
+  hasMore: boolean;
 }

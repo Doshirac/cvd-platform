@@ -1,22 +1,29 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectDiseases, selectSymptoms, selectRiskFactors } from '@shared/api/diseases/diseasesSlice';
-import type { RootState } from '@app/providers/StoreProvider/config/store';
+import { fetchDiseases } from '@shared/api/diseases/diseasesThunks';
+import type { RootState, AppDispatch } from '@app/providers/StoreProvider/config/store';
 import type { Disease } from '@shared/api/diseases/diseases.types';
 import { SearchBar } from '@shared/ui/SearchBar';
 import { FilterPanel } from '@shared/ui/FilterPanel';
+import { FilterModal } from '@shared/ui/FilterModal'
 import { AlphabetPanel } from '@shared/ui/AlphabetPanel';
 import { DiseaseCard } from '@shared/ui/DiseaseCard';
 import { InfinityScroll } from '@shared/ui/InfinityScroll';
 import { Loader } from '@shared/ui/Loader';
+import { Icon } from '@shared/ui/Icon';
 import { ResourceNotFound } from '@shared/ui/ResourceNotFound';
+import { useBreakpoint, mobileBreakpoint } from '@shared/hooks';
 import styles from './MainPage.module.scss';
 
-const itemsPerPage = 12;
+const itemsPerPage = 6;
 
 export function MainPage() {
   const { t, i18n } = useTranslation();
+  const dispatch = useDispatch<AppDispatch>();
+  const breakpoint = useBreakpoint();
+  const isMobile = breakpoint === mobileBreakpoint;
   
   const diseases = useSelector(selectDiseases);
   const symptoms = useSelector(selectSymptoms);
@@ -27,6 +34,7 @@ export function MainPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filterValues, setFilterValues] = useState<Record<string, string[]>>({});
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
 
   const filterGroups = useMemo(() => [
     {
@@ -41,29 +49,40 @@ export function MainPage() {
     },
   ], [t, symptoms, riskFactors]);
 
-  const filteredDiseases = useMemo(() => {
-    let result = diseases;
+  // Track if initial data was loaded
+  const isInitialMount = useRef(true);
+
+  // Fetch data when search/filters change (SearchBar already has debounce)
+  useEffect(() => {
+    // Skip initial mount to avoid duplicate fetch
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+
+    const params: Record<string, string | number> = {
+      locale: i18n.language,
+      take: 100, // Load all data for client-side pagination
+    };
 
     if (searchQuery) {
-      const query = searchQuery.toLowerCase();
-      result = result.filter(
-        (d) =>
-          d.name.toLowerCase().includes(query) ||
-          d.code.toLowerCase().includes(query)
-      );
+      params.search = searchQuery;
     }
 
     if (filterValues.symptom && filterValues.symptom.length > 0) {
-      result = result.filter((d) =>
-        d.symptoms?.some((s) => filterValues.symptom.includes(s))
-      );
+      params.symptom = filterValues.symptom[0];
     }
 
     if (filterValues.riskFactor && filterValues.riskFactor.length > 0) {
-      result = result.filter((d) =>
-        d.risks?.some((r) => filterValues.riskFactor.includes(r))
-      );
+      params.riskFactor = filterValues.riskFactor[0];
     }
+
+    dispatch(fetchDiseases(params));
+  }, [searchQuery, filterValues, dispatch, i18n.language]);
+
+  // Apply client-side letter filtering only (fast operation)
+  const filteredDiseases = useMemo(() => {
+    let result = diseases;
 
     if (selectedLetter) {
       result = result.filter((d) =>
@@ -72,13 +91,14 @@ export function MainPage() {
     }
 
     return result;
-  }, [diseases, searchQuery, filterValues, selectedLetter]);
+  }, [diseases, selectedLetter]);
 
   const handleClearFilters = useCallback(() => {
     setSearchQuery('');
     setFilterValues({});
     setSelectedLetter(null);
-  }, []);
+    dispatch(fetchDiseases({ locale: i18n.language, take: 100 }));
+  }, [dispatch, i18n.language]);
 
   const handleSearchChange = useCallback((value: string) => {
     setSearchQuery(value);
@@ -117,7 +137,10 @@ export function MainPage() {
     );
   }
 
-  if (error && diseases.length === 0) {
+  // Only show error page when there's a real error (not just empty results)
+  const isRealError = error && !error.toLowerCase().includes('not found') && !error.toLowerCase().includes('no diseases');
+  
+  if (isRealError && diseases.length === 0) {
     return (
       <div className={styles.error}>
         <ResourceNotFound
@@ -145,14 +168,38 @@ export function MainPage() {
             placeholder={t('mainPage.searchPlaceholder')}
             className={styles.search}
           />
+          {isMobile && (
+            <button
+              className={styles['filter-button']}
+              onClick={() => setIsFilterModalOpen(true)}
+              aria-label={t('mainPage.openFilters')}
+            >
+              <Icon size="medium" color="primary" name="FILTER" />
+            </button>
+          )}
         </div>
 
-        <FilterPanel
-          filterGroups={filterGroups}
-          selectedValues={filterValues}
-          onFilterChange={handleFilterChange}
-          onReset={handleClearFilters}
-        />
+        {!isMobile && (
+          <FilterPanel
+            filterGroups={filterGroups}
+            selectedValues={filterValues}
+            onFilterChange={handleFilterChange}
+            onReset={handleClearFilters}
+          />
+        )}
+
+        {isMobile && (
+          <FilterModal
+            isOpen={isFilterModalOpen}
+            onClose={() => setIsFilterModalOpen(false)}
+            title={t('mainPage.applyFilters')}
+            subtitle={t('mainPage.filterSubtitle')}
+            filterGroups={filterGroups}
+            selectedValues={filterValues}
+            onFilterChange={handleFilterChange}
+            onReset={handleClearFilters}
+          />
+        )}
 
         <div className={styles['alphabet-wrapper']}>
           <AlphabetPanel
@@ -180,7 +227,7 @@ export function MainPage() {
           <div className={styles['no-results']}>
             <ResourceNotFound
               title={t('mainPage.noDiseasesFound')}
-              message={t('mainPage.clearFilters')}
+              message={t('mainPage.noDiseasesFoundMessage')}
             />
           </div>
         ) : (
@@ -189,7 +236,8 @@ export function MainPage() {
             renderItem={renderDisease}
             itemsPerPage={itemsPerPage}
             gridColumns={320}
-            buttonLabel={t('common.loadMore')}
+            buttonLabel={t('common.seeMore')}
+            endMessage={t('common.noMoreItems')}
           />
         )}
       </section>

@@ -39,7 +39,8 @@ export const TooltipBadge = ({
   }, []);
 
   const displayText = fullName ? code : code;
-  const tooltipText = tooltip || (fullName ? `${code} - ${fullName}` : code);
+  const tooltipText = tooltip || fullName || code;
+  const ariaLabel = tooltip ? `${code}: ${tooltip}` : (fullName ? `${code}: ${fullName}` : code);
 
   return (
     <div className={styles.container}>
@@ -50,7 +51,7 @@ export const TooltipBadge = ({
         onClick={handleClick}
         role="button"
         tabIndex={0}
-        aria-label={tooltipText}
+        aria-label={ariaLabel}
       >
         {displayText}
       </div>

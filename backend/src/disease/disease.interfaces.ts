@@ -23,14 +23,25 @@ export interface DiseaseFilterParams {
   letter?: string;
 }
 
+export interface DiseaseSymptomDTO {
+  code: string | null;
+  name: string;
+  priority: 'primary' | 'secondary';
+}
+
+export interface DiseaseRiskDTO {
+  code: string | null;
+  name: string;
+}
+
 export interface Disease {
   id: number;
   code: string;
   name: string;
   description?: string;
   prevention?: string;
-  symptoms: string[];
-  risks: string[];
+  symptoms: DiseaseSymptomDTO[];
+  risks: DiseaseRiskDTO[];
 }
 
 export interface RiskFactorDTO {

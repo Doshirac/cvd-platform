@@ -55,7 +55,7 @@ export default function Header() {
                       classNames(styles['nav-link'], { [styles.active]: isActive })
                     }
                   >
-                    <Icon name={item.icon} size="small" ariaLabel={t(item.labelKey)} />
+                    <Icon name={item.icon} size="small" ariaLabel={t(item.labelKey)} color="inherit" />
                     {t(item.labelKey)}
                   </NavLink>
                 ))}
@@ -75,7 +75,7 @@ export default function Header() {
                 onClick={toggleMenu}
                 aria-label={t('header.toggleMenu')}
               >
-                <Icon name="MENU" size="medium" ariaLabel="Menu icon" />
+                <Icon name="MENU" size="medium" ariaLabel="Menu icon" color="inherit" />
               </Button>
             )}
           </div>
@@ -126,7 +126,7 @@ export default function Header() {
                   }
                   onClick={toggleMenu}
                 >
-                  <Icon name={item.icon} size="small" ariaLabel={t(item.labelKey)} />
+                  <Icon name={item.icon} size="small" ariaLabel={t(item.labelKey)} color="inherit" />
                   <span>{t(item.labelKey)}</span>
                 </NavLink>
               ))}

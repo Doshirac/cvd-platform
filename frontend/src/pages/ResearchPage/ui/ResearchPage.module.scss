@@ -43,15 +43,15 @@
 .hero-icon {
   @include flex(row, center, center);
 
-  width: 6rem;
-  height: 6rem;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
-  background: var(--primary-bg);
-  color: var(--primary);
+  background-color: $light-muted-bg;
+  color: $light-muted-text;
 
-  svg {
-    width: 3rem;
-    height: 3rem;
+  :global(html.theme-dark) & {
+    background-color: $dark-muted-bg;
+    color: $dark-muted-text;
   }
 }
 
@@ -88,51 +88,6 @@
   }
 }
 
-.controls {
-  @include flex(column, flex-start, stretch);
-
-  gap: 1.5rem;
-  max-width: 80rem;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.search {
-  max-width: 28rem;
-}
-
-.tabs {
-  width: 100%;
-}
-
-.count {
-  @include typography($font-sans, $fs-sm, $fw-regular);
-
-  color: var(--muted-text);
-  max-width: 80rem;
-  margin: 0 auto;
-  width: 100%;
-  padding: 0 0 1rem;
-
-  @include responsive(md) {
-    font-size: $fs-md;
-  }
-}
-
-.count-label {
-  color: var(--muted-text);
-}
-
-.count-value {
-  @include typography($font-sans, $fs-sm, $fw-medium);
-
-  color: var(--text);
-
-  @include responsive(md) {
-    font-size: $fs-md;
-  }
-}
-
 .content {
   @include flex(column, flex-start, stretch);
 
@@ -149,14 +104,14 @@
   width: 100%;
 }
 
-:global([data-theme='light']) {
+:global(html.theme-light) {
   .page {
     --text: #{$light-text};
     --muted-text: #{$light-muted-text};
   }
 }
 
-:global([data-theme='dark']) {
+:global(html.theme-dark) {
   .page {
     --text: #{$dark-text};
     --muted-text: #{$dark-muted-text};

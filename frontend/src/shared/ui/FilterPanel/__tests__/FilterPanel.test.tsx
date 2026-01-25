@@ -54,10 +54,10 @@ describe('<FilterPanel /> component', () => {
       />
     );
     
-    expect(screen.getByLabelText('Chest Pain')).toBeInTheDocument();
-    expect(screen.getByLabelText('Shortness of Breath')).toBeInTheDocument();
-    expect(screen.getByLabelText('Smoking')).toBeInTheDocument();
-    expect(screen.getByLabelText('High Blood Pressure')).toBeInTheDocument();
+    expect(screen.getByLabelText(/Chest Pain/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Shortness of Breath/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Smoking/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/High Blood Pressure/i)).toBeInTheDocument();
   });
 
   test('toggles filter group visibility when clicked', () => {
@@ -72,19 +72,19 @@ describe('<FilterPanel /> component', () => {
     const symptomsButton = screen.getByRole('button', { name: /symptoms/i });
     
     // Options should be visible initially
-    expect(screen.getByLabelText('Chest Pain')).toBeInTheDocument();
+    expect(screen.getByLabelText(/Chest Pain/i)).toBeInTheDocument();
     
     // Click to collapse
     fireEvent.click(symptomsButton);
     
     // Options should be hidden
-    expect(screen.queryByLabelText('Chest Pain')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText(/Chest Pain/i)).not.toBeInTheDocument();
     
     // Click to expand again
     fireEvent.click(symptomsButton);
     
     // Options should be visible again
-    expect(screen.getByLabelText('Chest Pain')).toBeInTheDocument();
+    expect(screen.getByLabelText(/Chest Pain/i)).toBeInTheDocument();
   });
 
   test('calls onFilterChange when checkbox is toggled', () => {
@@ -97,7 +97,7 @@ describe('<FilterPanel /> component', () => {
       />
     );
     
-    const chestPainCheckbox = screen.getByLabelText('Chest Pain');
+    const chestPainCheckbox = screen.getByLabelText(/Chest Pain/i);
     fireEvent.click(chestPainCheckbox);
     
     expect(mockOnFilterChange).toHaveBeenCalledWith('symptoms', ['S001']);
@@ -113,7 +113,7 @@ describe('<FilterPanel /> component', () => {
       />
     );
     
-    const chestPainCheckbox = screen.getByLabelText('Chest Pain');
+    const chestPainCheckbox = screen.getByLabelText(/Chest Pain/i);
     fireEvent.click(chestPainCheckbox);
     
     expect(mockOnFilterChange).toHaveBeenCalledWith('symptoms', []);
@@ -129,7 +129,7 @@ describe('<FilterPanel /> component', () => {
       />
     );
     
-    const fatigueCheckbox = screen.getByLabelText('Fatigue');
+    const fatigueCheckbox = screen.getByLabelText(/Fatigue/i);
     fireEvent.click(fatigueCheckbox);
     
     expect(mockOnFilterChange).toHaveBeenCalledWith('symptoms', ['S001', 'S003']);
@@ -233,10 +233,10 @@ describe('<FilterPanel /> component', () => {
       />
     );
     
-    const chestPainCheckbox = screen.getByLabelText('Chest Pain') as HTMLInputElement;
-    const fatigueCheckbox = screen.getByLabelText('Fatigue') as HTMLInputElement;
-    const breathCheckbox = screen.getByLabelText('Shortness of Breath') as HTMLInputElement;
-    const highBPCheckbox = screen.getByLabelText('High Blood Pressure') as HTMLInputElement;
+    const chestPainCheckbox = screen.getByLabelText(/Chest Pain/i) as HTMLInputElement;
+    const fatigueCheckbox = screen.getByLabelText(/Fatigue/i) as HTMLInputElement;
+    const breathCheckbox = screen.getByLabelText(/Shortness of Breath/i) as HTMLInputElement;
+    const highBPCheckbox = screen.getByLabelText(/High Blood Pressure/i) as HTMLInputElement;
     
     expect(chestPainCheckbox.checked).toBe(true);
     expect(fatigueCheckbox.checked).toBe(true);

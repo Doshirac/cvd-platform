@@ -10,6 +10,7 @@
     "save": "Save",
     "cancel": "Cancel",
     "loadMore": "Load More",
+    "seeMore": "See more",
     "noMoreItems": "No more items",
     "noResults": "No results found",
     "goBack": "Go Back",
@@ -32,15 +33,21 @@
     "title": "Cardiovascular Diseases",
     "subtitle": "Explore comprehensive information about cardiovascular conditions",
     "searchPlaceholder": "Search diseases by name or code...",
-    "filterBySymptom": "Filter by Symptom",
-    "filterByRiskFactor": "Filter by Risk Factor",
+    "filterBySymptom": "Filter by Symptoms",
+    "filterByRiskFactor": "Filter by Risk Factors",
     "filterByLetter": "Filter by Letter",
     "allSymptoms": "All Symptoms",
     "allRiskFactors": "All Risk Factors",
-    "diseasesFound": "{{count}} disease found",
+    "showing": "Showing",
+    "diseaseFound": "disease found",
+    "diseasesFound": "diseases found",
     "diseasesFound_other": "{{count}} diseases found",
-    "noDiseasesFound": "No diseases match your search criteria",
-    "clearFilters": "Clear all filters"
+    "noDiseasesFound": "No diseases found",
+    "noDiseasesFoundMessage": "Try adjusting your search or filters",
+    "clearFilters": "Clear all filters",
+    "openFilters": "Open filters",
+    "applyFilters": "Apply Filters",
+    "filterSubtitle": "Try adjusting your search or filters"
   },
   "diseaseCard": {
     "code": "Code",
@@ -54,13 +61,17 @@
     "showLess": "Show less"
   },
   "sourcesPage": {
-    "title": "Medical Sources",
-    "subtitle": "Trusted medical resources and references",
-    "searchPlaceholder": "Search sources by name...",
-    "sourcesFound": "{{count}} source found",
-    "sourcesFound_other": "{{count}} sources found",
-    "noSourcesFound": "No sources match your search criteria",
+    "title": "Sources & Resources",
+    "subtitle": "Explore authoritative cardiovascular disease prevention resources, clinical guidelines, and research publications",
+    "searchPlaceholder": "Search by disease name, code, symptoms, or risk factors...",
+    "showing": "Showing",
+    "of": "of",
+    "sourceFound": "resource found",
+    "sourcesFound": "resources found",
+    "noSourcesFound": "No sources found",
+    "noSourcesFoundMessage": "Try adjusting your search or filters",
     "visitSource": "Visit Source",
+    "viewResource": "View Resource",
     "externalLink": "Opens in new tab"
   },
   "researchPage": {
@@ -98,6 +109,24 @@
     "browseSourcesLink": "Browse Medical Sources",
     "viewResearchLink": "View Research Gallery"
   },
+  "diseasePage": {
+    "backToDiseases": "Back to Diseases",
+    "overview": "Overview",
+    "symptoms": "Symptoms",
+    "symptomsDesc": "Common signs and symptoms of this condition",
+    "primarySymptoms": "Primary Symptoms",
+    "primarySymptomsDesc": "Most common and characteristic symptoms of this condition",
+    "secondarySymptoms": "Secondary Symptoms",
+    "secondarySymptomsDesc": "Less common symptoms that may also occur",
+    "riskFactors": "Risk Factors",
+    "riskFactorsDesc": "Factors that may increase the likelihood of developing this condition",
+    "prevention": "Prevention",
+    "preventionDesc": "Recommended measures to help prevent this condition",
+    "description": "Description",
+    "noData": "No data available",
+    "notFound": "Disease Not Found",
+    "notFoundMessage": "The disease you are looking for does not exist or has been removed."
+  },
   "alphabet": {
     "filterByLetter": "Filter by letter {{letter}}"
   },
@@ -110,5 +139,9 @@
     "en": "English",
     "ru": "Русский",
     "select": "Select language"
+  },
+  "footer": {
+    "disclaimer": "This platform is for educational and informational purposes only. It is not intended as a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider with any questions regarding a medical condition.",
+    "rights": "All rights reserved."
   }
 }

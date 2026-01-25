@@ -1,0 +1,309 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.page {
+  @include flex(column, flex-start, stretch);
+
+  gap: 1.5rem;
+  padding: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+
+  @include responsive(md) {
+    padding: 2rem 1.5rem;
+    gap: 2rem;
+  }
+
+  @include responsive(lg) {
+    padding: 3rem 2rem;
+  }
+
+  @include responsive(xs) {
+    padding: 1rem;
+    gap: 1rem;
+  }
+}
+
+.backWrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.backButton {
+  @include flex(row, center, center);
+
+  gap: 0.5rem;
+  font-size: $fs-md;
+}
+
+.article {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.header {
+  @include flex(column, flex-start, flex-start);
+
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  @include responsive(md) {
+    margin-bottom: 2rem;
+  }
+}
+
+.codeBadge {
+  background: var(--primary-bg);
+  color: var(--primary);
+  font-size: $fs-sm;
+  padding: 0.25rem 0.75rem;
+
+  @include responsive(md) {
+    font-size: $fs-md;
+  }
+}
+
+.title {
+  @include typography($font-sans, 1.875rem, $fw-bold);
+
+  color: var(--text);
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+
+  @include responsive(md) {
+    font-size: 2.5rem;
+  }
+
+  @include responsive(lg) {
+    font-size: 3rem;
+  }
+
+  @include responsive(xs) {
+    font-size: 1.5rem;
+  }
+}
+
+.description {
+  @include typography($font-sans, $fs-md, $fw-regular);
+
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.7;
+
+  @include responsive(md) {
+    font-size: $fs-lg;
+  }
+}
+
+.separator {
+  height: 1px;
+  background: var(--border);
+  margin: 1.5rem 0;
+
+  @include responsive(md) {
+    margin: 2rem 0;
+  }
+}
+
+.tabs {
+  width: 100%;
+}
+
+/* Cards */
+.overviewGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+
+  @include responsive(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include responsive(md) {
+    gap: 1.5rem;
+  }
+}
+
+.symptomsContainer {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+
+  @include responsive(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include responsive(md) {
+    gap: 1.5rem;
+  }
+}
+
+.card {
+  @include flex(column, flex-start, stretch);
+
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  overflow: hidden;
+}
+
+.cardHeader {
+  @include flex(column, flex-start, stretch);
+
+  gap: 0.25rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+
+  @include responsive(md) {
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+.cardTitle {
+  @include typography($font-sans, $fs-lg, $fw-semibold);
+
+  color: var(--text);
+  margin: 0;
+
+  @include responsive(md) {
+    font-size: 1.25rem;
+  }
+}
+
+.cardDescription {
+  @include typography($font-sans, $fs-sm, $fw-regular);
+
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.cardContent {
+  padding: 1rem 1.25rem;
+  flex: 1;
+
+  @include responsive(md) {
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+.badgeList {
+  @include flex(row, flex-start, center, wrap);
+
+  gap: 0.5rem;
+}
+
+.text {
+  @include typography($font-sans, $fs-sm, $fw-regular);
+
+  color: var(--text);
+  margin: 0;
+  line-height: 1.7;
+  white-space: pre-line;
+
+  @include responsive(md) {
+    font-size: $fs-md;
+  }
+}
+
+.noData {
+  @include typography($font-sans, $fs-sm, $fw-regular);
+
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Detail Grid for individual tabs */
+.detailGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+
+  @include responsive(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.detailItem {
+  @include flex(column, flex-start, flex-start);
+
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--muted-bg);
+  border: 1px solid var(--border);
+  border-radius: $radius-md;
+}
+
+.detailItemSecondary {
+  @include flex(column, flex-start, flex-start);
+
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--secondary-bg);
+  border: 1px solid var(--secondary-border);
+  border-radius: $radius-md;
+}
+
+.detailBadge {
+  font-size: $fs-xs;
+}
+
+.detailName {
+  @include typography($font-sans, $fs-sm, $fw-semibold);
+
+  color: var(--text);
+  margin: 0;
+
+  @include responsive(md) {
+    font-size: $fs-md;
+  }
+}
+
+.emptyState {
+  @include flex(row, center, center);
+
+  padding: 2rem;
+  color: var(--text-secondary);
+}
+
+.loading,
+.error,
+.notFound {
+  @include flex(column, center, center);
+
+  min-height: 400px;
+  width: 100%;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+:global(html.theme-light) {
+  .page {
+    --text: #{$light-text};
+    --text-secondary: #{$light-muted-text};
+    --border: #{$light-border};
+    --primary: #{$light-primary};
+    --primary-bg: rgba(59, 130, 246, 0.1);
+    --card-bg: #{$light-card-bg};
+    --muted-bg: #{$light-muted-bg};
+    --secondary-bg: rgba(100, 116, 139, 0.05);
+    --secondary-border: rgba(100, 116, 139, 0.2);
+  }
+}
+
+:global(html.theme-dark) {
+  .page {
+    --text: #{$dark-text};
+    --text-secondary: #{$dark-muted-text};
+    --border: #{$dark-border};
+    --primary: #{$dark-primary};
+    --primary-bg: rgba(96, 165, 250, 0.1);
+    --card-bg: #{$dark-card-bg};
+    --muted-bg: #{$dark-muted-bg};
+    --secondary-bg: rgba(148, 163, 184, 0.05);
+    --secondary-border: rgba(148, 163, 184, 0.2);
+  }
+}

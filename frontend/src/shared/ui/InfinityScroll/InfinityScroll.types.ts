@@ -4,4 +4,5 @@ export interface InfinityScrollProps<T> {
   itemsPerPage?: number;
   buttonLabel?: string;
   gridColumns?: number;
+  endMessage?: string;
 }

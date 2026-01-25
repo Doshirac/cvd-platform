@@ -8,61 +8,61 @@
 }
 
 .label {
-  color: var(--theme-text-secondary);
+  @include typography($font-sans, $fs-sm, $fw-medium);
 }
 
 .disabled-label {
-  color: var(--theme-border);
+  opacity: 0.5;
 }
 
 .input {
+  @include typography($font-sans, $fs-md, $fw-regular);
+
   padding: 0.5rem 0.75rem;
-  border: 0.0625rem solid var(--theme-border);
-  border-radius: 0.375rem;
+  border: 0.0625rem solid var(--border);
+  border-radius: $radius-md;
   transition: all 0.2s ease;
-  background-color: var(--theme-bg-primary);
-  color: var(--theme-text-primary);
+  background-color: var(--card);
+  color: var(--foreground);
   width: 12rem;
+  min-height: 2.5rem;
 
   &:hover:not(:disabled, .error),
   &:focus:not(:disabled, .error),
   &:active:not(:disabled, .error) {
-    border-color: var(--theme-accent-primary);
-  }
-
-  &:active:not(:disabled, .error),
-  &:focus:not(:disabled, .error) {
-    color: var(--theme-text-primary);
+    border-color: var(--primary);
   }
 
   &:focus:not(:disabled, .error) {
     outline: none;
-    box-shadow: 0 0 0.375rem 0 var(--theme-accent-primary);
-  }
-
-  &:active:not(:disabled, .error) {
-    box-shadow: none;
+    box-shadow: 0 0 0 0.188rem var(--ring);
   }
 
   &.full-width {
     width: 100%;
   }
+
+  &::placeholder {
+    color: var(--muted-foreground);
+  }
 }
 
 .disabled {
-  background-color: var(--theme-bg-tertiary);
-  color: var(--theme-text-secondary);
-  border-color: var(--theme-border);
+  background-color: var(--muted);
+  color: var(--muted-foreground);
+  border-color: var(--border);
   cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .error {
-  border-color: var(--theme-danger);
-  color: var(--theme-text-primary);
+  border-color: var(--danger);
 }
 
 .helper {
-  color: var(--theme-text-secondary);
+  @include typography($font-sans, $fs-sm, $fw-regular);
+
+  color: var(--muted-foreground);
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -74,33 +74,107 @@
 }
 
 .error-helper {
-  color: var(--theme-danger);
+  color: var(--danger);
 }
 
+/* Light Theme */
+:global(html.theme-light) {
+  .label {
+    color: $light-text;
+  }
+
+  .input {
+    background-color: $light-input-bg;
+    color: $light-text;
+    border-color: $light-border;
+
+    &:hover:not(:disabled, .error),
+    &:focus:not(:disabled, .error) {
+      border-color: $light-primary;
+    }
+
+    &:focus:not(:disabled, .error) {
+      box-shadow: 0 0 0 0.188rem $light-focus;
+    }
+
+    &::placeholder {
+      color: $light-muted-text;
+    }
+  }
+
+  .disabled {
+    background-color: $light-muted-bg;
+    color: $light-muted-text;
+    border-color: $light-border;
+  }
+
+  .error {
+    border-color: $light-danger;
+  }
+
+  .helper {
+    color: $light-muted-text;
+  }
+
+  .error-helper {
+    color: $light-danger;
+  }
+}
+
+/* Dark Theme */
+:global(html.theme-dark) {
+  .label {
+    color: $dark-text;
+  }
+
+  .input {
+    background-color: $dark-input-bg;
+    color: $dark-text;
+    border-color: $dark-border;
+
+    &:hover:not(:disabled, .error),
+    &:focus:not(:disabled, .error) {
+      border-color: $dark-primary;
+    }
+
+    &:focus:not(:disabled, .error) {
+      box-shadow: 0 0 0 0.188rem $dark-focus;
+    }
+
+    &::placeholder {
+      color: $dark-muted-text;
+    }
+  }
+
+  .disabled {
+    background-color: $dark-muted-bg;
+    color: $dark-muted-text;
+    border-color: $dark-border;
+  }
+
+  .error {
+    border-color: $dark-danger;
+  }
+
+  .helper {
+    color: $dark-muted-text;
+  }
+
+  .error-helper {
+    color: $dark-danger;
+  }
+}
+
+/* Responsive */
 @include responsive(xs) {
   .input {
-    font-size: $font-size-xs;
-    width: 8rem;
+    font-size: $fs-sm;
+    width: 100%;
   }
 }
 
 @include responsive(sm) {
   .input {
-    font-size: $font-size-sm;
-    width: 10rem;
-  }
-}
-
-@include responsive(md) {
-  .input {
-    font-size: $font-size-md;
-    width: 12rem;
-  }
-}
-
-@include responsive(lg) {
-  .input {
-    font-size: $font-size-lg;
-    width: 14rem;
+    width: 100%;
   }
 }

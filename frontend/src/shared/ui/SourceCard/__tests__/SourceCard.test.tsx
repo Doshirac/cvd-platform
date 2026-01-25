@@ -64,14 +64,14 @@ describe('<SourceCard /> component', () => {
   test('renders visit source button', () => {
     render(<SourceCard source={mockSource} />);
     
-    const button = screen.getByRole('button', { name: /visit world health organization/i });
+    const button = screen.getByRole('button', { name: /viewResource/i });
     expect(button).toBeInTheDocument();
   });
 
   test('opens link in new tab when button is clicked', () => {
     render(<SourceCard source={mockSource} />);
     
-    const button = screen.getByRole('button', { name: /visit world health organization/i });
+    const button = screen.getByRole('button', { name: /viewResource/i });
     button.click();
     
     expect(mockOpen).toHaveBeenCalledWith(

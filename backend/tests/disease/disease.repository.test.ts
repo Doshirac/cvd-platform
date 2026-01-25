@@ -12,7 +12,7 @@ describe("DiseaseRepository", () => {
       language: "en",
     });
 
-    expect(res.every((d) => d.symptoms.includes("Headache"))).toBe(true);
+    expect(res.every((d) => d.symptoms.some((s) => s.name === "Headache"))).toBe(true);
   });
 
   it("filters by risk factor", async () => {
@@ -22,7 +22,7 @@ describe("DiseaseRepository", () => {
       language: "en",
     });
 
-    expect(res.every((d) => d.risks.includes("Smoking"))).toBe(true);
+    expect(res.every((d) => d.risks.some((r) => r.name === "Smoking"))).toBe(true);
   });
 
   it("search works", async () => {

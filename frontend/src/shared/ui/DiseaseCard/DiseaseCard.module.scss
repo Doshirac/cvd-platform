@@ -14,6 +14,20 @@
   transition: all 0.2s ease;
   height: 100%;
   cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &:focus {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
 }
 
 .header {
@@ -48,8 +62,8 @@
 
 .icon-container {
   position: absolute;
-  right: 1.5rem;
-  top: 3rem;
+  right: 1rem;
+  top: 3.5rem;
   transform: translateY(-50%);
 
   @include flex(row, center, center);
@@ -66,6 +80,11 @@
     right: 1rem;
     top: 2.5rem;
   }
+}
+
+.icon {
+  width: 4.5rem;
+  height: 4.5rem;
 }
 
 .content {

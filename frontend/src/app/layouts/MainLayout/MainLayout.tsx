@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import styles from './MainLayout.module.scss';
 import Header from '@shared/ui/Header/Header';
+import { Footer } from '@shared/ui/Footer';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import type { AppDispatch } from '@app/providers/StoreProvider/config/store';
@@ -16,8 +17,8 @@ export const MainLayout = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(fetchSources({}));
-    dispatch(fetchDiseases({}));
+    dispatch(fetchSources({ take: 100 }));
+    dispatch(fetchDiseases({ take: 100 }));
     dispatch(fetchRiskFactors());
     dispatch(fetchSymptoms());
   }, [dispatch]);
@@ -28,6 +29,7 @@ export const MainLayout = () => {
       <main className={styles.main}>
         <Outlet />
       </main>
+      <Footer />
       <ScrollToTop />
     </div>
   );

@@ -52,91 +52,91 @@ export class Seed implements ISeeder {
                         code: 'IHD', 
                         name: 'Ischaemic Heart Disease', 
                         description: 'Coronary atherosclerosis → decreased myocardial blood flow.', 
-                        prevention: 'Stop smoking, control BP/LDL, exercise, diet.' 
+                        prevention: 'Lifestyle modifications: Stop smoking completely, maintain healthy weight (BMI 18.5-24.9), regular aerobic exercise (150+ min/week moderate intensity). Medical management: Control blood pressure (<130/80 mmHg), optimize LDL cholesterol (<70 mg/dL for high risk), manage diabetes (HbA1c <7%). Diet: Mediterranean diet, limit saturated fats, increase fiber intake.' 
                     },
                     { 
                         code: 'AMI', 
                         name: 'Acute Myocardial Infarction', 
                         description: 'Acute coronary artery occlusion with myocardial necrosis.', 
-                        prevention: 'Aggressive risk-factor control; GDMT.' 
+                        prevention: 'Primary prevention: Aggressive cardiovascular risk factor control, aspirin for high-risk patients, statin therapy. Secondary prevention: Dual antiplatelet therapy (DAPT), beta-blockers, ACE inhibitors/ARBs, high-intensity statins. Cardiac rehabilitation program participation.' 
                     },
                     { 
                         code: 'HF', 
                         name: 'Heart Failure', 
                         description: 'Pump failure with inadequate cardiac output.', 
-                        prevention: 'Treat HTN/CAD; salt restriction; weight control.' 
+                        prevention: 'Early treatment of hypertension and coronary artery disease. Dietary sodium restriction (<2g/day). Maintain healthy weight. Limit alcohol intake. Regular monitoring of symptoms and weight. Vaccinations (influenza, pneumococcal). Avoid NSAIDs and certain diabetes medications (thiazolidinediones).' 
                     },
                     { 
                         code: 'AF', 
                         name: 'Atrial Fibrillation', 
                         description: 'Irregular supraventricular tachyarrhythmia.', 
-                        prevention: 'BP control, weight loss, limit alcohol.' 
+                        prevention: 'Blood pressure control (<130/80 mmHg). Weight management and treatment of obesity. Limit alcohol consumption. Treat obstructive sleep apnea. Regular exercise. Manage thyroid disorders. Control diabetes.' 
                     },
                     { 
                         code: 'STROKE', 
                         name: 'Stroke (Ischaemic)', 
                         description: 'Cerebral ischaemia → focal neurological deficit.', 
-                        prevention: 'BP control, AF anticoagulation, statins, no smoking.' 
+                        prevention: 'Blood pressure control is paramount (<130/80 mmHg). Anticoagulation for atrial fibrillation (CHA2DS2-VASc guided). Statin therapy for vascular protection. Smoking cessation. Diabetes management. Carotid intervention for significant stenosis. Healthy diet and regular exercise.' 
                     },
                     { 
                         code: 'PAD', 
                         name: 'Peripheral Artery Disease', 
                         description: 'Atherosclerosis of peripheral arteries; claudication.', 
-                        prevention: 'Smoking cessation, statins, antiplatelets, walking.' 
+                        prevention: 'Smoking cessation is the most important intervention. Statin therapy regardless of cholesterol levels. Antiplatelet therapy (aspirin or clopidogrel). Supervised exercise therapy (walking programs). Blood pressure and diabetes control. Foot care education.' 
                     },
                     { 
                         code: 'HHD', 
                         name: 'Hypertensive Heart Disease', 
                         description: 'Cardiac changes from chronic hypertension.', 
-                        prevention: 'Tight BP control; lifestyle.' 
+                        prevention: 'Strict blood pressure control (<130/80 mmHg). Lifestyle modifications: DASH diet, sodium restriction, weight loss, regular exercise, limited alcohol. Medication adherence. Regular echocardiographic monitoring for LVH regression.' 
                     },
                     { 
                         code: 'HCM', 
                         name: 'Hypertrophic Cardiomyopathy', 
                         description: 'Genetic LV hypertrophy; possible LVOT obstruction.', 
-                        prevention: 'Family screening, SCD risk stratification.' 
+                        prevention: 'Genetic counseling and family screening with ECG and echocardiography. SCD risk stratification using validated calculators. ICD implantation for high-risk patients. Avoid dehydration and intense competitive sports. Annual follow-up with HCM specialists.' 
                     },
                     { 
                         code: 'DCM', 
                         name: 'Dilated Cardiomyopathy', 
                         description: 'LV dilation with systolic dysfunction.', 
-                        prevention: 'Avoid alcohol/toxins; treat causes.' 
+                        prevention: 'Avoid excessive alcohol consumption. Genetic testing and family screening when appropriate. Early treatment of underlying causes (viral myocarditis, thyroid disorders). Avoid cardiotoxic drugs. Guideline-directed medical therapy initiation.' 
                     },
                     { 
                         code: 'VHD', 
                         name: 'Valvular Heart Disease', 
                         description: 'Valve stenosis/regurgitation (AS, MR, etc.).', 
-                        prevention: 'IE prevention; treat rheumatic disease early.' 
+                        prevention: 'Prevention of rheumatic heart disease with prompt streptococcal pharyngitis treatment. Infective endocarditis prophylaxis in high-risk patients. Regular dental care. Monitoring of known mild valve disease. Blood pressure control to prevent further valve damage.' 
                     },
                     { 
                         code: 'MYO', 
                         name: 'Myocarditis', 
                         description: 'Inflammation of myocardium (often viral/immune).', 
-                        prevention: 'Vaccination; infection prevention; rest in acute phase.' 
+                        prevention: 'Vaccination against preventable viral infections (influenza, COVID-19). Avoid intense physical activity during viral illnesses. Prompt treatment of infections. Avoid known cardiotoxic substances. Rest during acute illness phase.' 
                     },
                     { 
                         code: 'PERI', 
                         name: 'Pericarditis', 
                         description: 'Inflammation of pericardium with pleuritic chest pain.', 
-                        prevention: 'Treat triggers; avoid exertion during acute phase.' 
+                        prevention: 'Treatment of underlying infections and autoimmune conditions. Avoid strenuous exercise during acute phase and for 3 months after. Complete course of anti-inflammatory treatment. Colchicine for recurrence prevention.' 
                     },
                     { 
                         code: 'ENDO', 
                         name: 'Infective Endocarditis', 
                         description: 'Endocardial/valvular infection by microorganisms.', 
-                        prevention: 'Dental hygiene; targeted prophylaxis in high risk.' 
+                        prevention: 'Excellent dental hygiene with regular dental visits. Antibiotic prophylaxis before dental procedures in highest-risk patients only (prosthetic valves, previous IE, certain congenital heart disease). Avoid IV drug use. Prompt treatment of skin infections.' 
                     },
                     { 
                         code: 'PE', 
                         name: 'Pulmonary Embolism', 
                         description: 'Pulmonary artery thromboembolism.', 
-                        prevention: 'VTE prophylaxis; early mobilization.' 
+                        prevention: 'VTE prophylaxis in hospitalized patients (pharmacological and/or mechanical). Early mobilization after surgery. Compression stockings for long travel. Anticoagulation for high-risk patients. Weight management. Smoking cessation.' 
                     },
                     { 
                         code: 'DVT', 
                         name: 'Deep Vein Thrombosis', 
                         description: 'Thrombus in deep veins (often legs).', 
-                        prevention: 'VTE prophylaxis; hydration; movement.' 
+                        prevention: 'VTE prophylaxis during hospitalization and after surgery. Avoid prolonged immobility. Adequate hydration. Compression stockings for long flights. Early ambulation. Consider anticoagulation for high-risk patients.' 
                     },
                 ],
             });
@@ -144,81 +144,34 @@ export class Seed implements ISeeder {
             await this.prisma.symptom.createMany({
                 skipDuplicates: true,
                 data: [
-                    {
-                        code: "CP",
-                        term: "Chest pain",
-                        category: "symptom",
-                    },
-                    {
-                        code: "SOB",
-                        term: "Dyspnea",
-                        category: "symptom",
-                    },
-                    {
-                        code: "ORTHO",
-                        term: "Orthopnea",
-                        category: "symptom",
-                    },
-                    {
-                        code: "PND",
-                        term: "Paroxysmal nocturnal dyspnea",
-                        category: "symptom",
-                    },
-                    {
-                        code: "PALP",
-                        term: "Palpitations",
-                        category: "symptom",
-                    },
-                    {
-                        code: "SYNC",
-                        term: "Syncope",
-                        category: "symptom",
-                    },
-                    {
-                        code: "CLAUD",
-                        term: "Claudication",
-                        category: "symptom",
-                    },
-                    {
-                        code: "LEG_SWELL",
-                        term: "Leg swelling",
-                        category: "sign",
-                    },
-                    {
-                        code: "PL_CP",
-                        term: "Pleuritic chest pain",
-                        category: "symptom",
-                    },
-                    {
-                        code: "UNI_WEAK",
-                        term: "Unilateral weakness",
-                        category: "sign",
-                    },
-                    {
-                        code: "APH",
-                        term: "Aphasia",
-                        category: "sign",
-                    },
-                    {
-                        code: "FEVER",
-                        term: "Fever",
-                        category: "sign",
-                    },
-                    {
-                        code: "MURMUR",
-                        term: "New murmur",
-                        category: "sign",
-                    },
-                    {
-                        code: "PERI_RUB",
-                        term: "Pericardial rub",
-                        category: "sign",
-                    },
-                    {
-                        code: "LOW_EX_TOL",
-                        term: "Reduced exercise tolerance",
-                        category: "symptom",
-                    },
+                    { code: "CP", term: "Chest pain", category: "symptom" },
+                    { code: "SOB", term: "Dyspnea", category: "symptom" },
+                    { code: "ORTHO", term: "Orthopnea", category: "symptom" },
+                    { code: "PND", term: "Paroxysmal nocturnal dyspnea", category: "symptom" },
+                    { code: "PALP", term: "Palpitations", category: "symptom" },
+                    { code: "SYNC", term: "Syncope", category: "symptom" },
+                    { code: "CLAUD", term: "Claudication", category: "symptom" },
+                    { code: "LEG_SWELL", term: "Leg swelling", category: "sign" },
+                    { code: "PL_CP", term: "Pleuritic chest pain", category: "symptom" },
+                    { code: "UNI_WEAK", term: "Unilateral weakness", category: "sign" },
+                    { code: "APH", term: "Aphasia", category: "sign" },
+                    { code: "FEVER", term: "Fever", category: "sign" },
+                    { code: "MURMUR", term: "New murmur", category: "sign" },
+                    { code: "PERI_RUB", term: "Pericardial rub", category: "sign" },
+                    { code: "LOW_EX", term: "Reduced exercise tolerance", category: "symptom" },
+                    { code: "FATIGUE", term: "Fatigue", category: "symptom" },
+                    { code: "DIZZY", term: "Dizziness", category: "symptom" },
+                    { code: "NAUSEA", term: "Nausea", category: "symptom" },
+                    { code: "DIAPHOR", term: "Diaphoresis", category: "sign" },
+                    { code: "CYANOSIS", term: "Cyanosis", category: "sign" },
+                    { code: "JVD", term: "Jugular venous distension", category: "sign" },
+                    { code: "RALES", term: "Pulmonary rales", category: "sign" },
+                    { code: "HEPATO", term: "Hepatomegaly", category: "sign" },
+                    { code: "COUGH", term: "Cough", category: "symptom" },
+                    { code: "HEMOPT", term: "Hemoptysis", category: "symptom" },
+                    { code: "WEIGHT_G", term: "Weight gain", category: "sign" },
+                    { code: "ANOREX", term: "Anorexia", category: "symptom" },
+                    { code: "CHEST_TI", term: "Chest tightness", category: "symptom" },
                 ],
             });
 
@@ -303,6 +256,74 @@ export class Seed implements ISeeder {
                         name: 'WHO', 
                         link: 'https://www.who.int/data' 
                     },
+                    { 
+                        name: 'American Heart Association', 
+                        link: 'https://www.heart.org/en/health-topics' 
+                    },
+                    { 
+                        name: 'European Society of Cardiology', 
+                        link: 'https://www.escardio.org/Guidelines' 
+                    },
+                    { 
+                        name: 'NCBI PubMed', 
+                        link: 'https://pubmed.ncbi.nlm.nih.gov/' 
+                    },
+                    { 
+                        name: 'ClinicalTrials.gov', 
+                        link: 'https://clinicaltrials.gov/' 
+                    },
+                    { 
+                        name: 'British Heart Foundation', 
+                        link: 'https://www.bhf.org.uk/informationsupport' 
+                    },
+                    { 
+                        name: 'Mayo Clinic', 
+                        link: 'https://www.mayoclinic.org/diseases-conditions' 
+                    },
+                    { 
+                        name: 'Cleveland Clinic', 
+                        link: 'https://my.clevelandclinic.org/health' 
+                    },
+                    { 
+                        name: 'UpToDate', 
+                        link: 'https://www.uptodate.com/' 
+                    },
+                    { 
+                        name: 'Cochrane Library', 
+                        link: 'https://www.cochranelibrary.com/' 
+                    },
+                    { 
+                        name: 'National Heart, Lung, and Blood Institute', 
+                        link: 'https://www.nhlbi.nih.gov/' 
+                    },
+                    { 
+                        name: 'Heart Rhythm Society', 
+                        link: 'https://www.hrsonline.org/' 
+                    },
+                    { 
+                        name: 'Society for Cardiovascular Angiography', 
+                        link: 'https://scai.org/' 
+                    },
+                    { 
+                        name: 'American College of Cardiology', 
+                        link: 'https://www.acc.org/' 
+                    },
+                    { 
+                        name: 'Circulation Journal', 
+                        link: 'https://www.ahajournals.org/journal/circ' 
+                    },
+                    { 
+                        name: 'JACC Journals', 
+                        link: 'https://www.jacc.org/' 
+                    },
+                    { 
+                        name: 'European Heart Journal', 
+                        link: 'https://academic.oup.com/eurheartj' 
+                    },
+                    { 
+                        name: 'Heart Foundation Australia', 
+                        link: 'https://www.heartfoundation.org.au/' 
+                    },
                 ],
             });
 
@@ -323,56 +344,110 @@ export class Seed implements ISeeder {
             );
 
             const diseaseSymptomsData = [
-                // IHD / AMI
+                // IHD - Ischaemic Heart Disease
                 { diseaseId: D['IHD'], symptomId: S['Chest pain'], priority: SymptomPriority.primary, typicality: Typicality.typical },
-                { diseaseId: D['IHD'], symptomId: S['Dyspnea'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
-                { diseaseId: D['AMI'], symptomId: S['Chest pain'], priority: SymptomPriority.primary, typicality: Typicality.typical },
-                { diseaseId: D['AMI'], symptomId: S['Syncope'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
+                { diseaseId: D['IHD'], symptomId: S['Dyspnea'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['IHD'], symptomId: S['Reduced exercise tolerance'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+                { diseaseId: D['IHD'], symptomId: S['Fatigue'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
+                { diseaseId: D['IHD'], symptomId: S['Diaphoresis'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
 
-                // HF
+                // AMI - Acute Myocardial Infarction
+                { diseaseId: D['AMI'], symptomId: S['Chest pain'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['AMI'], symptomId: S['Diaphoresis'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['AMI'], symptomId: S['Dyspnea'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['AMI'], symptomId: S['Nausea'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+                { diseaseId: D['AMI'], symptomId: S['Syncope'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
+                { diseaseId: D['AMI'], symptomId: S['Palpitations'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
+
+                // HF - Heart Failure
                 { diseaseId: D['HF'], symptomId: S['Dyspnea'], priority: SymptomPriority.primary, typicality: Typicality.typical },
-                { diseaseId: D['HF'], symptomId: S['Orthopnea'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+                { diseaseId: D['HF'], symptomId: S['Orthopnea'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['HF'], symptomId: S['Leg swelling'], priority: SymptomPriority.primary, typicality: Typicality.typical },
                 { diseaseId: D['HF'], symptomId: S['Paroxysmal nocturnal dyspnea'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
                 { diseaseId: D['HF'], symptomId: S['Reduced exercise tolerance'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+                { diseaseId: D['HF'], symptomId: S['Fatigue'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+                { diseaseId: D['HF'], symptomId: S['Jugular venous distension'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+                { diseaseId: D['HF'], symptomId: S['Pulmonary rales'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+                { diseaseId: D['HF'], symptomId: S['Weight gain'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
 
-                // AF
+                // AF - Atrial Fibrillation
                 { diseaseId: D['AF'], symptomId: S['Palpitations'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['AF'], symptomId: S['Dyspnea'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['AF'], symptomId: S['Fatigue'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+                { diseaseId: D['AF'], symptomId: S['Dizziness'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
                 { diseaseId: D['AF'], symptomId: S['Syncope'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
+                { diseaseId: D['AF'], symptomId: S['Chest tightness'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
 
-                // STROKE
+                // STROKE - Ischaemic Stroke
                 { diseaseId: D['STROKE'], symptomId: S['Unilateral weakness'], priority: SymptomPriority.primary, typicality: Typicality.typical },
-                { diseaseId: D['STROKE'], symptomId: S['Aphasia'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+                { diseaseId: D['STROKE'], symptomId: S['Aphasia'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['STROKE'], symptomId: S['Dizziness'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+                { diseaseId: D['STROKE'], symptomId: S['Syncope'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
 
-                // PAD
+                // PAD - Peripheral Artery Disease
                 { diseaseId: D['PAD'], symptomId: S['Claudication'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['PAD'], symptomId: S['Reduced exercise tolerance'], priority: SymptomPriority.primary, typicality: Typicality.typical },
                 { diseaseId: D['PAD'], symptomId: S['Leg swelling'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
+                { diseaseId: D['PAD'], symptomId: S['Cyanosis'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
 
-                // VHD
-                { diseaseId: D['VHD'], symptomId: S['New murmur'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                // HHD - Hypertensive Heart Disease
+                { diseaseId: D['HHD'], symptomId: S['Dyspnea'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['HHD'], symptomId: S['Chest pain'], priority: SymptomPriority.primary, typicality: Typicality.possible },
+                { diseaseId: D['HHD'], symptomId: S['Fatigue'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+                { diseaseId: D['HHD'], symptomId: S['Palpitations'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
 
-                // PERI
-                { diseaseId: D['PERI'], symptomId: S['Pleuritic chest pain'], priority: SymptomPriority.primary, typicality: Typicality.typical },
-                { diseaseId: D['PERI'], symptomId: S['Pericardial rub'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+                // HCM - Hypertrophic Cardiomyopathy
+                { diseaseId: D['HCM'], symptomId: S['Dyspnea'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['HCM'], symptomId: S['Chest pain'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['HCM'], symptomId: S['Syncope'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['HCM'], symptomId: S['Palpitations'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+                { diseaseId: D['HCM'], symptomId: S['Fatigue'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
 
-                // MYO
-                { diseaseId: D['MYO'], symptomId: S['Chest pain'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
-                { diseaseId: D['MYO'], symptomId: S['Fever'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
-
-                // ENDO
-                { diseaseId: D['ENDO'], symptomId: S['Fever'], priority: SymptomPriority.primary, typicality: Typicality.typical },
-                { diseaseId: D['ENDO'], symptomId: S['New murmur'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
-
-                // PE
-                { diseaseId: D['PE'], symptomId: S['Pleuritic chest pain'], priority: SymptomPriority.primary, typicality: Typicality.typical },
-                { diseaseId: D['PE'], symptomId: S['Dyspnea'], priority: SymptomPriority.primary, typicality: Typicality.typical },
-
-                // DVT
-                { diseaseId: D['DVT'], symptomId: S['Leg swelling'], priority: SymptomPriority.primary, typicality: Typicality.typical },
-
-                // HHD / HCM / DCM — базовые связи
-                { diseaseId: D['HHD'], symptomId: S['Dyspnea'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
-                { diseaseId: D['HCM'], symptomId: S['Syncope'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
+                // DCM - Dilated Cardiomyopathy
                 { diseaseId: D['DCM'], symptomId: S['Dyspnea'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['DCM'], symptomId: S['Fatigue'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['DCM'], symptomId: S['Leg swelling'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['DCM'], symptomId: S['Orthopnea'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+                { diseaseId: D['DCM'], symptomId: S['Palpitations'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+
+                // VHD - Valvular Heart Disease
+                { diseaseId: D['VHD'], symptomId: S['New murmur'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['VHD'], symptomId: S['Dyspnea'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['VHD'], symptomId: S['Fatigue'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+                { diseaseId: D['VHD'], symptomId: S['Palpitations'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+                { diseaseId: D['VHD'], symptomId: S['Syncope'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
+
+                // MYO - Myocarditis
+                { diseaseId: D['MYO'], symptomId: S['Chest pain'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['MYO'], symptomId: S['Dyspnea'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['MYO'], symptomId: S['Fever'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['MYO'], symptomId: S['Fatigue'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+                { diseaseId: D['MYO'], symptomId: S['Palpitations'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+
+                // PERI - Pericarditis
+                { diseaseId: D['PERI'], symptomId: S['Pleuritic chest pain'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['PERI'], symptomId: S['Pericardial rub'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['PERI'], symptomId: S['Fever'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+                { diseaseId: D['PERI'], symptomId: S['Dyspnea'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
+
+                // ENDO - Infective Endocarditis
+                { diseaseId: D['ENDO'], symptomId: S['Fever'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['ENDO'], symptomId: S['New murmur'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['ENDO'], symptomId: S['Fatigue'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+                { diseaseId: D['ENDO'], symptomId: S['Anorexia'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+                { diseaseId: D['ENDO'], symptomId: S['Weight gain'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
+
+                // PE - Pulmonary Embolism
+                { diseaseId: D['PE'], symptomId: S['Dyspnea'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['PE'], symptomId: S['Pleuritic chest pain'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['PE'], symptomId: S['Hemoptysis'], priority: SymptomPriority.primary, typicality: Typicality.possible },
+                { diseaseId: D['PE'], symptomId: S['Syncope'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
+                { diseaseId: D['PE'], symptomId: S['Palpitations'], priority: SymptomPriority.secondary, typicality: Typicality.typical },
+                { diseaseId: D['PE'], symptomId: S['Cyanosis'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
+
+                // DVT - Deep Vein Thrombosis
+                { diseaseId: D['DVT'], symptomId: S['Leg swelling'], priority: SymptomPriority.primary, typicality: Typicality.typical },
+                { diseaseId: D['DVT'], symptomId: S['Cyanosis'], priority: SymptomPriority.secondary, typicality: Typicality.possible },
             ];
 
             await this.prisma.diseaseSymptom.createMany({

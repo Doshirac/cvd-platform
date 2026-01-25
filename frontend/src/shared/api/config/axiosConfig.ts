@@ -4,7 +4,7 @@ import BaseInterceptor from '@shared/api/interceptor/interceptor';
 
 export const axiosInstance = axios.create({
   baseURL: baseUrl,
-  timeout: 5000,
+  timeout: 15000,
   headers: {
     'Content-Type': 'application/json',
   },

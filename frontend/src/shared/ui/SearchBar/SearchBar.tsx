@@ -14,14 +14,16 @@ export function SearchBar({
 }: SearchBarProps) {
   const { t } = useTranslation();
 
-  const isControlled = externalValue !== undefined;
-
+  // Always use internal state for immediate UI response
   const [internalValue, setInternalValue] = useState(externalValue ?? '');
-  const currentValue = isControlled ? (externalValue ?? '') : internalValue;
 
+  // Sync with external value only when it changes from outside
   useEffect(() => {
-    if (isControlled) setInternalValue(externalValue ?? '');
-  }, [externalValue, isControlled]);
+    if (externalValue !== undefined && externalValue !== internalValue) {
+      setInternalValue(externalValue);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [externalValue]);
 
   const debouncedEmit = useMemo(() => {
     let timeoutId: ReturnType<typeof setTimeout> | null = null;
@@ -36,8 +38,8 @@ export function SearchBar({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const v = e.target.value;
-    setInternalValue(v);
-    debouncedEmit(v);
+    setInternalValue(v); // Immediate UI update
+    debouncedEmit(v);    // Debounced callback
   };
 
   const handleClear = () => {
@@ -50,21 +52,21 @@ export function SearchBar({
       <Icon name="SEARCH" size="small" className={styles['search-icon']} />
       <input
         type="search"
-        value={currentValue}
+        value={internalValue}
         onChange={handleChange}
         placeholder={placeholder || t('search.placeholder', { defaultValue: t('common.search') })}
         className={styles.input}
         aria-label={t('common.search')}
       />
 
-      {currentValue && (
+      {internalValue && (
         <button
           type="button"
           onClick={handleClear}
           className={styles['clear-button']}
           aria-label={t('common.clear')}
         >
-          <Icon name="CLOSE" size="small" />
+          <Icon name="CLOSE" size="medium" />
         </button>
       )}
     </div>

@@ -88,10 +88,7 @@ export class SourceController extends BaseController {
         search: search as string,
       });
 
-      if (!sources.length) {
-        res.status(200).json({ message: msg.SOURCES_NOT_FOUND });
-        return;
-      }
+      // Always return array (even empty) for consistent API response
       res.status(200).json(sources);
     } catch (error) {
       Sentry.captureException(error);

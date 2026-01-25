@@ -4,9 +4,12 @@
 /* Global */
 body {
   @include typography($font-sans, $fs-md, $fw-regular);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typoрraphy */
+/* Typography */
 
 /* Regular */
 .regular-14 {
@@ -34,14 +37,103 @@ body {
   @include typography($font-sans, $fs-lg, $fw-medium);
 }
 
+/* Heading text rendering */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  text-rendering: optimizeLegibility;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Ensure minimum touch targets on mobile */
+@media (max-width: $breakpoint-md) {
+  button,
+  a {
+    min-height: 2.75rem; // 44px
+    min-width: 2.75rem;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Light Theme */
 html.theme-light {
   background-color: $light-bg;
   color: $light-text;
+
+  /* CSS Custom Properties for light theme */
+  --background: #{$light-bg};
+  --foreground: #{$light-text};
+  --card: #{$light-card-bg};
+  --card-foreground: #{$light-card-text};
+  --popover: #{$light-popover-bg};
+  --popover-foreground: #{$light-popover-text};
+  --primary: #{$light-primary};
+  --primary-foreground: #{$light-primary-text};
+  --secondary: #{$light-secondary-bg};
+  --secondary-foreground: #{$light-secondary-text};
+  --muted: #{$light-muted-bg};
+  --muted-foreground: #{$light-muted-text};
+  --accent: #{$light-accent-bg};
+  --accent-foreground: #{$light-accent-text};
+  --destructive: #{$light-destructive-bg};
+  --destructive-foreground: #{$light-destructive-text};
+  --danger: #{$light-danger};
+  --danger-foreground: #{$light-danger-text};
+  --success: #{$light-success};
+  --success-foreground: #{$light-success-text};
+  --warning: #{$light-warning};
+  --warning-foreground: #{$light-warning-text};
+  --info: #{$light-info};
+  --info-foreground: #{$light-info-text};
+  --border: #{$light-border};
+  --input: #{$light-input-bg};
+  --ring: #{$light-focus};
 }
 
 /* Dark Theme */
 html.theme-dark {
   background-color: $dark-bg;
   color: $dark-text;
+
+  /* CSS Custom Properties for dark theme */
+  --background: #{$dark-bg};
+  --foreground: #{$dark-text};
+  --card: #{$dark-card-bg};
+  --card-foreground: #{$dark-card-text};
+  --popover: #{$dark-popover-bg};
+  --popover-foreground: #{$dark-popover-text};
+  --primary: #{$dark-primary};
+  --primary-foreground: #{$dark-primary-text};
+  --secondary: #{$dark-secondary-bg};
+  --secondary-foreground: #{$dark-secondary-text};
+  --muted: #{$dark-muted-bg};
+  --muted-foreground: #{$dark-muted-text};
+  --accent: #{$dark-accent-bg};
+  --accent-foreground: #{$dark-accent-text};
+  --destructive: #{$dark-destructive-bg};
+  --destructive-foreground: #{$dark-destructive-text};
+  --danger: #{$dark-danger};
+  --danger-foreground: #{$dark-danger-text};
+  --success: #{$dark-success};
+  --success-foreground: #{$dark-success-text};
+  --warning: #{$dark-warning};
+  --warning-foreground: #{$dark-warning-text};
+  --info: #{$dark-info};
+  --info-foreground: #{$dark-info-text};
+  --border: #{$dark-border};
+  --input: #{$dark-input-bg};
+  --ring: #{$dark-focus};
 }

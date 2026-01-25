@@ -1,5 +1,6 @@
 import {
   FileQuestion,
+  FileText,
   Home,
   Filter,
   Search,
@@ -18,6 +19,7 @@ import {
   Globe,
   ExternalLink,
   Building2,
+  BookOpen,
   ChevronLeftIcon,
   ChevronRightIcon,
   CircleIcon,
@@ -60,8 +62,10 @@ export const iconMap = {
   // Status / info
   INFO: AlertCircle,
   QUESTION: FileQuestion,
+  FILE_TEXT: FileText,
   EXTERNAL_LINK: ExternalLink,
   GLOBE: Globe,
+  BOOK_OPEN: BookOpen,
 
   // Health / domain-specific
   HEART: Heart,
@@ -99,6 +103,7 @@ export const iconColors = {
   SUCCESS: 'success',
   DANGER: 'danger',
   WHITE: 'white',
+  INHERIT: 'inherit',
 } as const;
 
 export type IconColor = (typeof iconColors)[keyof typeof iconColors];

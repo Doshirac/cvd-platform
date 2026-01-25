@@ -1,2 +1,2 @@
 export { FilterPanel } from './FilterPanel';
-export type { FilterPanelProps, Filter, FilterOption } from './FilterPanel.types';
+export type { FilterPanelProps, FilterGroup, FilterOption } from './FilterPanel.types';

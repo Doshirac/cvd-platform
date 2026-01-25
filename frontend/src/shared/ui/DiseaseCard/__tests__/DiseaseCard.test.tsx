@@ -1,13 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { DiseaseCard } from '../DiseaseCard';
 import type { Disease } from '@shared/api/diseases/diseases.types';
-
-// Mock the diseases slice selectors
-jest.mock('@shared/api/diseases/diseasesSlice', () => ({
-  selectSymptoms: jest.fn(() => []),
-  selectRiskFactors: jest.fn(() => []),
-}));
 
 // Mock i18next
 jest.mock('react-i18next', () => ({
@@ -19,13 +14,6 @@ jest.mock('react-i18next', () => ({
       };
       return translations[key] || key;
     },
-  }),
-}));
-
-// Mock react-redux
-jest.mock('react-redux', () => ({
-  useSelector: jest.fn(() => {
-    return [];
   }),
 }));
 
@@ -54,20 +42,32 @@ const mockDisease: Disease = {
   name: 'Ischemic Heart Disease',
   description: 'A condition where blood flow to the heart is reduced, usually due to coronary artery disease.',
   prevention: 'Regular exercise, healthy diet, no smoking, control blood pressure.',
-  symptoms: ['S001', 'S002', 'S003'],
-  risks: ['R001', 'R002'],
+  symptoms: [
+    { code: 'S001', name: 'Chest pain' },
+    { code: 'S002', name: 'Shortness of breath' },
+    { code: 'S003', name: 'Fatigue' },
+  ],
+  risks: [
+    { code: 'R001', name: 'Hypertension' },
+    { code: 'R002', name: 'Smoking' },
+  ],
+};
+
+// Helper function to render with Router
+const renderWithRouter = (ui: React.ReactElement) => {
+  return render(<MemoryRouter>{ui}</MemoryRouter>);
 };
 
 describe('<DiseaseCard /> component', () => {
   test('renders disease name and ID badge', () => {
-    render(<DiseaseCard disease={mockDisease} />);
+    renderWithRouter(<DiseaseCard disease={mockDisease} />);
     
     expect(screen.getByText('Ischemic Heart Disease')).toBeInTheDocument();
     expect(screen.getByText('#1')).toBeInTheDocument();
   });
 
   test('renders icon container with correct icon', () => {
-    render(<DiseaseCard disease={mockDisease} />);
+    renderWithRouter(<DiseaseCard disease={mockDisease} />);
     
     const icon = screen.getByTestId('icon');
     expect(icon).toBeInTheDocument();
@@ -76,7 +76,7 @@ describe('<DiseaseCard /> component', () => {
   });
 
   test('renders primary symptoms section', () => {
-    render(<DiseaseCard disease={mockDisease} />);
+    renderWithRouter(<DiseaseCard disease={mockDisease} />);
     
     expect(screen.getByText('Primary Symptoms')).toBeInTheDocument();
     
@@ -88,7 +88,7 @@ describe('<DiseaseCard /> component', () => {
   });
 
   test('renders risk factors section', () => {
-    render(<DiseaseCard disease={mockDisease} />);
+    renderWithRouter(<DiseaseCard disease={mockDisease} />);
     
     expect(screen.getByText('Risk Factors')).toBeInTheDocument();
     
@@ -101,10 +101,16 @@ describe('<DiseaseCard /> component', () => {
   test('shows "+N more" badge when there are more than 3 symptoms', () => {
     const diseaseWithManySymptoms: Disease = {
       ...mockDisease,
-      symptoms: ['S001', 'S002', 'S003', 'S004', 'S005'],
+      symptoms: [
+        { code: 'S001', name: 'Chest pain' },
+        { code: 'S002', name: 'Shortness of breath' },
+        { code: 'S003', name: 'Fatigue' },
+        { code: 'S004', name: 'Nausea' },
+        { code: 'S005', name: 'Dizziness' },
+      ],
     };
     
-    render(<DiseaseCard disease={diseaseWithManySymptoms} />);
+    renderWithRouter(<DiseaseCard disease={diseaseWithManySymptoms} />);
     
     expect(screen.getByText('+2')).toBeInTheDocument();
   });
@@ -112,10 +118,15 @@ describe('<DiseaseCard /> component', () => {
   test('shows "+N more" badge when there are more than 3 risks', () => {
     const diseaseWithManyRisks: Disease = {
       ...mockDisease,
-      risks: ['R001', 'R002', 'R003', 'R004'],
+      risks: [
+        { code: 'R001', name: 'Hypertension' },
+        { code: 'R002', name: 'Smoking' },
+        { code: 'R003', name: 'Diabetes' },
+        { code: 'R004', name: 'Obesity' },
+      ],
     };
     
-    render(<DiseaseCard disease={diseaseWithManyRisks} />);
+    renderWithRouter(<DiseaseCard disease={diseaseWithManyRisks} />);
     
     expect(screen.getByText('+1')).toBeInTheDocument();
   });
@@ -126,7 +137,7 @@ describe('<DiseaseCard /> component', () => {
       symptoms: [],
     };
     
-    render(<DiseaseCard disease={diseaseWithoutSymptoms} />);
+    renderWithRouter(<DiseaseCard disease={diseaseWithoutSymptoms} />);
     
     expect(screen.queryByText('Primary Symptoms')).not.toBeInTheDocument();
   });
@@ -137,13 +148,13 @@ describe('<DiseaseCard /> component', () => {
       risks: [],
     };
     
-    render(<DiseaseCard disease={diseaseWithoutRisks} />);
+    renderWithRouter(<DiseaseCard disease={diseaseWithoutRisks} />);
     
     expect(screen.queryByText('Risk Factors')).not.toBeInTheDocument();
   });
 
   test('applies custom className', () => {
-    const { container } = render(<DiseaseCard disease={mockDisease} className="custom-class" />);
+    const { container } = renderWithRouter(<DiseaseCard disease={mockDisease} className="custom-class" />);
     
     expect(container.querySelector('.custom-class')).toBeInTheDocument();
   });
@@ -154,7 +165,7 @@ describe('<DiseaseCard /> component', () => {
       id: 5,
     };
     
-    render(<DiseaseCard disease={diseaseWithDifferentId} />);
+    renderWithRouter(<DiseaseCard disease={diseaseWithDifferentId} />);
     
     const icon = screen.getByTestId('icon');
     // Disease ID 5 % 8 = 5 -> 'PILL'

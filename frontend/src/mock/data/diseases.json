@@ -6,8 +6,14 @@
       "name": "Ischaemic Heart Disease",
       "description": "Coronary atherosclerosis → decreased myocardial blood flow.",
       "prevention": "Stop smoking, control BP/LDL, exercise, diet.",
-      "symptoms": ["S001", "S002"],
-      "risks": ["R001", "R002"]
+      "symptoms": [
+        { "code": "S001", "name": "Chest pain" },
+        { "code": "S002", "name": "Shortness of breath" }
+      ],
+      "risks": [
+        { "code": "R001", "name": "Hypertension" },
+        { "code": "R002", "name": "Hyperlipidemia" }
+      ]
     },
     {
       "id": 2,
@@ -15,8 +21,14 @@
       "name": "Acute Myocardial Infarction",
       "description": "Acute coronary artery occlusion with myocardial necrosis.",
       "prevention": "Aggressive risk-factor control; GDMT.",
-      "symptoms": ["S003", "S004"],
-      "risks": ["R003", "R004"]
+      "symptoms": [
+        { "code": "S003", "name": "Palpitations" },
+        { "code": "S004", "name": "Syncope" }
+      ],
+      "risks": [
+        { "code": "R003", "name": "Diabetes Mellitus" },
+        { "code": "R004", "name": "Smoking" }
+      ]
     },
     {
       "id": 3,
@@ -24,8 +36,14 @@
       "name": "Heart Failure",
       "description": "Pump failure with inadequate cardiac output.",
       "prevention": "Treat HTN/CAD; salt restriction; weight control.",
-      "symptoms": ["S005", "S006"],
-      "risks": ["R005", "R006"]
+      "symptoms": [
+        { "code": "S005", "name": "Fatigue" },
+        { "code": "S006", "name": "Edema" }
+      ],
+      "risks": [
+        { "code": "R005", "name": "Obesity" },
+        { "code": "R006", "name": "Physical Inactivity" }
+      ]
     },
     {
       "id": 4,
@@ -33,8 +51,14 @@
       "name": "Atrial Fibrillation",
       "description": "Irregular supraventricular tachyarrhythmia.",
       "prevention": "BP control, weight loss, limit alcohol.",
-      "symptoms": ["S007", "S008"],
-      "risks": ["R007", "R008"]
+      "symptoms": [
+        { "code": "S007", "name": "Cough" },
+        { "code": "S008", "name": "Orthopnea" }
+      ],
+      "risks": [
+        { "code": "R007", "name": "Family History" },
+        { "code": "R008", "name": "Age" }
+      ]
     },
     {
       "id": 5,
@@ -42,8 +66,14 @@
       "name": "Stroke (Ischaemic)",
       "description": "Cerebral ischaemia → focal neurological deficit.",
       "prevention": "BP control, AF anticoagulation, statins, no smoking.",
-      "symptoms": ["S009", "S010"],
-      "risks": ["R009", "R010"]
+      "symptoms": [
+        { "code": "S009", "name": "Paroxysmal nocturnal dyspnea" },
+        { "code": "S010", "name": "Hemiparesis" }
+      ],
+      "risks": [
+        { "code": "R009", "name": "Male Sex" },
+        { "code": "R010", "name": "Chronic Kidney Disease" }
+      ]
     },
     {
       "id": 6,
@@ -51,8 +81,14 @@
       "name": "Peripheral Artery Disease",
       "description": "Atherosclerosis of peripheral arteries; claudication.",
       "prevention": "Smoking cessation, statins, antiplatelets, walking.",
-      "symptoms": ["S011", "S012"],
-      "risks": ["R011", "R012"]
+      "symptoms": [
+        { "code": "S011", "name": "Aphasia" },
+        { "code": "S012", "name": "Claudication" }
+      ],
+      "risks": [
+        { "code": "R011", "name": "Alcohol Abuse" },
+        { "code": "R012", "name": "Atrial Fibrillation" }
+      ]
     },
     {
       "id": 7,
@@ -60,8 +96,14 @@
       "name": "Hypertensive Heart Disease",
       "description": "Cardiac changes from chronic hypertension.",
       "prevention": "Tight BP control; lifestyle.",
-      "symptoms": ["S013", "S014"],
-      "risks": ["R013", "R014"]
+      "symptoms": [
+        { "code": "S013", "name": "Dizziness" },
+        { "code": "S014", "name": "Fever" }
+      ],
+      "risks": [
+        { "code": "R013", "name": "Sleep Apnea" },
+        { "code": "R014", "name": "High-Salt Diet" }
+      ]
     },
     {
       "id": 8,
@@ -69,8 +111,14 @@
       "name": "Hypertrophic Cardiomyopathy",
       "description": "Genetic LV hypertrophy; possible LVOT obstruction.",
       "prevention": "Family screening, SCD risk stratification.",
-      "symptoms": ["S015", "S016"],
-      "risks": ["R015", "R016"]
+      "symptoms": [
+        { "code": "S015", "name": "Murmur" },
+        { "code": "S016", "name": "Cyanosis" }
+      ],
+      "risks": [
+        { "code": "R015", "name": "Psychological Stress" },
+        { "code": "R016", "name": "Air Pollution" }
+      ]
     },
     {
       "id": 9,
@@ -78,8 +126,14 @@
       "name": "Dilated Cardiomyopathy",
       "description": "LV dilation with systolic dysfunction.",
       "prevention": "Avoid alcohol/toxins; treat causes.",
-      "symptoms": ["S017", "S018"],
-      "risks": ["R017", "R018"]
+      "symptoms": [
+        { "code": "S017", "name": "Tachycardia" },
+        { "code": "S018", "name": "Bradycardia" }
+      ],
+      "risks": [
+        { "code": "R017", "name": "Rheumatic Heart Disease" },
+        { "code": "R018", "name": "Metabolic Syndrome" }
+      ]
     },
     {
       "id": 10,
@@ -87,8 +141,14 @@
       "name": "Valvular Heart Disease",
       "description": "Valve stenosis/regurgitation (AS, MR, etc.).",
       "prevention": "IE prevention; treat rheumatic disease early.",
-      "symptoms": ["S019", "S020"],
-      "risks": ["R019", "R020"]
+      "symptoms": [
+        { "code": "S019", "name": "Pericardial rub" },
+        { "code": "S020", "name": "Jugular venous distension" }
+      ],
+      "risks": [
+        { "code": "R019", "name": "Prolonged Sitting" },
+        { "code": "R020", "name": "HIV Infection" }
+      ]
     },
     {
       "id": 11,
@@ -96,8 +156,14 @@
       "name": "Myocarditis",
       "description": "Inflammation of myocardium (often viral/immune).",
       "prevention": "Vaccination; infection prevention; rest in acute phase.",
-      "symptoms": ["S021", "S022"],
-      "risks": ["R021", "R022"]
+      "symptoms": [
+        { "code": "S021", "name": "Leg swelling" },
+        { "code": "S022", "name": "Weight gain" }
+      ],
+      "risks": [
+        { "code": "R021", "name": "Autoimmune Disease" },
+        { "code": "R022", "name": "Pregnancy Complications" }
+      ]
     },
     {
       "id": 12,
@@ -105,8 +171,14 @@
       "name": "Pericarditis",
       "description": "Inflammation of pericardium with pleuritic chest pain.",
       "prevention": "Treat triggers; avoid exertion during acute phase.",
-      "symptoms": ["S023", "S024"],
-      "risks": ["R023", "R024"]
+      "symptoms": [
+        { "code": "S023", "name": "Night sweats" },
+        { "code": "S024", "name": "Rash" }
+      ],
+      "risks": [
+        { "code": "R023", "name": "Chemotherapy Drugs" },
+        { "code": "R024", "name": "Radiation Therapy" }
+      ]
     },
     {
       "id": 13,
@@ -114,8 +186,14 @@
       "name": "Infective Endocarditis",
       "description": "Endocardial/valvular infection by microorganisms.",
       "prevention": "Dental hygiene; targeted prophylaxis in high risk.",
-      "symptoms": ["S025", "S026"],
-      "risks": ["R025", "R026"]
+      "symptoms": [
+        { "code": "S025", "name": "Clubbing" },
+        { "code": "S026", "name": "Splinter hemorrhages" }
+      ],
+      "risks": [
+        { "code": "R025", "name": "Genetic Factors" },
+        { "code": "R026", "name": "Prior CVD" }
+      ]
     },
     {
       "id": 14,
@@ -123,8 +201,14 @@
       "name": "Pulmonary Embolism",
       "description": "Pulmonary artery thromboembolism.",
       "prevention": "VTE prophylaxis; early mobilization.",
-      "symptoms": ["S027", "S028"],
-      "risks": ["R027", "R028"]
+      "symptoms": [
+        { "code": "S027", "name": "Sudden dyspnea" },
+        { "code": "S028", "name": "Pleuritic chest pain" }
+      ],
+      "risks": [
+        { "code": "R027", "name": "Elevated Lipoprotein(a)" },
+        { "code": "R028", "name": "High Homocysteine" }
+      ]
     },
     {
       "id": 15,
@@ -132,8 +216,14 @@
       "name": "Deep Vein Thrombosis",
       "description": "Thrombus in deep veins (often legs).",
       "prevention": "VTE prophylaxis; hydration; movement.",
-      "symptoms": ["S029", "S030"],
-      "risks": ["R029", "R030"]
+      "symptoms": [
+        { "code": "S029", "name": "Calf pain" },
+        { "code": "S030", "name": "Redness of leg" }
+      ],
+      "risks": [
+        { "code": "R029", "name": "Elevated C-Reactive Protein" },
+        { "code": "R030", "name": "Elevated Fibrinogen" }
+      ]
     },
     {
       "id": 16,
@@ -141,8 +231,14 @@
       "name": "Arrhythmogenic Right Ventricular Cardiomyopathy",
       "description": "Fibrofatty replacement of RV myocardium.",
       "prevention": "Family screening; avoid competitive sports.",
-      "symptoms": ["S031", "S032"],
-      "risks": ["R031", "R032"]
+      "symptoms": [
+        { "code": "S031", "name": "Arrhythmia" },
+        { "code": "S032", "name": "Right ventricular dysfunction" }
+      ],
+      "risks": [
+        { "code": "R031", "name": "Thyroid Disorders" },
+        { "code": "R032", "name": "Illicit Drug Use" }
+      ]
     },
     {
       "id": 17,
@@ -150,8 +246,14 @@
       "name": "Takotsubo Syndrome",
       "description": "Transient LV dysfunction after stress.",
       "prevention": "Stress management; treat triggers.",
-      "symptoms": ["S033", "S034"],
-      "risks": ["R033", "R034"]
+      "symptoms": [
+        { "code": "S033", "name": "Emotional stress" },
+        { "code": "S034", "name": "Transient LV dysfunction" }
+      ],
+      "risks": [
+        { "code": "R033", "name": "NSAIDs" },
+        { "code": "R034", "name": "Microbiome Imbalance" }
+      ]
     },
     {
       "id": 18,
@@ -159,8 +261,14 @@
       "name": "Congenital Heart Disease",
       "description": "Structural heart defects present at birth.",
       "prevention": "Prenatal care; folic acid; avoid teratogens.",
-      "symptoms": ["S035", "S036"],
-      "risks": ["R035", "R036"]
+      "symptoms": [
+        { "code": "S035", "name": "Cyanotic spells" },
+        { "code": "S036", "name": "Failure to thrive" }
+      ],
+      "risks": [
+        { "code": "R035", "name": "Periodontal Disease" },
+        { "code": "R036", "name": "Social Deprivation" }
+      ]
     }
   ]
 }

@@ -140,10 +140,14 @@ export class DiseaseRepository implements IDiseaseRepository {
       id: disease.id,
       code: disease.code,
       name: language === "ru" && disease.translations?.[0]?.name ? disease.translations[0].name : disease.name,
-      description: (language === "ru" && disease.translations?.[0]?.description) || undefined,
-      prevention: (language === "ru" && disease.translations?.[0]?.prevention) || undefined,
-      symptoms: disease.symptoms.map((s) => s.symptom.term),
-      risks: disease.risks.map((r) => r.riskFactor.name),
+      description: language === "ru" && disease.translations?.[0]?.description 
+        ? disease.translations[0].description 
+        : disease.description || undefined,
+      prevention: language === "ru" && disease.translations?.[0]?.prevention 
+        ? disease.translations[0].prevention 
+        : disease.prevention || undefined,
+      symptoms: disease.symptoms.map((s) => ({ code: s.symptom.code, name: s.symptom.term, priority: s.priority })),
+      risks: disease.risks.map((r) => ({ code: r.riskFactor.code, name: r.riskFactor.name })),
     }));
   }
 
@@ -294,10 +298,14 @@ export class DiseaseRepository implements IDiseaseRepository {
       id: disease.id,
       code: disease.code,
       name: language === "ru" && disease.translations?.[0]?.name ? disease.translations[0].name : disease.name,
-      description: (language === "ru" && disease.translations?.[0]?.description) || undefined,
-      prevention: (language === "ru" && disease.translations?.[0]?.prevention) || undefined,
-      symptoms: disease.symptoms.map((s) => s.symptom.term),
-      risks: disease.risks.map((r) => r.riskFactor.name),
+      description: language === "ru" && disease.translations?.[0]?.description 
+        ? disease.translations[0].description 
+        : disease.description || undefined,
+      prevention: language === "ru" && disease.translations?.[0]?.prevention 
+        ? disease.translations[0].prevention 
+        : disease.prevention || undefined,
+      symptoms: disease.symptoms.map((s) => ({ code: s.symptom.code, name: s.symptom.term, priority: s.priority })),
+      risks: disease.risks.map((r) => ({ code: r.riskFactor.code, name: r.riskFactor.name })),
     }));
   }
 

@@ -34,38 +34,35 @@
 }
 
 .panel {
-  @include flex(row, flex-start, center, nowrap);
+  @include flex(row, space-between, center, nowrap);
 
   gap: 0.25rem;
   min-width: min-content;
+  width: 100%;
 }
 
 .button {
   min-width: 2rem;
   height: 2rem;
-  padding: 0 0.75rem;
-  flex-shrink: 0;
+  padding: 0;
+  flex: 1 1 auto;
+  max-width: 2.5rem;
 
   @include responsive(xs) {
-    min-width: 1.75rem;
-    height: 1.75rem;
-    padding: 0 0.5rem;
+    min-width: 2.5rem;
+    height: 2rem;
     font-size: $fs-sm;
   }
 
   @include responsive(sm) {
-    min-width: 2rem;
+    min-width: 1.75rem;
     height: 2rem;
-    padding: 0 0.75rem;
   }
 }
 
 /* Light Theme */
 :global(html.theme-light) {
   .scroll-area {
-    background-color: $light-card-bg;
-    border: 0.063rem solid $light-border;
-
     &::-webkit-scrollbar-track {
       background-color: rgb(0 0 0 / 3%);
     }

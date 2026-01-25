@@ -1,44 +1,55 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectSources } from '@shared/api/sources/sourcesSlice';
-import type { RootState } from '@app/providers/StoreProvider/config/store';
+import { fetchSources } from '@shared/api/sources/sourcesThunks';
+import type { RootState, AppDispatch } from '@app/providers/StoreProvider/config/store';
 import type { Source } from '@shared/api/sources/sources.types';
 import { InfinityScroll } from '@shared/ui/InfinityScroll';
 import { SearchBar } from '@shared/ui/SearchBar';
 import { SourceCard } from '@shared/ui/SourceCard';
+import { Icon } from '@shared/ui/Icon';
 import { Loader } from '@shared/ui/Loader';
 import { ResourceNotFound } from '@shared/ui/ResourceNotFound';
 import styles from './SourcesPage.module.scss';
 
-const itemsPerPage = 10;
+const itemsPerPage = 6;
 
 export function SourcesPage() {
   const { t } = useTranslation();
+  const dispatch = useDispatch<AppDispatch>();
   
   const sources = useSelector(selectSources);
   const loading = useSelector((state: RootState) => state.sources.loading);
   const error = useSelector((state: RootState) => state.sources.error);
 
   const [searchQuery, setSearchQuery] = useState('');
+  
+  // Track if initial data was loaded
+  const isInitialMount = useRef(true);
 
-  const filteredSources = useMemo(() => {
-    if (!searchQuery) return sources;
-    
-    const query = searchQuery.toLowerCase();
-    return sources.filter((s) =>
-      s.name.toLowerCase().includes(query) ||
-      s.link.toLowerCase().includes(query)
-    );
-  }, [sources, searchQuery]);
+  // Fetch data when search changes (SearchBar already has debounce)
+  useEffect(() => {
+    // Skip initial mount to avoid duplicate fetch
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+
+    if (searchQuery) {
+      dispatch(fetchSources({ search: searchQuery, take: 100 }));
+    } else {
+      dispatch(fetchSources({ take: 100 }));
+    }
+  }, [searchQuery, dispatch]);
 
   const fetchPage = useCallback(
     async (page: number): Promise<Source[]> => {
       const startIndex = (page - 1) * itemsPerPage;
       const endIndex = startIndex + itemsPerPage;
-      return filteredSources.slice(startIndex, endIndex);
+      return sources.slice(startIndex, endIndex);
     },
-    [filteredSources]
+    [sources]
   );
 
   const renderSource = useCallback(
@@ -58,7 +69,11 @@ export function SourcesPage() {
     );
   }
 
-  if (error && sources.length === 0) {
+  // Only show error page when there's a real error (not just empty results)
+  // and the error is not a 404/empty result type error
+  const isRealError = error && !error.toLowerCase().includes('not found') && !error.toLowerCase().includes('no sources');
+  
+  if (isRealError && sources.length === 0) {
     return (
       <div className={styles.error}>
         <ResourceNotFound
@@ -74,19 +89,7 @@ export function SourcesPage() {
       {/* Hero Section */}
       <header className={styles.hero}>
         <div className={styles['hero-icon']}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="48"
-            height="48"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
-          </svg>
+          <Icon name="BOOK_OPEN" size="large"/>
         </div>
         <h1 className={styles.title}>{t('sourcesPage.title')}</h1>
         <p className={styles.subtitle}>{t('sourcesPage.subtitle')}</p>
@@ -94,32 +97,34 @@ export function SourcesPage() {
 
       {/* Search */}
       <section className={styles.controls}>
-        <SearchBar
-          value={searchQuery}
-          onChange={handleSearchChange}
-          placeholder={t('sourcesPage.searchPlaceholder')}
-          className={styles.search}
-        />
+        <div className={styles['search-row']}>
+          <SearchBar
+            value={searchQuery}
+            onChange={handleSearchChange}
+            placeholder={t('sourcesPage.searchPlaceholder')}
+            className={styles.search}
+          />
+        </div>
       </section>
 
       {/* Results Count */}
-      {filteredSources.length > 0 && (
+      {sources.length > 0 && (
         <div className={styles.count}>
           <span className={styles['count-label']}>{t('sourcesPage.showing')}</span>{' '}
-          <span className={styles['count-value']}>{filteredSources.length}</span>{' '}
+          <span className={styles['count-value']}>{sources.length}</span>{' '}
           <span className={styles['count-label']}>
-            {filteredSources.length === 1 ? t('sourcesPage.sourceFound') : t('sourcesPage.sourcesFound')}
+            {sources.length === 1 ? t('sourcesPage.sourceFound') : t('sourcesPage.sourcesFound')}
           </span>
         </div>
       )}
 
       {/* Source Cards */}
       <section className={styles.content}>
-        {filteredSources.length === 0 ? (
+        {sources.length === 0 ? (
           <div className={styles['no-results']}>
             <ResourceNotFound
               title={t('sourcesPage.noSourcesFound')}
-              message=""
+              message={t('sourcesPage.noSourcesFoundMessage')}
             />
           </div>
         ) : (
@@ -127,7 +132,9 @@ export function SourcesPage() {
             fetchPage={fetchPage}
             renderItem={renderSource}
             itemsPerPage={itemsPerPage}
-            buttonLabel={t('common.loadMore')}
+            gridColumns={320}
+            buttonLabel={t('common.seeMore')}
+            endMessage={t('common.noMoreItems')}
           />
         )}
       </section>

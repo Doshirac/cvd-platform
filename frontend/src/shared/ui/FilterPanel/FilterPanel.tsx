@@ -88,7 +88,7 @@ export function FilterPanel({
                         htmlFor={checkboxId}
                         className={styles['checkbox-label']}
                       >
-                        {option.label}
+                        {option.label} ({option.code})
                       </label>
                     </div>
                   );
