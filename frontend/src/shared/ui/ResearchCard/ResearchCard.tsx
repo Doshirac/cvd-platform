@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 import type { ResearchCardProps } from './ResearchCard.types';
 import styles from './ResearchCard.module.scss';
 
@@ -7,6 +8,12 @@ export function ResearchCard({
   onViewDetails,
   className,
 }: ResearchCardProps) {
+  const { i18n } = useTranslation();
+  const isRussian = i18n.language === 'ru';
+
+  const title = isRussian && research.titleRu ? research.titleRu : research.title;
+  const description = isRussian && research.descriptionRu ? research.descriptionRu : research.description;
+
   const handleClick = () => {
     onViewDetails?.(research);
   };
@@ -25,19 +32,19 @@ export function ResearchCard({
       }}
     >
       <div className={styles.header}>
-        <h3 className={styles.title}>{research.title}</h3>
+        <h3 className={styles.title}>{title}</h3>
       </div>
       
       <div className={styles.content}>
-        {research.description && (
-          <p className={styles.description}>{research.description}</p>
+        {description && (
+          <p className={styles.description}>{description}</p>
         )}
         
         {research.imageUrl && (
           <div className={styles['image-wrapper']}>
             <img
               src={research.imageUrl}
-              alt={research.title}
+              alt={title}
               className={styles.image}
               loading="lazy"
             />

@@ -99,9 +99,11 @@ model DiseaseRiskFactor {
 }
 
 model Source {
-  id   Int    @id @default(autoincrement()) @map("source_id")
-  name String @unique
-  link String @unique
+  id           Int    @id @default(autoincrement()) @map("source_id")
+  name         String @unique
+  description  String?
+  organization String?
+  link         String @unique
 }
 
 model DiseaseTranslation {

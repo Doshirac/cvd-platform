@@ -24,6 +24,8 @@ export class SourceRepository {
     return sources.map((s) => ({
       id: s.id,
       name: s.name,
+      description: s.description ?? undefined,
+      organization: s.organization ?? undefined,
       link: s.link,
     }));
   }

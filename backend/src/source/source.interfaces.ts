@@ -10,5 +10,7 @@ export interface SourcePaginationParams {
 export interface SourceDTO {
   id: number;
   name: string;
+  description?: string;
+  organization?: string;
   link: string;
 }

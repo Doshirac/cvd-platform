@@ -245,83 +245,123 @@ export class Seed implements ISeeder {
                 skipDuplicates: true,
                 data: [
                     { 
-                        name: 'Eurostat', 
+                        name: 'Eurostat - Cardiovascular Disease Statistics', 
+                        description: 'Comprehensive statistics on cardiovascular diseases across European Union member states...',
+                        organization: 'European Commission',
                         link: 'https://ec.europa.eu/eurostat/' 
                     },
                     { 
-                        name: 'CDC WONDER', 
+                        name: 'CDC WONDER Database', 
+                        description: 'Wide-ranging Online Data for Epidemiologic Research covering mortality, natality, and disease data...',
+                        organization: 'Centers for Disease Control and Prevention',
                         link: 'https://wonder.cdc.gov/' 
                     },
                     { 
-                        name: 'WHO', 
+                        name: 'WHO Global Health Observatory', 
+                        description: 'Global health statistics and data visualizations for cardiovascular diseases worldwide...',
+                        organization: 'World Health Organization',
                         link: 'https://www.who.int/data' 
                     },
                     { 
-                        name: 'American Heart Association', 
+                        name: 'Heart Disease and Stroke Statistics', 
+                        description: 'Annual update on heart disease and stroke statistics with latest data on prevalence...',
+                        organization: 'American Heart Association',
                         link: 'https://www.heart.org/en/health-topics' 
                     },
                     { 
-                        name: 'European Society of Cardiology', 
+                        name: 'ESC Guidelines on Cardiovascular Disease Prevention', 
+                        description: 'Comprehensive clinical practice guidelines for cardiovascular disease prevention in clinical...',
+                        organization: 'European Society of Cardiology',
                         link: 'https://www.escardio.org/Guidelines' 
                     },
                     { 
-                        name: 'NCBI PubMed', 
+                        name: 'PubMed Cardiovascular Research', 
+                        description: 'Database of biomedical literature with extensive cardiovascular research publications...',
+                        organization: 'National Center for Biotechnology Information',
                         link: 'https://pubmed.ncbi.nlm.nih.gov/' 
                     },
                     { 
-                        name: 'ClinicalTrials.gov', 
+                        name: 'Cardiovascular Clinical Trials Registry', 
+                        description: 'Database of privately and publicly funded clinical studies related to cardiovascular conditions...',
+                        organization: 'U.S. National Library of Medicine',
                         link: 'https://clinicaltrials.gov/' 
                     },
                     { 
-                        name: 'British Heart Foundation', 
+                        name: 'Heart Health Information and Support', 
+                        description: 'Patient education resources and latest research findings on heart and circulatory diseases...',
+                        organization: 'British Heart Foundation',
                         link: 'https://www.bhf.org.uk/informationsupport' 
                     },
                     { 
-                        name: 'Mayo Clinic', 
+                        name: 'Mayo Clinic Heart Disease Center', 
+                        description: 'Expert medical information on symptoms, causes, diagnosis and treatment of heart conditions...',
+                        organization: 'Mayo Clinic',
                         link: 'https://www.mayoclinic.org/diseases-conditions' 
                     },
                     { 
-                        name: 'Cleveland Clinic', 
+                        name: 'Cleveland Clinic Heart & Vascular Institute', 
+                        description: 'Leading cardiovascular care information including conditions, treatments and prevention...',
+                        organization: 'Cleveland Clinic',
                         link: 'https://my.clevelandclinic.org/health' 
                     },
                     { 
-                        name: 'UpToDate', 
+                        name: 'UpToDate Cardiovascular Medicine', 
+                        description: 'Evidence-based clinical decision support resource for cardiovascular medicine...',
+                        organization: 'Wolters Kluwer',
                         link: 'https://www.uptodate.com/' 
                     },
                     { 
-                        name: 'Cochrane Library', 
+                        name: 'Cochrane Heart Group', 
+                        description: 'Systematic reviews of cardiovascular interventions and treatments based on clinical trials...',
+                        organization: 'Cochrane Collaboration',
                         link: 'https://www.cochranelibrary.com/' 
                     },
                     { 
-                        name: 'National Heart, Lung, and Blood Institute', 
+                        name: 'NHLBI Cardiovascular Research', 
+                        description: 'Research and educational resources on heart, lung, blood diseases, and sleep disorders...',
+                        organization: 'National Heart, Lung, and Blood Institute',
                         link: 'https://www.nhlbi.nih.gov/' 
                     },
                     { 
-                        name: 'Heart Rhythm Society', 
+                        name: 'Heart Rhythm Disorders Resource Center', 
+                        description: 'Educational resources on arrhythmias, electrophysiology, and device therapy...',
+                        organization: 'Heart Rhythm Society',
                         link: 'https://www.hrsonline.org/' 
                     },
                     { 
-                        name: 'Society for Cardiovascular Angiography', 
+                        name: 'Interventional Cardiology Guidelines', 
+                        description: 'Clinical guidelines and resources for interventional cardiovascular procedures...',
+                        organization: 'Society for Cardiovascular Angiography and Interventions',
                         link: 'https://scai.org/' 
                     },
                     { 
-                        name: 'American College of Cardiology', 
+                        name: 'ACC Clinical Guidelines', 
+                        description: 'Evidence-based clinical practice guidelines for cardiovascular care and prevention...',
+                        organization: 'American College of Cardiology',
                         link: 'https://www.acc.org/' 
                     },
                     { 
-                        name: 'Circulation Journal', 
+                        name: 'Circulation - Cardiovascular Journal', 
+                        description: 'Peer-reviewed journal publishing original research in cardiovascular medicine...',
+                        organization: 'American Heart Association',
                         link: 'https://www.ahajournals.org/journal/circ' 
                     },
                     { 
-                        name: 'JACC Journals', 
+                        name: 'JACC Family of Journals', 
+                        description: 'Comprehensive cardiovascular journals covering clinical and translational research...',
+                        organization: 'American College of Cardiology',
                         link: 'https://www.jacc.org/' 
                     },
                     { 
                         name: 'European Heart Journal', 
+                        description: 'Flagship journal of ESC publishing cardiovascular research and clinical practice...',
+                        organization: 'European Society of Cardiology',
                         link: 'https://academic.oup.com/eurheartj' 
                     },
                     { 
-                        name: 'Heart Foundation Australia', 
+                        name: 'Heart Health Resources Australia', 
+                        description: 'Research, prevention resources and patient support for cardiovascular health...',
+                        organization: 'Heart Foundation Australia',
                         link: 'https://www.heartfoundation.org.au/' 
                     },
                 ],

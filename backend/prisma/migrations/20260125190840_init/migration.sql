@@ -69,6 +69,8 @@ CREATE TABLE "DiseaseRiskFactor" (
 CREATE TABLE "Source" (
     "source_id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
+    "description" TEXT,
+    "organization" TEXT,
     "link" TEXT NOT NULL,
 
     CONSTRAINT "Source_pkey" PRIMARY KEY ("source_id")

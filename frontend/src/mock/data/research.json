@@ -1,109 +1,1188 @@
 {
+  "globalInsights": {
+    "factorsMostConsistentlyAssociated": {
+      "positiveRiskSignals": [
+        {
+          "factor": "oldpeak (ST depression during exercise)",
+          "factorRu": "oldpeak (депрессия ST при нагрузке)",
+          "evidence": "Strongest separation and positive correlation with disease in combined + UCI.",
+          "evidenceRu": "Сильнейшее разделение и положительная корреляция с заболеванием в объединённом + UCI датасетах."
+        },
+        {
+          "factor": "exercise-induced angina (exang)",
+          "factorRu": "стенокардия при нагрузке (exang)",
+          "evidence": "One of the strongest categorical associations with disease (combined + UCI).",
+          "evidenceRu": "Одна из сильнейших категориальных связей с заболеванием (объединённый + UCI)."
+        },
+        {
+          "factor": "ST slope (flat/down)",
+          "factorRu": "наклон ST (плоский/нисходящий)",
+          "evidence": "Strong association with target in combined dataset (ordinal encoding).",
+          "evidenceRu": "Сильная связь с целевой переменной в объединённом датасете (порядковое кодирование)."
+        },
+        {
+          "factor": "age",
+          "factorRu": "возраст",
+          "evidence": "Moderate positive association: older patients have higher prevalence (combined + UCI).",
+          "evidenceRu": "Умеренная положительная связь: у пациентов старшего возраста выше распространённость (объединённый + UCI)."
+        },
+        {
+          "factor": "number of major vessels / ca",
+          "factorRu": "количество крупных сосудов / ca",
+          "evidence": "Strong in UCI (angiography proxy).",
+          "evidenceRu": "Сильная в UCI (прокси ангиографии)."
+        }
+      ],
+      "protectiveOrInverseSignals": [
+        {
+          "factor": "max heart rate achieved (thalach)",
+          "factorRu": "максимальная ЧСС (thalach)",
+          "evidence": "Strong inverse association: lower thalach in disease (combined + UCI).",
+          "evidenceRu": "Сильная обратная связь: ниже thalach при заболевании (объединённый + UCI)."
+        },
+        {
+          "factor": "physical activity",
+          "factorRu": "физическая активность",
+          "evidence": "In lifestyle datasets, higher activity tends to lower risk; linear r is modest.",
+          "evidenceRu": "В датасетах образа жизни большая активность снижает риск; линейный r скромный."
+        }
+      ],
+      "weakOrDatasetDependentSignals": [
+        {
+          "factor": "cholesterol",
+          "factorRu": "холестерин",
+          "evidence": "Weak or inconsistent linear correlation; in combined dataset mean can be lower in disease group (possible medication/cohort effects).",
+          "evidenceRu": "Слабая или нестабильная линейная корреляция; в объединённом датасете среднее может быть ниже у больных (возможные эффекты терапии/когорты)."
+        },
+        {
+          "factor": "resting blood pressure",
+          "factorRu": "давление в покое",
+          "evidence": "Usually weak linear association; more informative combined with other factors.",
+          "evidenceRu": "Обычно слабая линейная связь; более информативно в сочетании с другими факторами."
+        }
+      ]
+    },
+    "howToReadCorrelation": {
+      "note": "Pearson correlation captures only linear relationships and depends on encoding of categorical variables. Use it together with group comparisons (Welch t-test) and χ² for categories.",
+      "noteRu": "Корреляция Пирсона отражает только линейные связи и зависит от кодирования категориальных признаков. Используйте вместе с t-критерием Уэлча и χ² для категорий."
+    }
+  },
   "research": [
     {
       "id": 1,
-      "title": "Heart Attack Prediction using Machine Learning",
-      "description": "Comprehensive analysis of cardiovascular risk factors using ensemble learning methods to predict heart attack probability.",
-      "category": "prediction",
-      "methodology": "We employed a combination of Random Forest, Gradient Boosting, and Neural Networks to build an ensemble model. The dataset was preprocessed using feature engineering techniques including normalization and handling missing values.",
-      "findings": [
-        "Age and cholesterol levels are the strongest predictors",
-        "Ensemble methods outperform single classifiers by 12%",
-        "Early detection can reduce mortality by 40%"
+      "title": "Combined Heart Disease Dataset Analysis (Statlog + Cleveland + Hungary)",
+      "titleRu": "Комплексный анализ объединённого датасета (Statlog + Cleveland + Hungary)",
+      "category": "analysis",
+      "why": {
+        "en": "Identify the strongest clinical and stress-test signals of heart disease in the combined UCI dataset and provide interpretable research outputs for the platform.",
+        "ru": "Выделить самые сильные клинические и нагрузочные сигналы ССЗ в объединённом UCI-датасете и подготовить интерпретируемые результаты для платформы."
+      },
+      "description": "Comprehensive statistical analysis of the largest combined heart disease dataset featuring 1,190 patients from 5 international sources including Cleveland, Hungarian, Switzerland, Long Beach VA, and Statlog datasets.",
+      "descriptionRu": "Комплексный статистический анализ крупнейшего объединённого датасета сердечных заболеваний, включающего данные 1190 пациентов из 5 международных источников: Cleveland, Hungarian, Switzerland, Long Beach VA и Statlog.",
+      "dataset": {
+        "file": "heart_statlog_cleveland_hungary_final.csv",
+        "samples": 1190,
+        "features": 11,
+        "target": "target (0=healthy, 1=disease)",
+        "targetRu": "target (0=здоровый, 1=заболевание)"
+      },
+      "analyzedFeatures": [
+        "age - Age in years",
+        "sex - Gender (1=male, 0=female)",
+        "chest pain type - (1=typical angina, 2=atypical, 3=non-anginal, 4=asymptomatic)",
+        "resting bp s - Resting blood pressure (mm Hg)",
+        "cholesterol - Serum cholesterol (mg/dl)",
+        "fasting blood sugar - FBS > 120 mg/dl (1=true, 0=false)",
+        "resting ecg - (0=normal, 1=ST-T abnormality, 2=LV hypertrophy)",
+        "max heart rate - Maximum heart rate achieved",
+        "exercise angina - Exercise-induced angina (1=yes, 0=no)",
+        "oldpeak - ST depression induced by exercise relative to rest",
+        "ST slope - Peak exercise ST segment slope (1=up, 2=flat, 3=down)"
       ],
-      "tools": ["Python", "Scikit-learn", "TensorFlow", "Pandas"],
-      "dataset": "UCI Heart Disease Dataset",
-      "accuracy": 94,
-      "samples": 303,
-      "features": 14,
-      "date": "2024-12-15"
+      "analyzedFeaturesRu": [
+        "age - Возраст в годах",
+        "sex - Пол (1=мужской, 0=женский)",
+        "chest pain type - Тип боли в груди (1=типичная стенокардия, 2=атипичная, 3=неангинальная, 4=бессимптомная)",
+        "resting bp s - Артериальное давление в покое (мм рт.ст.)",
+        "cholesterol - Холестерин сыворотки (мг/дл)",
+        "fasting blood sugar - Уровень сахара натощак > 120 мг/дл (1=да, 0=нет)",
+        "resting ecg - ЭКГ покоя (0=норма, 1=аномалия ST-T, 2=гипертрофия ЛЖ)",
+        "max heart rate - Максимальная достигнутая ЧСС",
+        "exercise angina - Стенокардия при нагрузке (1=да, 0=нет)",
+        "oldpeak - Депрессия ST при нагрузке относительно покоя",
+        "ST slope - Наклон сегмента ST при пиковой нагрузке (1=вверх, 2=плоский, 3=вниз)"
+      ],
+      "hypotheses": [
+        {
+          "hypothesis": "ST depression (oldpeak) is higher in patients with heart disease",
+          "hypothesisRu": "Oldpeak (депрессия ST) выше у больных",
+          "why": "ECG stress-test marker should separate groups",
+          "whyRu": "Маркер ЭКГ при нагрузке должен разделять группы",
+          "result": "CONFIRMED (Welch t-test, p=1.90e-40): mean 1.57 vs 0.42",
+          "resultRu": "ПОДТВЕРЖДЕНО (t Уэлча, p=1.90e-40): среднее 1.57 vs 0.42"
+        },
+        {
+          "hypothesis": "Maximum heart rate achieved is lower in heart disease patients",
+          "hypothesisRu": "Максимальная ЧСС ниже у больных",
+          "why": "Reduced exercise capacity reflects compromised cardiac reserve",
+          "whyRu": "Снижение переносимости нагрузки отражает ухудшение сердечного резерва",
+          "result": "CONFIRMED (p=1.43e-36): mean 130.68 vs 160.01 bpm",
+          "resultRu": "ПОДТВЕРЖДЕНО (p=1.43e-36): среднее 130.68 vs 160.01"
+        },
+        {
+          "hypothesis": "Age is higher in heart disease patients",
+          "hypothesisRu": "Возраст выше у больных",
+          "why": "Age is a known non-modifiable risk factor",
+          "whyRu": "Возраст — немодифицируемый фактор риска",
+          "result": "CONFIRMED (p=6.35e-18): mean 57.19 vs 51.68 years",
+          "resultRu": "ПОДТВЕРЖДЕНО (p=6.35e-18): среднее 57.19 vs 51.68"
+        },
+        {
+          "hypothesis": "Asymptomatic chest pain type indicates higher heart disease risk",
+          "hypothesisRu": "Бессимптомный тип боли в груди связан с более высоким риском",
+          "why": "Symptom categories should associate with disease rate",
+          "whyRu": "Категории симптомов должны быть связаны с частотой заболевания",
+          "result": "CONFIRMED (χ²): asymptomatic group has highest disease rate",
+          "resultRu": "ПОДТВЕРЖДЕНО (χ²): бессимптомная группа имеет максимальную частоту"
+        },
+        {
+          "hypothesis": "Higher cholesterol levels correlate with heart disease",
+          "hypothesisRu": "Высокий холестерин связан с ССЗ",
+          "why": "Classical lab risk factor expectation",
+          "whyRu": "Классическое ожидание по лабораторному фактору риска",
+          "result": "UNEXPECTED: mean cholesterol lower in disease group (208.57 vs 233.15) — possible medication/cohort effects",
+          "resultRu": "НЕОЖИДАННО: холестерин ниже у больных (208.57 vs 233.15) — возможны эффекты терапии/выборки"
+        }
+      ],
+      "outcomes": {
+        "en": [
+          "Most discriminative numeric signals: oldpeak (+), thalach/maxHR (-), age (+).",
+          "Strong categorical associations: chest pain type, exercise angina, ST slope.",
+          "Static lab measures (cholesterol) show weaker or unstable linear signal; interpret with caution."
+        ],
+        "ru": [
+          "Самые дискриминативные числовые сигналы: oldpeak (+), thalach/максЧСС (-), age (+).",
+          "Сильные категориальные связи: тип боли в груди, стенокардия при нагрузке, наклон ST.",
+          "Статические лабораторные показатели (холестерин) показывают слабый/нестабильный линейный сигнал; интерпретировать осторожно."
+        ]
+      },
+      "correlation": {
+        "numericMatrix": {
+          "columns": ["age", "resting bp s", "cholesterol", "max heart rate", "oldpeak", "target"],
+          "data": [
+            [1.0, 0.257, 0.156, -0.382, 0.197, 0.225],
+            [0.257, 1.0, 0.13, -0.09, 0.167, 0.149],
+            [0.156, 0.13, 1.0, -0.234, 0.031, -0.109],
+            [-0.382, -0.09, -0.234, 1.0, -0.284, -0.394],
+            [0.197, 0.167, 0.031, -0.284, 1.0, 0.398],
+            [0.225, 0.149, -0.109, -0.394, 0.398, 1.0]
+          ]
+        },
+        "encodedMatrix": {
+          "columns": ["age", "sex", "cp", "trestbps", "cholesterol", "fbs", "restecg", "thalach", "exang", "oldpeak", "slope", "target"],
+          "data": [
+            [1.0, 0.095, 0.211, 0.257, 0.156, 0.13, 0.031, -0.382, 0.111, 0.197, 0.137, 0.225],
+            [0.095, 1.0, 0.102, -0.012, -0.191, 0.086, 0.0, -0.071, 0.175, 0.114, 0.104, 0.182],
+            [0.211, 0.102, 1.0, 0.126, 0.145, 0.105, 0.042, -0.319, 0.372, 0.43, 0.629, 0.46],
+            [0.257, -0.012, 0.126, 1.0, 0.13, 0.13, 0.007, -0.09, 0.073, 0.167, 0.072, 0.149],
+            [0.156, -0.191, 0.145, 0.13, 1.0, 0.033, -0.002, -0.234, 0.061, 0.031, 0.077, -0.109],
+            [0.13, 0.086, 0.105, 0.13, 0.033, 1.0, -0.016, -0.045, 0.06, 0.031, 0.029, 0.055],
+            [0.031, 0.0, 0.042, 0.007, -0.002, -0.016, 1.0, -0.006, 0.046, 0.026, 0.048, 0.04],
+            [-0.382, -0.071, -0.319, -0.09, -0.234, -0.045, -0.006, 1.0, -0.326, -0.284, -0.29, -0.394],
+            [0.111, 0.175, 0.372, 0.073, 0.061, 0.06, 0.046, -0.326, 1.0, 0.42, 0.409, 0.345],
+            [0.197, 0.114, 0.43, 0.167, 0.031, 0.031, 0.026, -0.284, 0.42, 1.0, 0.49, 0.398],
+            [0.137, 0.104, 0.629, 0.072, 0.077, 0.029, 0.048, -0.29, 0.409, 0.49, 1.0, 0.446],
+            [0.225, 0.182, 0.46, 0.149, -0.109, 0.055, 0.04, -0.394, 0.345, 0.398, 0.446, 1.0]
+          ]
+        },
+        "topWithTarget": [
+          { "feature": "cp", "r": 0.46 },
+          { "feature": "slope", "r": 0.446 },
+          { "feature": "oldpeak", "r": 0.398 },
+          { "feature": "thalach", "r": -0.394 },
+          { "feature": "exang", "r": 0.345 },
+          { "feature": "age", "r": 0.225 },
+          { "feature": "sex", "r": 0.182 },
+          { "feature": "trestbps", "r": 0.149 },
+          { "feature": "cholesterol", "r": -0.109 },
+          { "feature": "fbs", "r": 0.055 }
+        ],
+        "encodingNote": "encodedMatrix uses ordinal encoding for cp/slope and 0/1 for sex/exang; Pearson correlation.",
+        "encodingNoteRu": "encodedMatrix использует порядковое кодирование для cp/slope и 0/1 для sex/exang; корреляция Пирсона."
+      },
+      "tools": ["Python", "Pandas", "NumPy", "Matplotlib", "SciPy"],
+      "statisticalMethods": ["Welch's t-test", "Chi-square test", "Cohen's d effect size", "Pearson correlation"],
+      "colabLink": "https://colab.research.google.com/drive/139hZHDxAnGv8CS3GV-HY6hkr-P7dzg8B",
+      "imageUrl": "",
+      "date": "2025-01-20"
     },
     {
       "id": 2,
-      "title": "Cardiovascular Disease Risk Visualization",
-      "description": "Interactive visualizations exploring correlations between lifestyle factors and heart disease risk across different demographics.",
-      "category": "visualization",
-      "methodology": "Data visualization using D3.js and Plotly to create interactive dashboards showing relationships between variables.",
-      "findings": [
-        "Strong correlation between smoking and heart disease",
-        "Physical activity reduces risk by 30%",
-        "Gender differences in risk factors identified"
+      "title": "UCI Heart Disease Multivariate Analysis",
+      "titleRu": "Многомерный анализ UCI Heart Disease",
+      "category": "analysis",
+      "why": {
+        "en": "Validate the classic UCI feature set and compare which feature families (angiography proxies, symptoms, exercise response, labs) best explain heart disease risk.",
+        "ru": "Проверить классический набор UCI-признаков и сравнить, какие группы (сосуды/ангиография, симптомы, нагрузка, лабораторные) лучше всего объясняют риск."
+      },
+      "description": "In-depth exploratory data analysis of the classic UCI Heart Disease dataset with 14 clinical attributes collected from Hungarian Institute of Cardiology (Budapest), University Hospital Zurich, University Hospital Basel, and VA Medical Center (Cleveland).",
+      "descriptionRu": "Углублённый разведочный анализ классического датасета UCI Heart Disease с 14 клиническими атрибутами, собранными в Венгерском институте кардиологии (Будапешт), Университетской клинике Цюриха, Университетской клинике Базеля и Медицинском центре VA (Кливленд).",
+      "dataset": {
+        "file": "heart_disease_uci.csv",
+        "samples": 920,
+        "features": 14,
+        "target": "num (0–4) -> binary",
+        "targetRu": "num (0–4) -> бинарный"
+      },
+      "analyzedFeatures": [
+        "age - Age of patient in years",
+        "sex - Gender (Male/Female)",
+        "cp - Chest pain type (typical angina, atypical angina, non-anginal, asymptomatic)",
+        "trestbps - Resting blood pressure (mm Hg on admission)",
+        "chol - Serum cholesterol (mg/dl)",
+        "fbs - Fasting blood sugar > 120 mg/dl",
+        "restecg - Resting ECG (normal, ST-T abnormality, LV hypertrophy)",
+        "thalach - Maximum heart rate achieved",
+        "exang - Exercise-induced angina (True/False)",
+        "oldpeak - ST depression induced by exercise",
+        "slope - Slope of peak exercise ST segment",
+        "ca - Number of major vessels (0-3) colored by fluoroscopy",
+        "thal - Thalassemia (normal, fixed defect, reversible defect)",
+        "num - Target variable (heart disease severity 0-4)"
       ],
-      "tools": ["D3.js", "Plotly", "Python", "Tableau"],
-      "dataset": "Framingham Heart Study",
-      "samples": 4240,
-      "features": 16,
-      "date": "2024-11-20"
+      "analyzedFeaturesRu": [
+        "age - Возраст пациента в годах",
+        "sex - Пол (Мужской/Женский)",
+        "cp - Тип боли в груди (типичная стенокардия, атипичная, неангинальная, бессимптомная)",
+        "trestbps - Артериальное давление в покое (мм рт.ст. при поступлении)",
+        "chol - Холестерин сыворотки (мг/дл)",
+        "fbs - Сахар крови натощак > 120 мг/дл",
+        "restecg - ЭКГ покоя (норма, аномалия ST-T, гипертрофия ЛЖ)",
+        "thalach - Максимальная достигнутая ЧСС",
+        "exang - Стенокардия при нагрузке (Да/Нет)",
+        "oldpeak - Депрессия ST при нагрузке",
+        "slope - Наклон сегмента ST при пиковой нагрузке",
+        "ca - Количество основных сосудов (0-3), окрашенных при флюороскопии",
+        "thal - Талассемия (норма, фиксированный дефект, обратимый дефект)",
+        "num - Целевая переменная (степень тяжести 0-4)"
+      ],
+      "hypotheses": [
+        {
+          "hypothesis": "Categorical indicators (cp, thal, ca) show strongest associations",
+          "hypothesisRu": "Категориальные индикаторы (cp, thal, ca) имеют сильнейшие связи",
+          "why": "Disease severity is often reflected in symptom patterns and angiography proxies",
+          "whyRu": "Тяжесть часто отражается в симптомах и признаках сосудов",
+          "result": "CONFIRMED: ca and exang are among top correlations; χ² tests support categorical strength",
+          "resultRu": "ПОДТВЕРЖДЕНО: ca и exang в топ-корреляциях; χ² подтверждает силу категорий"
+        },
+        {
+          "hypothesis": "Exercise-related variables (oldpeak, thalach) have high predictive value",
+          "hypothesisRu": "Нагрузочные переменные (oldpeak, thalach) имеют высокую прогностическую ценность",
+          "why": "Functional response to stress reveals ischemia",
+          "whyRu": "Функциональный ответ на нагрузку отражает ишемию",
+          "result": "CONFIRMED: oldpeak (+) and thalach (-) are top linear signals",
+          "resultRu": "ПОДТВЕРЖДЕНО: oldpeak (+) и thalach (-) — топ линейных сигналов"
+        },
+        {
+          "hypothesis": "Single numeric features provide limited standalone discrimination",
+          "hypothesisRu": "Одиночные числовые признаки слабо разделяют группы",
+          "why": "Heart disease is multi-factorial",
+          "whyRu": "ССЗ многофакторны",
+          "result": "CONFIRMED: most single-feature effect sizes are small to moderate",
+          "resultRu": "ПОДТВЕРЖДЕНО: большинство эффектов от малых до умеренных"
+        }
+      ],
+      "outcomes": {
+        "en": [
+          "Top signals: exercise-induced angina (exang), major vessels (ca), max heart rate (thalach, inverse), oldpeak (+).",
+          "Labs (cholesterol, fasting glucose) show weaker linear contribution; combine features for risk assessment."
+        ],
+        "ru": [
+          "Топ сигналы: стенокардия при нагрузке (exang), сосуды (ca), макс.ЧСС (thalach, обратная), oldpeak (+).",
+          "Лабораторные показатели (холестерин, глюкоза натощак) дают более слабый линейный вклад; для оценки риска нужна интеграция признаков."
+        ]
+      },
+      "correlation": {
+        "matrix": {
+          "columns": ["age", "sex", "cp", "trestbps", "cholesterol", "fbs", "restecg", "thalach", "exang", "oldpeak", "slope", "ca", "thal", "target"],
+          "data": [
+            [1.0, 0.056, 0.07, 0.276, 0.215, 0.117, 0.093, -0.399, 0.078, 0.207, 0.112, 0.362, 0.09, 0.228],
+            [0.056, 1.0, 0.015, -0.041, -0.198, 0.06, 0.019, -0.073, 0.181, 0.099, 0.069, 0.13, 0.062, 0.177],
+            [0.07, 0.015, 1.0, 0.05, 0.065, 0.058, 0.047, -0.256, 0.268, 0.327, 0.41, 0.228, 0.269, 0.349],
+            [0.276, -0.041, 0.05, 1.0, 0.128, 0.154, 0.05, -0.052, 0.067, 0.151, 0.067, 0.127, 0.05, 0.148],
+            [0.215, -0.198, 0.065, 0.128, 1.0, 0.029, 0.007, -0.235, 0.069, 0.057, 0.065, 0.11, 0.043, -0.082],
+            [0.117, 0.06, 0.058, 0.154, 0.029, 1.0, -0.017, -0.01, 0.021, 0.039, 0.011, 0.055, 0.012, 0.028],
+            [0.093, 0.019, 0.047, 0.05, 0.007, -0.017, 1.0, -0.01, 0.051, 0.011, 0.062, 0.047, 0.034, 0.039],
+            [-0.399, -0.073, -0.256, -0.052, -0.235, -0.01, -0.01, 1.0, -0.344, -0.259, -0.247, -0.279, -0.131, -0.386],
+            [0.078, 0.181, 0.268, 0.067, 0.069, 0.021, 0.051, -0.344, 1.0, 0.352, 0.272, 0.197, 0.173, 0.327],
+            [0.207, 0.099, 0.327, 0.151, 0.057, 0.039, 0.011, -0.259, 0.352, 1.0, 0.358, 0.216, 0.222, 0.34],
+            [0.112, 0.069, 0.41, 0.067, 0.065, 0.011, 0.062, -0.247, 0.272, 0.358, 1.0, 0.165, 0.242, 0.313],
+            [0.362, 0.13, 0.228, 0.127, 0.11, 0.055, 0.047, -0.279, 0.197, 0.216, 0.165, 1.0, 0.133, 0.354],
+            [0.09, 0.062, 0.269, 0.05, 0.043, 0.012, 0.034, -0.131, 0.173, 0.222, 0.242, 0.133, 1.0, 0.248],
+            [0.228, 0.177, 0.349, 0.148, -0.082, 0.028, 0.039, -0.386, 0.327, 0.34, 0.313, 0.354, 0.248, 1.0]
+          ]
+        },
+        "topWithTarget": [
+          { "feature": "thalach", "r": -0.386 },
+          { "feature": "ca", "r": 0.354 },
+          { "feature": "cp", "r": 0.349 },
+          { "feature": "oldpeak", "r": 0.34 },
+          { "feature": "exang", "r": 0.327 },
+          { "feature": "slope", "r": 0.313 },
+          { "feature": "thal", "r": 0.248 },
+          { "feature": "age", "r": 0.228 },
+          { "feature": "sex", "r": 0.177 },
+          { "feature": "trestbps", "r": 0.148 }
+        ],
+        "note": "Object features encoded via category codes for correlation; interpret signs carefully.",
+        "noteRu": "Категории закодированы через category codes; знак и величину интерпретировать осторожно."
+      },
+      "tools": ["Python", "Pandas", "NumPy", "Matplotlib", "SciPy"],
+      "statisticalMethods": ["Welch's t-test", "Chi-square test", "Cohen's d", "Correlation matrix"],
+      "colabLink": "https://colab.research.google.com/drive/1_cl0Nq0X2drrn6Esprw4-jaOzT1m7Qjd",
+      "imageUrl": "",
+      "date": "2025-01-18"
     },
     {
       "id": 3,
-      "title": "Statistical Analysis of CVD Symptoms",
-      "description": "In-depth statistical analysis of symptom presentation patterns across different cardiovascular conditions.",
+      "title": "Large-Scale Cardiovascular Risk Factor Study (10K)",
+      "titleRu": "Крупномасштабное исследование факторов риска (10K)",
       "category": "analysis",
-      "methodology": "Statistical analysis using hypothesis testing, correlation analysis, and regression modeling to identify symptom patterns.",
-      "findings": [
-        "Chest pain is present in 85% of acute cases",
-        "Fatigue as early warning sign often overlooked",
-        "Symptom clustering varies by age group"
+      "why": {
+        "en": "Show that large datasets can yield statistically significant results with tiny effect sizes; focus on practical significance and lifestyle factors.",
+        "ru": "Показать, что в больших датасетах можно получить «значимость» при маленьком эффекте; акцент на практической значимости и факторах образа жизни."
+      },
+      "description": "Statistical analysis of 10,000 patient records examining demographic, lifestyle, clinical, and inflammatory markers for heart disease prediction with focus on effect sizes over p-values.",
+      "descriptionRu": "Статистический анализ 10 000 записей пациентов, исследующий демографические, поведенческие, клинические и воспалительные маркеры для прогнозирования сердечных заболеваний с фокусом на размерах эффекта вместо p-значений.",
+      "dataset": {
+        "file": "heart_disease.csv",
+        "samples": 10000,
+        "features": 20,
+        "target": "Heart Disease Status",
+        "targetRu": "Статус сердечного заболевания"
+      },
+      "analyzedFeatures": [
+        "Age - Patient age in years",
+        "Gender - Male/Female",
+        "Smoking - Smoking status",
+        "Exercise Habits - Physical activity level",
+        "Blood Pressure - Systolic/diastolic measurements",
+        "Cholesterol Level - Serum cholesterol",
+        "BMI - Body Mass Index",
+        "CRP Level - C-reactive protein (inflammatory marker)",
+        "Homocysteine Level - Cardiovascular risk marker",
+        "Diet - Dietary habits classification",
+        "Alcohol Consumption - Drinking patterns",
+        "Stress Level - Self-reported stress",
+        "Sleep Hours - Daily sleep duration",
+        "Physical Activity Days - Weekly activity frequency"
       ],
-      "tools": ["R", "SPSS", "Python", "NumPy"],
-      "dataset": "Cleveland Heart Disease Database",
-      "accuracy": 89,
-      "samples": 920,
-      "features": 76,
-      "date": "2024-10-05"
+      "analyzedFeaturesRu": [
+        "Age - Возраст пациента в годах",
+        "Gender - Пол (Мужской/Женский)",
+        "Smoking - Статус курения",
+        "Exercise Habits - Уровень физической активности",
+        "Blood Pressure - Систолическое/диастолическое давление",
+        "Cholesterol Level - Холестерин сыворотки",
+        "BMI - Индекс массы тела",
+        "CRP Level - С-реактивный белок (маркер воспаления)",
+        "Homocysteine Level - Маркер сердечно-сосудистого риска",
+        "Diet - Классификация пищевых привычек",
+        "Alcohol Consumption - Паттерны употребления алкоголя",
+        "Stress Level - Самооценка уровня стресса",
+        "Sleep Hours - Продолжительность сна в сутки",
+        "Physical Activity Days - Частота активности в неделю"
+      ],
+      "hypotheses": [
+        {
+          "hypothesis": "Effect sizes remain small despite significant p-values in large samples",
+          "hypothesisRu": "Размеры эффекта малы, несмотря на p-value",
+          "why": "N=10k inflates statistical power",
+          "whyRu": "N=10k увеличивает мощность тестов",
+          "result": "CONFIRMED: correlations with target are very weak across features",
+          "resultRu": "ПОДТВЕРЖДЕНО: корреляции с целью очень слабые"
+        },
+        {
+          "hypothesis": "Lifestyle factors associate with disease status",
+          "hypothesisRu": "Факторы образа жизни связаны со статусом заболевания",
+          "why": "Smoking, activity, diet are modifiable",
+          "whyRu": "Курение, активность, диета — модифицируемы",
+          "result": "CONFIRMED: categorical rate differences detectable; linear r modest",
+          "resultRu": "ПОДТВЕРЖДЕНО: различия долей по категориям заметны; линейные r умеренные"
+        },
+        {
+          "hypothesis": "Single variables cannot reliably separate disease classes",
+          "hypothesisRu": "Один признак не разделяет классы надёжно",
+          "why": "Risk is multi-dimensional",
+          "whyRu": "Риск многомерен",
+          "result": "CONFIRMED: requires integrated multi-feature analysis",
+          "resultRu": "ПОДТВЕРЖДЕНО: нужен многопризнаковый анализ"
+        }
+      ],
+      "outcomes": {
+        "en": [
+          "All linear correlations are tiny (|r| ~ 0.00–0.02): interpret using effect sizes and multivariate models.",
+          "Useful for education: why correlations alone are insufficient for clinical separation."
+        ],
+        "ru": [
+          "Все линейные корреляции очень малы (|r| ~ 0.00–0.02): интерпретировать через effect size и многомерные модели.",
+          "Полезно как учебный пример: почему корреляции недостаточно для клинического разделения."
+        ]
+      },
+      "correlation": {
+        "matrix": {
+          "columns": ["Age", "Gender", "Smoking", "Exercise Habits", "Blood Pressure", "Cholesterol Level", "BMI", "CRP Level", "Homocysteine Level", "Diet", "Alcohol Consumption", "Stress Level", "Sleep Hours", "Physical Activity Days", "Heart Disease Status"],
+          "data": [
+            [1.0, -0.006, 0.016, 0.008, 0.006, -0.001, -0.016, 0.015, 0.007, -0.0, -0.0, 0.003, -0.007, 0.009, -0.009],
+            [-0.006, 1.0, 0.0, -0.012, -0.009, -0.0, 0.001, 0.006, 0.002, -0.0, -0.006, -0.0, -0.006, 0.007, -0.0],
+            [0.016, 0.0, 1.0, 0.003, -0.006, 0.006, -0.003, 0.01, 0.013, -0.008, -0.004, 0.006, -0.005, -0.001, 0.004],
+            [0.008, -0.012, 0.003, 1.0, 0.008, 0.001, -0.003, 0.01, 0.0, -0.011, 0.004, -0.007, -0.004, 0.006, -0.002],
+            [0.006, -0.009, -0.006, 0.008, 1.0, 0.01, 0.011, -0.01, -0.004, -0.007, 0.005, 0.005, -0.007, 0.004, 0.009],
+            [-0.001, -0.0, 0.006, 0.001, 0.01, 1.0, 0.009, 0.012, -0.002, -0.005, 0.001, 0.007, -0.01, -0.001, -0.002],
+            [-0.016, 0.001, -0.003, -0.003, 0.011, 0.009, 1.0, -0.013, -0.005, 0.011, -0.007, -0.003, 0.01, -0.009, 0.004],
+            [0.015, 0.006, 0.01, 0.01, -0.01, 0.012, -0.013, 1.0, 0.01, -0.001, -0.001, 0.016, -0.002, 0.007, 0.006],
+            [0.007, 0.002, 0.013, 0.0, -0.004, -0.002, -0.005, 0.01, 1.0, 0.002, -0.006, 0.01, -0.008, -0.009, 0.002],
+            [-0.0, -0.0, -0.008, -0.011, -0.007, -0.005, 0.011, -0.001, 0.002, 1.0, 0.001, -0.004, 0.004, -0.01, -0.009],
+            [-0.0, -0.006, -0.004, 0.004, 0.005, 0.001, -0.007, -0.001, -0.006, 0.001, 1.0, -0.005, 0.0, 0.003, 0.001],
+            [0.003, -0.0, 0.006, -0.007, 0.005, 0.007, -0.003, 0.016, 0.01, -0.004, -0.005, 1.0, 0.003, -0.008, -0.0],
+            [-0.007, -0.006, -0.005, -0.004, -0.007, -0.01, 0.01, -0.002, -0.008, 0.004, 0.0, 0.003, 1.0, 0.005, 0.004],
+            [0.009, 0.007, -0.001, 0.006, 0.004, -0.001, -0.009, 0.007, -0.009, -0.01, 0.003, -0.008, 0.005, 1.0, -0.0],
+            [-0.009, -0.0, 0.004, -0.002, 0.009, -0.002, 0.004, 0.006, 0.002, -0.009, 0.001, -0.0, 0.004, -0.0, 1.0]
+          ]
+        },
+        "topWithTarget": [
+          { "feature": "Diet", "r": -0.009 },
+          { "feature": "Age", "r": -0.009 },
+          { "feature": "Blood Pressure", "r": 0.009 },
+          { "feature": "CRP Level", "r": 0.006 },
+          { "feature": "Smoking", "r": 0.004 },
+          { "feature": "BMI", "r": 0.004 },
+          { "feature": "Sleep Hours", "r": 0.004 },
+          { "feature": "Cholesterol Level", "r": -0.002 },
+          { "feature": "Exercise Habits", "r": -0.002 },
+          { "feature": "Homocysteine Level", "r": 0.002 }
+        ],
+        "note": "Object features encoded via category codes; weak correlations expected.",
+        "noteRu": "Категории закодированы category codes; слабые корреляции ожидаемы."
+      },
+      "tools": ["Python", "Pandas", "NumPy", "Matplotlib", "SciPy"],
+      "statisticalMethods": ["Welch's t-test", "Chi-square test", "Cohen's d effect size", "Correlation matrix"],
+      "colabLink": "https://colab.research.google.com/drive/1WnrHF8mhSjNdPGSoEicCKynz6lCvEZTG",
+      "imageUrl": "",
+      "date": "2025-01-15"
     },
     {
       "id": 4,
-      "title": "Heart Disease UCI Dataset",
-      "description": "Curated dataset combining heart disease data from Cleveland, Hungary, Switzerland, and VA Long Beach.",
-      "category": "dataset",
-      "methodology": "Data cleaning, integration, and standardization of multiple international heart disease databases.",
-      "findings": [
-        "Standardized format for cross-study analysis",
-        "Missing values handled using imputation",
-        "Ready for machine learning applications"
+      "title": "Global Heart Attack Risk Prediction Analysis (Synthetic)",
+      "titleRu": "Глобальный анализ риска инфаркта (синтетический датасет)",
+      "category": "analysis",
+      "why": {
+        "en": "Explore a wide mix of lifestyle, clinical and socioeconomic factors and demonstrate that risk is multi-dimensional with weak single-feature linear links.",
+        "ru": "Проанализировать широкий набор факторов (образ жизни, клиника, социоэкономика) и показать многофакторность риска при слабых линейных связях отдельных признаков."
+      },
+      "description": "Exploratory analysis of a comprehensive global dataset featuring 8,763 patients with 26 attributes covering demographics, lifestyle, clinical indicators, and socioeconomic factors from multiple countries and continents.",
+      "descriptionRu": "Разведочный анализ комплексного глобального датасета, включающего 8763 пациента с 26 атрибутами, охватывающими демографию, образ жизни, клинические показатели и социально-экономические факторы из множества стран и континентов.",
+      "dataset": {
+        "file": "heart_attack_prediction_dataset.csv",
+        "samples": 8763,
+        "features": 26,
+        "target": "Heart Attack Risk",
+        "targetRu": "Риск инфаркта"
+      },
+      "analyzedFeatures": [
+        "Patient ID - Unique identifier",
+        "Age - Patient age in years",
+        "Sex - Gender (Male/Female)",
+        "Cholesterol - Cholesterol levels",
+        "Blood Pressure - Systolic/diastolic (string format)",
+        "Heart Rate - Resting heart rate",
+        "Diabetes - Diabetes status (Yes/No)",
+        "Family History - Heart disease in family (1=Yes, 0=No)",
+        "Smoking - Smoking status (1=Smoker, 0=Non-smoker)",
+        "Obesity - Obesity status (1=Obese, 0=Not obese)",
+        "Alcohol Consumption - None/Light/Moderate/Heavy",
+        "Exercise Hours Per Week - Weekly exercise duration",
+        "Diet - Healthy/Average/Unhealthy",
+        "Previous Heart Problems - Prior cardiac events (1=Yes, 0=No)",
+        "Medication Use - Current medication (1=Yes, 0=No)",
+        "Stress Level - Self-reported (1-10 scale)",
+        "Sedentary Hours Per Day - Daily inactive time",
+        "Income - Income level",
+        "BMI - Body Mass Index",
+        "Triglycerides - Triglyceride levels",
+        "Physical Activity Days Per Week - Activity frequency",
+        "Sleep Hours Per Day - Daily sleep duration",
+        "Country - Patient country",
+        "Continent - Geographic region",
+        "Hemisphere - Northern/Southern hemisphere",
+        "Heart Attack Risk - Target (1=Risk, 0=No Risk)"
       ],
-      "tools": ["Python", "Pandas", "SQL"],
-      "dataset": "Combined UCI Repository",
-      "samples": 920,
-      "features": 14,
-      "date": "2024-09-12"
+      "analyzedFeaturesRu": [
+        "Patient ID - Уникальный идентификатор",
+        "Age - Возраст пациента в годах",
+        "Sex - Пол (Мужской/Женский)",
+        "Cholesterol - Уровень холестерина",
+        "Blood Pressure - Систолическое/диастолическое (строковый формат)",
+        "Heart Rate - ЧСС в покое",
+        "Diabetes - Статус диабета (Да/Нет)",
+        "Family History - Сердечные заболевания в семье (1=Да, 0=Нет)",
+        "Smoking - Статус курения (1=Курильщик, 0=Некурящий)",
+        "Obesity - Статус ожирения (1=Ожирение, 0=Нет ожирения)",
+        "Alcohol Consumption - Нет/Лёгкое/Умеренное/Тяжёлое",
+        "Exercise Hours Per Week - Продолжительность упражнений в неделю",
+        "Diet - Здоровое/Среднее/Нездоровое питание",
+        "Previous Heart Problems - Предшествующие сердечные события (1=Да, 0=Нет)",
+        "Medication Use - Текущие лекарства (1=Да, 0=Нет)",
+        "Stress Level - Самооценка (шкала 1-10)",
+        "Sedentary Hours Per Day - Ежедневное время бездействия",
+        "Income - Уровень дохода",
+        "BMI - Индекс массы тела",
+        "Triglycerides - Уровень триглицеридов",
+        "Physical Activity Days Per Week - Частота активности",
+        "Sleep Hours Per Day - Продолжительность сна в сутки",
+        "Country - Страна пациента",
+        "Continent - Географический регион",
+        "Hemisphere - Северное/Южное полушарие",
+        "Heart Attack Risk - Целевая переменная (1=Риск, 0=Нет риска)"
+      ],
+      "hypotheses": [
+        {
+          "hypothesis": "Family history and previous heart problems are key risk indicators",
+          "hypothesisRu": "Семейный анамнез и предыдущие проблемы с сердцем — ключевые индикаторы",
+          "why": "Non-modifiable/history factors typically elevate risk",
+          "whyRu": "Анамнез и немодифицируемые факторы часто увеличивают риск",
+          "result": "CONFIRMED in categorical analyses (rate/χ²)",
+          "resultRu": "ПОДТВЕРЖДЕНО в категориальных анализах (доли/χ²)"
+        },
+        {
+          "hypothesis": "No single numeric feature strongly predicts heart attack risk",
+          "hypothesisRu": "Ни один числовой признак не даёт сильного прогноза",
+          "why": "Complex multi-factor risk and synthetic generation reduce linear patterns",
+          "whyRu": "Сложный многофакторный риск и синтетичность уменьшают линейные паттерны",
+          "result": "CONFIRMED: all |r| are weak in correlation screening",
+          "resultRu": "ПОДТВЕРЖДЕНО: все |r| слабые в корреляционном скрининге"
+        }
+      ],
+      "outcomes": {
+        "en": [
+          "Weak linear correlations across numeric features (|r| <= ~0.02).",
+          "Best used for demonstrating multifactor risk, not as a clinical benchmark (synthetic dataset)."
+        ],
+        "ru": [
+          "Слабые линейные корреляции по числовым признакам (|r| <= ~0.02).",
+          "Лучше использовать как демонстрацию многофакторности, не как клинический эталон (датасет синтетический)."
+        ]
+      },
+      "correlation": {
+        "matrix": {
+          "columns": ["Age", "Cholesterol", "Heart Rate", "BP_Systolic", "BP_Diastolic", "Stress Level", "Sedentary Hours Per Day", "Income", "BMI", "Triglycerides", "Exercise Hours Per Week", "Physical Activity Days Per Week", "Sleep Hours Per Day", "Heart Attack Risk"],
+          "data": [
+            [1.0, 0.0, -0.0, 0.0, 0.0, -0.01, -0.002, 0.0, 0.008, 0.015, -0.011, -0.003, -0.0, 0.001],
+            [0.0, 1.0, 0.01, -0.007, 0.006, -0.012, -0.01, 0.01, 0.008, -0.001, 0.006, 0.0, -0.0, 0.004],
+            [-0.0, 0.01, 1.0, -0.005, 0.004, 0.009, -0.012, 0.003, 0.002, -0.006, 0.001, -0.005, 0.003, -0.002],
+            [0.0, -0.007, -0.005, 1.0, -0.0, -0.006, 0.004, -0.001, -0.005, 0.008, 0.002, -0.011, 0.0, -0.003],
+            [0.0, 0.006, 0.004, -0.0, 1.0, 0.0, 0.008, 0.003, -0.002, 0.003, -0.0, 0.011, -0.004, 0.007],
+            [-0.01, -0.012, 0.009, -0.006, 0.0, 1.0, 0.003, -0.007, 0.005, -0.0, 0.007, 0.008, -0.003, 0.018],
+            [-0.002, -0.01, -0.012, 0.004, 0.008, 0.003, 1.0, -0.004, -0.004, 0.01, -0.005, -0.001, 0.005, 0.011],
+            [0.0, 0.01, 0.003, -0.001, 0.003, -0.007, -0.004, 1.0, -0.003, -0.004, 0.002, -0.001, 0.001, -0.006],
+            [0.008, 0.008, 0.002, -0.005, -0.002, 0.005, -0.004, -0.003, 1.0, -0.006, 0.001, 0.002, -0.004, -0.006],
+            [0.015, -0.001, -0.006, 0.008, 0.003, -0.0, 0.01, -0.004, -0.006, 1.0, -0.006, 0.0, -0.006, -0.0],
+            [-0.011, 0.006, 0.001, 0.002, -0.0, 0.007, -0.005, 0.002, 0.001, -0.006, 1.0, -0.008, 0.004, -0.011],
+            [-0.003, 0.0, -0.005, -0.011, 0.011, 0.008, -0.001, -0.001, 0.002, 0.0, -0.008, 1.0, 0.006, 0.003],
+            [-0.0, -0.0, 0.003, 0.0, -0.004, -0.003, 0.005, 0.001, -0.004, -0.006, 0.004, 0.006, 1.0, -0.001],
+            [0.001, 0.004, -0.002, -0.003, 0.007, 0.018, 0.011, -0.006, -0.006, -0.0, -0.011, 0.003, -0.001, 1.0]
+          ]
+        },
+        "topWithTarget": [
+          { "feature": "Stress Level", "r": 0.018 },
+          { "feature": "Sedentary Hours Per Day", "r": 0.011 },
+          { "feature": "Exercise Hours Per Week", "r": -0.011 },
+          { "feature": "BP_Diastolic", "r": 0.007 },
+          { "feature": "Cholesterol", "r": 0.004 },
+          { "feature": "Physical Activity Days Per Week", "r": 0.003 },
+          { "feature": "Age", "r": 0.001 },
+          { "feature": "Sleep Hours Per Day", "r": -0.001 },
+          { "feature": "Heart Rate", "r": -0.002 },
+          { "feature": "BP_Systolic", "r": -0.003 },
+          { "feature": "BMI", "r": -0.006 },
+          { "feature": "Income", "r": -0.006 }
+        ],
+        "note": "Blood Pressure split into BP_Systolic/BP_Diastolic from string; other categories encoded.",
+        "noteRu": "Давление разбито на BP_Systolic/BP_Diastolic из строки; остальные категории закодированы."
+      },
+      "tools": ["Python", "Pandas", "NumPy", "Matplotlib", "SciPy"],
+      "statisticalMethods": ["Welch's t-test", "Chi-square test", "Cohen's d", "Correlation analysis"],
+      "colabLink": "https://colab.research.google.com/drive/1Cvhrqh39Pa_IFBUay20E6-SD9hs5Uuk9",
+      "imageUrl": "",
+      "date": "2025-01-12"
     },
     {
       "id": 5,
-      "title": "Deep Learning for ECG Analysis",
-      "description": "Convolutional neural network model for automated detection of arrhythmias from ECG signals.",
-      "category": "prediction",
-      "methodology": "CNN architecture with residual connections trained on PhysioNet ECG database for multi-class arrhythmia classification.",
-      "findings": [
-        "97% accuracy on arrhythmia detection",
-        "Real-time processing capability achieved",
-        "Reduces diagnosis time by 60%"
+      "title": "Chest Pain Type Classification in CVD Diagnosis",
+      "titleRu": "Типы боли в груди в диагностике ССЗ",
+      "category": "visualization",
+      "why": {
+        "en": "Explain why symptom class 'asymptomatic' can still be high-risk and how chest pain typing supports screening.",
+        "ru": "Пояснить, почему «бессимптомные» могут иметь высокий риск, и как тип боли помогает скринингу."
+      },
+      "description": "Detailed analysis of chest pain type distributions and their correlation with heart disease diagnosis. This visualization study reveals the paradoxical finding that asymptomatic patients have the highest heart disease rates.",
+      "descriptionRu": "Детальный анализ распределения типов боли в груди и их корреляции с диагностикой сердечных заболеваний. Это визуализационное исследование выявляет парадоксальный факт: бессимптомные пациенты имеют наивысшую частоту сердечных заболеваний.",
+      "dataset": {
+        "file": "heart_statlog_cleveland_hungary_final.csv",
+        "samples": 1190,
+        "features": 11
+      },
+      "analyzedFeatures": [
+        "chest pain type 1 - Typical angina (classical exertional chest pain)",
+        "chest pain type 2 - Atypical angina (non-classical presentation)",
+        "chest pain type 3 - Non-anginal pain (non-cardiac chest pain)",
+        "chest pain type 4 - Asymptomatic (no chest pain symptoms)"
       ],
-      "tools": ["PyTorch", "CUDA", "NumPy", "SciPy"],
-      "dataset": "MIT-BIH Arrhythmia Database",
-      "accuracy": 97,
-      "samples": 109446,
-      "features": 360,
-      "date": "2024-08-28"
+      "analyzedFeaturesRu": [
+        "тип боли в груди 1 - Типичная стенокардия (классическая боль при нагрузке)",
+        "тип боли в груди 2 - Атипичная стенокардия (неклассическое проявление)",
+        "тип боли в груди 3 - Неангинальная боль (некардиальная боль в груди)",
+        "тип боли в груди 4 - Бессимптомная (отсутствие симптомов боли в груди)"
+      ],
+      "hypotheses": [
+        {
+          "hypothesis": "Typical angina has the highest association with heart disease",
+          "hypothesisRu": "Типичная стенокардия имеет наивысшую связь",
+          "why": "Classical clinical expectation",
+          "whyRu": "Классическое клиническое ожидание",
+          "result": "REJECTED: asymptomatic category shows highest disease rate",
+          "resultRu": "ОТВЕРГНУТО: бессимптомная категория имеет максимальную частоту"
+        },
+        {
+          "hypothesis": "Absence of chest pain implies lower risk",
+          "hypothesisRu": "Отсутствие боли означает меньший риск",
+          "why": "Naïve symptom-based assumption",
+          "whyRu": "Наивное предположение по симптомам",
+          "result": "REJECTED: silent/asymptomatic presentation can be high-risk",
+          "resultRu": "ОТВЕРГНУТО: «тихое» течение может быть high-risk"
+        }
+      ],
+      "outcomes": {
+        "en": [
+          "Chest pain type is a strong categorical predictor; asymptomatic does not mean safe.",
+          "Silent or atypical symptoms are common among high-risk cardiovascular patients.",
+          "Findings support comprehensive cardiac screening regardless of pain symptoms."
+        ],
+        "ru": [
+          "Тип боли — сильный категориальный предиктор; отсутствие боли не означает низкий риск.",
+          "Скрытые или атипичные симптомы распространены среди пациентов с высоким сердечно-сосудистым риском.",
+          "Результаты поддерживают комплексный кардиологический скрининг независимо от болевых симптомов."
+        ]
+      },
+      "tools": ["Python", "Pandas", "Matplotlib", "Seaborn"],
+      "statisticalMethods": ["Chi-square test", "Disease rate analysis", "Cross-tabulation"],
+      "colabLink": "https://colab.research.google.com/drive/139hZHDxAnGv8CS3GV-HY6hkr-P7dzg8B",
+      "imageUrl": "",
+      "date": "2025-01-10"
     },
     {
       "id": 6,
-      "title": "Global CVD Mortality Trends",
-      "description": "Analysis of cardiovascular disease mortality trends across different countries and time periods.",
+      "title": "ST Segment Depression (Oldpeak) as CVD Biomarker",
+      "titleRu": "Депрессия ST (Oldpeak) как биомаркер",
       "category": "analysis",
-      "methodology": "Time series analysis and geospatial visualization of WHO mortality data spanning 30 years.",
-      "findings": [
-        "Mortality rates declining in developed nations",
-        "Rising trends in low-income countries",
-        "Healthcare access key determinant"
+      "why": {
+        "en": "Deep-dive into oldpeak as the strongest numeric discriminator in stress-test features.",
+        "ru": "Детальный анализ oldpeak как самого сильного числового дискриминатора среди нагрузочных признаков."
+      },
+      "description": "Focused statistical investigation of ST depression induced by exercise relative to rest as a key electrocardiographic marker for heart disease detection. Oldpeak shows the strongest statistical separation between healthy and diseased groups.",
+      "descriptionRu": "Целенаправленное статистическое исследование депрессии сегмента ST, вызванной физической нагрузкой относительно состояния покоя, как ключевого электрокардиографического маркера для выявления сердечных заболеваний.",
+      "dataset": {
+        "file": "heart_statlog_cleveland_hungary_final.csv",
+        "samples": 1190,
+        "features": 11
+      },
+      "analyzedFeatures": [
+        "oldpeak - ST depression induced by exercise relative to rest (numeric, mm)",
+        "ST slope - Slope of peak exercise ST segment (1=upsloping, 2=flat, 3=downsloping)"
       ],
-      "tools": ["Python", "GeoPandas", "Matplotlib", "Seaborn"],
-      "dataset": "WHO Global Health Observatory",
-      "samples": 194,
-      "features": 45,
-      "date": "2024-07-15"
+      "analyzedFeaturesRu": [
+        "oldpeak - Депрессия ST, вызванная нагрузкой относительно покоя (числовой, мм)",
+        "ST slope - Наклон сегмента ST при пиковой нагрузке (1=восходящий, 2=плоский, 3=нисходящий)"
+      ],
+      "hypotheses": [
+        {
+          "hypothesis": "ST depression is significantly higher in heart disease patients",
+          "hypothesisRu": "Депрессия ST значительно выше у пациентов с сердечными заболеваниями",
+          "why": "ECG marker should reflect ischemia during exercise",
+          "whyRu": "ЭКГ-маркер должен отражать ишемию при нагрузке",
+          "result": "STRONGLY CONFIRMED: p = 1.90e-40, the most significant finding in the entire analysis",
+          "resultRu": "СИЛЬНО ПОДТВЕРЖДЕНО: p = 1.90e-40, наиболее значимый результат во всём анализе"
+        },
+        {
+          "hypothesis": "Oldpeak has largest Cohen's d effect size among numeric features",
+          "hypothesisRu": "Oldpeak имеет наибольший размер эффекта Коэна d",
+          "why": "Strongest practical separation expected",
+          "whyRu": "Ожидается сильнейшее практическое разделение",
+          "result": "CONFIRMED: Effect size substantially larger than other clinical measurements",
+          "resultRu": "ПОДТВЕРЖДЕНО: Размер эффекта существенно больше, чем у других клинических измерений"
+        },
+        {
+          "hypothesis": "Oldpeak combined with ST slope improves diagnostic accuracy",
+          "hypothesisRu": "Oldpeak в сочетании с наклоном ST улучшает диагностическую точность",
+          "why": "Both features capture exercise ECG response",
+          "whyRu": "Оба признака отражают ЭКГ-ответ на нагрузку",
+          "result": "CONFIRMED: Flat/downsloping ST segments with high oldpeak indicate highest risk",
+          "resultRu": "ПОДТВЕРЖДЕНО: Плоские/нисходящие сегменты ST с высоким oldpeak указывают на наивысший риск"
+        }
+      ],
+      "outcomes": {
+        "en": [
+          "Oldpeak shows extremely strong separation between groups; use as key biomarker in UI explanations.",
+          "Mean oldpeak difference: 1.57 (disease) vs 0.42 (healthy) — clinically meaningful.",
+          "Combined ST depression + ST slope analysis provides superior diagnostic insight."
+        ],
+        "ru": [
+          "Oldpeak даёт крайне сильное разделение; использовать как ключевой биомаркер в объяснениях.",
+          "Разница средних oldpeak: 1.57 (заболевание) против 0.42 (здоровые) — клинически значима.",
+          "Комбинированный анализ депрессии ST + наклона ST обеспечивает превосходную диагностическую информацию."
+        ]
+      },
+      "referenceTo": {
+        "baseResearchId": 1
+      },
+      "tools": ["Python", "Pandas", "NumPy", "SciPy", "Matplotlib"],
+      "statisticalMethods": ["Welch's t-test", "Cohen's d effect size", "Boxplot analysis"],
+      "colabLink": "https://colab.research.google.com/drive/139hZHDxAnGv8CS3GV-HY6hkr-P7dzg8B",
+      "imageUrl": "",
+      "date": "2025-01-08"
+    },
+    {
+      "id": 7,
+      "title": "Maximum Heart Rate and Cardiovascular Health",
+      "titleRu": "Максимальная ЧСС и здоровье сердечно-сосудистой системы",
+      "category": "visualization",
+      "why": {
+        "en": "Demonstrate inverse relationship between achieved max heart rate and disease presence.",
+        "ru": "Показать обратную связь между достигнутой макс.ЧСС и наличием ССЗ."
+      },
+      "description": "Analysis of maximum heart rate achieved during exercise testing (thalach) and its inverse relationship with heart disease presence. This study demonstrates that reduced cardiac capacity during exercise is a strong indicator of cardiovascular compromise.",
+      "descriptionRu": "Анализ максимальной частоты сердечных сокращений, достигнутой при нагрузочном тестировании (thalach), и её обратной связи с наличием сердечных заболеваний.",
+      "dataset": {
+        "file": "heart_statlog_cleveland_hungary_final.csv",
+        "samples": 1190,
+        "features": 11
+      },
+      "analyzedFeatures": [
+        "max heart rate (thalach) - Maximum heart rate achieved during exercise testing (bpm)",
+        "age - Patient age for age-adjusted analysis"
+      ],
+      "analyzedFeaturesRu": [
+        "max heart rate (thalach) - Максимальная ЧСС, достигнутая при нагрузочном тестировании (уд/мин)",
+        "age - Возраст пациента для скорректированного по возрасту анализа"
+      ],
+      "hypotheses": [
+        {
+          "hypothesis": "Maximum heart rate is significantly lower in heart disease patients",
+          "hypothesisRu": "Максимальная ЧСС значительно ниже у пациентов с сердечными заболеваниями",
+          "why": "Reduced exercise capacity reflects compromised cardiac reserve",
+          "whyRu": "Снижение переносимости нагрузки отражает ухудшение сердечного резерва",
+          "result": "STRONGLY CONFIRMED: p = 1.43e-36, second most significant finding",
+          "resultRu": "СИЛЬНО ПОДТВЕРЖДЕНО: p = 1.43e-36, второй по значимости результат"
+        },
+        {
+          "hypothesis": "Age-adjusted analysis maintains the pattern",
+          "hypothesisRu": "Скорректированный по возрасту анализ сохраняет паттерн",
+          "why": "Max HR naturally decreases with age",
+          "whyRu": "Макс. ЧСС естественно снижается с возрастом",
+          "result": "CONFIRMED: Heart rate differences persist when controlling for age",
+          "resultRu": "ПОДТВЕРЖДЕНО: Различия в ЧСС сохраняются при контроле возраста"
+        }
+      ],
+      "outcomes": {
+        "en": [
+          "Lower max heart rate during exercise is a strong risk signal (inverse correlation).",
+          "Mean difference: 160.01 bpm (healthy) vs 130.68 bpm (disease) — 29 bpm gap.",
+          "Useful screening metric in exercise stress testing protocols."
+        ],
+        "ru": [
+          "Низкая макс.ЧСС при нагрузке — сильный сигнал риска (обратная связь).",
+          "Разница средних: 160.01 уд/мин (здоровые) против 130.68 уд/мин (заболевание) — разрыв 29 уд/мин.",
+          "Полезная скрининговая метрика в протоколах нагрузочного тестирования."
+        ]
+      },
+      "referenceTo": {
+        "baseResearchId": 1
+      },
+      "tools": ["Python", "Pandas", "NumPy", "SciPy", "Matplotlib"],
+      "statisticalMethods": ["Welch's t-test", "Distribution histograms", "Boxplot analysis"],
+      "colabLink": "https://colab.research.google.com/drive/139hZHDxAnGv8CS3GV-HY6hkr-P7dzg8B",
+      "imageUrl": "",
+      "date": "2025-01-05"
+    },
+    {
+      "id": 8,
+      "title": "Lifestyle Risk Factors in Heart Disease Prevention",
+      "titleRu": "Факторы образа жизни в профилактике ССЗ",
+      "category": "analysis",
+      "why": {
+        "en": "Translate modifiable lifestyle variables into prevention-oriented insights (targets for intervention).",
+        "ru": "Перевести модифицируемые факторы образа жизни в профилактические выводы (цели вмешательства)."
+      },
+      "description": "Comprehensive evaluation of modifiable lifestyle factors including smoking, exercise habits, diet, alcohol consumption, stress levels, and sedentary behavior on heart disease outcomes. This analysis identifies actionable intervention targets.",
+      "descriptionRu": "Комплексная оценка модифицируемых факторов образа жизни, включая курение, физическую активность, диету, употребление алкоголя, уровень стресса и малоподвижный образ жизни.",
+      "dataset": {
+        "file": "heart_attack_prediction_dataset.csv + heart_disease.csv",
+        "samples": "8763 + 10000"
+      },
+      "analyzedFeatures": [
+        "Smoking - Smoking status (Smoker/Non-smoker)",
+        "Obesity - Obesity status (Obese/Not obese)",
+        "Exercise Hours Per Week - Weekly exercise duration",
+        "Physical Activity Days Per Week - Activity frequency",
+        "Diet - Dietary habits (Healthy/Average/Unhealthy)",
+        "Alcohol Consumption - Drinking level (None/Light/Moderate/Heavy)",
+        "Sedentary Hours Per Day - Daily inactive time",
+        "Stress Level - Self-reported stress (1-10 scale)",
+        "Sleep Hours Per Day - Daily sleep duration"
+      ],
+      "analyzedFeaturesRu": [
+        "Smoking - Статус курения (Курильщик/Некурящий)",
+        "Obesity - Статус ожирения (Ожирение/Нет ожирения)",
+        "Exercise Hours Per Week - Продолжительность упражнений в неделю",
+        "Physical Activity Days Per Week - Частота активности",
+        "Diet - Пищевые привычки (Здоровое/Среднее/Нездоровое)",
+        "Alcohol Consumption - Уровень употребления алкоголя (Нет/Лёгкое/Умеренное/Тяжёлое)",
+        "Sedentary Hours Per Day - Ежедневное время бездействия",
+        "Stress Level - Самооценка стресса (шкала 1-10)",
+        "Sleep Hours Per Day - Продолжительность сна в сутки"
+      ],
+      "hypotheses": [
+        {
+          "hypothesis": "Smoking is significantly associated with heart disease risk",
+          "hypothesisRu": "Курение значимо связано с риском сердечных заболеваний",
+          "why": "Established clinical risk factor",
+          "whyRu": "Установленный клинический фактор риска",
+          "result": "CONFIRMED: Chi-square test shows significant association",
+          "resultRu": "ПОДТВЕРЖДЕНО: Тест хи-квадрат показывает значимую связь"
+        },
+        {
+          "hypothesis": "Physical activity has protective effect against heart disease",
+          "hypothesisRu": "Физическая активность имеет защитный эффект",
+          "why": "Expected cardioprotective mechanism",
+          "whyRu": "Ожидаемый кардиопротективный механизм",
+          "result": "CONFIRMED: Inverse relationship between activity days and disease risk",
+          "resultRu": "ПОДТВЕРЖДЕНО: Обратная связь между днями активности и риском"
+        },
+        {
+          "hypothesis": "Sedentary lifestyle increases cardiovascular risk",
+          "hypothesisRu": "Сидячий образ жизни повышает риск",
+          "why": "Inactivity is a known CVD risk factor",
+          "whyRu": "Неактивность — известный фактор риска ССЗ",
+          "result": "CONFIRMED: Positive correlation between sedentary hours and disease presence",
+          "resultRu": "ПОДТВЕРЖДЕНО: Положительная корреляция между часами бездействия и заболеванием"
+        }
+      ],
+      "outcomes": {
+        "en": [
+          "Smoking cessation, increased activity and better diet are consistent prevention targets; effect strength depends on dataset.",
+          "All modifiable lifestyle factors show detectable associations with heart disease.",
+          "Multi-factorial lifestyle interventions likely more effective than single-factor approaches."
+        ],
+        "ru": [
+          "Отказ от курения, рост активности и улучшение диеты — устойчивые цели профилактики; сила эффекта зависит от датасета.",
+          "Все модифицируемые факторы образа жизни показывают обнаруживаемые связи с сердечными заболеваниями.",
+          "Многофакторные вмешательства в образ жизни, вероятно, более эффективны, чем однофакторные подходы."
+        ]
+      },
+      "referenceTo": {
+        "baseResearchId": 3,
+        "baseResearchId2": 4
+      },
+      "tools": ["Python", "Pandas", "NumPy", "SciPy", "Matplotlib"],
+      "statisticalMethods": ["Chi-square test", "Disease rate analysis", "Correlation analysis"],
+      "colabLink": "https://colab.research.google.com/drive/1WnrHF8mhSjNdPGSoEicCKynz6lCvEZTG",
+      "imageUrl": "",
+      "date": "2025-01-02"
+    },
+    {
+      "id": 9,
+      "title": "Age as a Non-Modifiable Risk Factor Analysis",
+      "titleRu": "Возраст как немодифицируемый фактор риска",
+      "category": "analysis",
+      "why": {
+        "en": "Quantify age impact on disease prevalence and explain why age adjustment matters.",
+        "ru": "Количественно оценить влияние возраста на распространённость и объяснить важность возрастной коррекции."
+      },
+      "description": "Statistical investigation of age as a fundamental non-modifiable risk factor for cardiovascular disease. This analysis quantifies the relationship between aging and heart disease prevalence.",
+      "descriptionRu": "Статистическое исследование возраста как фундаментального немодифицируемого фактора риска сердечно-сосудистых заболеваний.",
+      "dataset": {
+        "file": "heart_statlog_cleveland_hungary_final.csv",
+        "samples": 1190,
+        "features": 11
+      },
+      "analyzedFeatures": [
+        "age - Patient age in years (continuous variable)"
+      ],
+      "analyzedFeaturesRu": [
+        "age - Возраст пациента в годах (непрерывная переменная)"
+      ],
+      "hypotheses": [
+        {
+          "hypothesis": "Age is significantly higher in heart disease patients",
+          "hypothesisRu": "Возраст значимо выше у пациентов с сердечными заболеваниями",
+          "why": "Age is a well-established CVD risk factor",
+          "whyRu": "Возраст — хорошо установленный фактор риска ССЗ",
+          "result": "CONFIRMED: p = 6.35e-18. Mean age 57.19 years (disease) vs 51.68 years (healthy)",
+          "resultRu": "ПОДТВЕРЖДЕНО: p = 6.35e-18. Средний возраст 57.19 лет (заболевание) против 51.68 лет (здоровые)"
+        },
+        {
+          "hypothesis": "Age shows positive correlation with heart disease",
+          "hypothesisRu": "Возраст показывает положительную корреляцию",
+          "why": "Linear relationship expected",
+          "whyRu": "Ожидается линейная связь",
+          "result": "CONFIRMED: Moderate positive correlation (r = 0.225) with target variable",
+          "resultRu": "ПОДТВЕРЖДЕНО: Умеренная положительная корреляция (r = 0.225) с целевой переменной"
+        }
+      ],
+      "outcomes": {
+        "en": [
+          "Disease group older by ~5.5 years in combined dataset; age is a stable moderate risk signal.",
+          "Age is third most significant risk factor after oldpeak and max heart rate.",
+          "Screening frequency should increase with advancing age."
+        ],
+        "ru": [
+          "Группа с ССЗ старше примерно на 5.5 лет; возраст — устойчивый умеренный сигнал риска.",
+          "Возраст — третий по значимости фактор риска после oldpeak и максимальной ЧСС.",
+          "Частота скрининга должна увеличиваться с возрастом."
+        ]
+      },
+      "referenceTo": {
+        "baseResearchId": 1
+      },
+      "tools": ["Python", "Pandas", "NumPy", "SciPy", "Matplotlib"],
+      "statisticalMethods": ["Welch's t-test", "Cohen's d", "Correlation analysis"],
+      "colabLink": "https://colab.research.google.com/drive/139hZHDxAnGv8CS3GV-HY6hkr-P7dzg8B",
+      "imageUrl": "",
+      "date": "2024-12-28"
+    },
+    {
+      "id": 10,
+      "title": "Exercise-Induced Angina as Diagnostic Marker",
+      "titleRu": "Стенокардия при нагрузке как диагностический маркер",
+      "category": "visualization",
+      "why": {
+        "en": "Show diagnostic value of exang and its combination with stress-test ECG features.",
+        "ru": "Показать диагностическую ценность exang и сочетание с нагрузочными ЭКГ-признаками."
+      },
+      "description": "Analysis of exercise-induced angina (chest pain during physical exertion) as a strong categorical predictor of heart disease presence. This symptom during stress testing provides critical diagnostic information.",
+      "descriptionRu": "Анализ стенокардии при нагрузке (боль в груди во время физической нагрузки) как сильного категориального предиктора наличия сердечного заболевания.",
+      "dataset": {
+        "file": "heart_statlog_cleveland_hungary_final.csv",
+        "samples": 1190,
+        "features": 11
+      },
+      "analyzedFeatures": [
+        "exercise angina - Exercise-induced angina (1=yes, 0=no)",
+        "oldpeak - ST depression for combined analysis",
+        "max heart rate - For integrated exercise response assessment"
+      ],
+      "analyzedFeaturesRu": [
+        "exercise angina - Стенокардия при нагрузке (1=да, 0=нет)",
+        "oldpeak - Депрессия ST для комбинированного анализа",
+        "max heart rate - Для интегрированной оценки реакции на нагрузку"
+      ],
+      "hypotheses": [
+        {
+          "hypothesis": "Exercise angina is strongly associated with heart disease presence",
+          "hypothesisRu": "Стенокардия при нагрузке сильно связана с наличием сердечного заболевания",
+          "why": "Classical symptom of myocardial ischemia",
+          "whyRu": "Классический симптом ишемии миокарда",
+          "result": "CONFIRMED: Chi-square test shows highly significant association (r = 0.345 with target)",
+          "resultRu": "ПОДТВЕРЖДЕНО: Тест хи-квадрат показывает высокозначимую связь (r = 0.345 с целью)"
+        },
+        {
+          "hypothesis": "Patients with exercise angina have significantly higher disease rate",
+          "hypothesisRu": "Пациенты со стенокардией при нагрузке имеют значительно более высокую частоту заболеваний",
+          "why": "Symptom presence should predict diagnosis",
+          "whyRu": "Наличие симптома должно предсказывать диагноз",
+          "result": "CONFIRMED: Disease rate substantially higher in exercise angina group",
+          "resultRu": "ПОДТВЕРЖДЕНО: Частота заболеваний существенно выше в группе со стенокардией при нагрузке"
+        }
+      ],
+      "outcomes": {
+        "en": [
+          "Exang is among strongest categorical predictors; combination with oldpeak/slope improves interpretation.",
+          "Combined with ST depression and reduced max heart rate, provides comprehensive exercise test interpretation.",
+          "Presence during stress testing warrants further cardiac investigation."
+        ],
+        "ru": [
+          "Exang — один из сильнейших категориальных предикторов; сочетание с oldpeak/slope улучшает интерпретацию.",
+          "В сочетании с депрессией ST и сниженной максимальной ЧСС обеспечивает комплексную интерпретацию нагрузочного теста.",
+          "Наличие во время нагрузочного теста требует дальнейшего кардиологического обследования."
+        ]
+      },
+      "referenceTo": {
+        "baseResearchId": 1
+      },
+      "tools": ["Python", "Pandas", "Matplotlib", "SciPy"],
+      "statisticalMethods": ["Chi-square test", "Disease rate analysis", "Cross-tabulation"],
+      "colabLink": "https://colab.research.google.com/drive/139hZHDxAnGv8CS3GV-HY6hkr-P7dzg8B",
+      "imageUrl": "",
+      "date": "2024-12-25"
+    },
+    {
+      "id": 11,
+      "title": "Correlation Matrix Analysis of CVD Risk Factors (Combined UCI)",
+      "titleRu": "Корреляционная матрица факторов риска (Combined UCI)",
+      "category": "visualization",
+      "why": {
+        "en": "Provide the platform with a correlation matrix explaining relationships between key numeric risk factors and outcome.",
+        "ru": "Дать платформе корреляционную матрицу для объяснения связей между ключевыми числовыми факторами и исходом."
+      },
+      "description": "Comprehensive correlation analysis examining linear relationships between all numeric clinical features and heart disease presence. This analysis reveals which features are most linearly associated with cardiovascular outcomes.",
+      "descriptionRu": "Комплексный корреляционный анализ, исследующий линейные связи между всеми числовыми клиническими признаками и наличием сердечных заболеваний.",
+      "dataset": {
+        "file": "heart_statlog_cleveland_hungary_final.csv",
+        "samples": 1190,
+        "features": 11
+      },
+      "analyzedFeatures": [
+        "age - Age in years",
+        "resting bp s - Resting blood pressure",
+        "cholesterol - Serum cholesterol",
+        "max heart rate - Maximum heart rate achieved",
+        "oldpeak - ST depression induced by exercise",
+        "target - Heart disease presence (for correlation calculation)"
+      ],
+      "analyzedFeaturesRu": [
+        "age - Возраст в годах",
+        "resting bp s - Артериальное давление в покое",
+        "cholesterol - Холестерин сыворотки",
+        "max heart rate - Максимальная достигнутая ЧСС",
+        "oldpeak - Депрессия ST при нагрузке",
+        "target - Наличие сердечного заболевания (для расчёта корреляции)"
+      ],
+      "hypotheses": [
+        {
+          "hypothesis": "Exercise-related features show strongest correlations with heart disease",
+          "hypothesisRu": "Нагрузочные признаки имеют сильнейшие корреляции с ССЗ",
+          "why": "Functional stress-test reveals ischemia",
+          "whyRu": "Нагрузка выявляет ишемию",
+          "result": "CONFIRMED: oldpeak (+0.398) and thalach (-0.394) are top linear signals",
+          "resultRu": "ПОДТВЕРЖДЕНО: oldpeak (+0.398) и thalach (-0.394) — топ сигналы"
+        },
+        {
+          "hypothesis": "Traditional lab values show weaker correlations",
+          "hypothesisRu": "Лабораторные показатели имеют более слабые корреляции",
+          "why": "Lab values are noisy and treatment-dependent",
+          "whyRu": "Лабораторные показатели шумные и зависят от терапии",
+          "result": "CONFIRMED: cholesterol has weak linear association (-0.109)",
+          "resultRu": "ПОДТВЕРЖДЕНО: холестерин имеет слабую линейную связь (-0.109)"
+        }
+      ],
+      "correlation": {
+        "numericMatrix": {
+          "columns": ["age", "resting bp s", "cholesterol", "max heart rate", "oldpeak", "target"],
+          "data": [
+            [1.0, 0.257, 0.156, -0.382, 0.197, 0.225],
+            [0.257, 1.0, 0.13, -0.09, 0.167, 0.149],
+            [0.156, 0.13, 1.0, -0.234, 0.031, -0.109],
+            [-0.382, -0.09, -0.234, 1.0, -0.284, -0.394],
+            [0.197, 0.167, 0.031, -0.284, 1.0, 0.398],
+            [0.225, 0.149, -0.109, -0.394, 0.398, 1.0]
+          ]
+        },
+        "topWithTarget": [
+          { "feature": "oldpeak", "r": 0.398 },
+          { "feature": "max heart rate", "r": -0.394 },
+          { "feature": "age", "r": 0.225 },
+          { "feature": "resting bp s", "r": 0.149 },
+          { "feature": "cholesterol", "r": -0.109 }
+        ],
+        "note": "This matrix uses only numeric columns available in the combined dataset.",
+        "noteRu": "Эта матрица построена только по числовым столбцам объединённого датасета."
+      },
+      "outcomes": {
+        "en": [
+          "Correlation supports emphasizing stress-test features (oldpeak, thalach) in risk explanations.",
+          "Exercise stress test variables have strongest linear associations.",
+          "Multi-feature integration more effective than single-variable prediction."
+        ],
+        "ru": [
+          "Корреляции поддерживают акцент на нагрузочных признаках (oldpeak, thalach) в объяснениях риска.",
+          "Переменные нагрузочного теста имеют сильнейшие линейные связи.",
+          "Интеграция множества признаков более эффективна, чем однопеременное прогнозирование."
+        ]
+      },
+      "tools": ["Python", "Pandas", "NumPy", "Matplotlib"],
+      "statisticalMethods": ["Pearson correlation", "Correlation matrix", "Heatmap visualization"],
+      "colabLink": "https://colab.research.google.com/drive/139hZHDxAnGv8CS3GV-HY6hkr-P7dzg8B",
+      "imageUrl": "",
+      "date": "2024-12-20"
+    },
+    {
+      "id": 12,
+      "title": "Effect Size Ranking of Clinical Features (Combined UCI)",
+      "titleRu": "Ранжирование клинических признаков по размеру эффекта (Combined UCI)",
+      "category": "visualization",
+      "why": {
+        "en": "Rank features by practical separation (Cohen's d) to avoid over-reliance on p-values.",
+        "ru": "Ранжировать признаки по практической разнице (d Коэна), чтобы не опираться только на p-value."
+      },
+      "description": "Cohen's d effect size analysis ranking all numeric clinical features by their practical significance in distinguishing between healthy individuals and heart disease patients. This approach prioritizes clinical meaningfulness over statistical significance.",
+      "descriptionRu": "Анализ размера эффекта Коэна d, ранжирующий все числовые клинические признаки по их практической значимости в различении здоровых людей и пациентов с сердечными заболеваниями.",
+      "dataset": {
+        "file": "heart_statlog_cleveland_hungary_final.csv",
+        "samples": 1190,
+        "features": 11
+      },
+      "analyzedFeatures": [
+        "oldpeak - ST depression (highest effect size)",
+        "max heart rate - Maximum heart rate achieved",
+        "age - Patient age",
+        "cholesterol - Serum cholesterol",
+        "resting bp s - Resting blood pressure"
+      ],
+      "analyzedFeaturesRu": [
+        "oldpeak - Депрессия ST (наивысший размер эффекта)",
+        "max heart rate - Максимальная достигнутая ЧСС",
+        "age - Возраст пациента",
+        "cholesterol - Холестерин сыворотки",
+        "resting bp s - Артериальное давление в покое"
+      ],
+      "hypotheses": [
+        {
+          "hypothesis": "Exercise-related features have largest effect sizes",
+          "hypothesisRu": "Признаки, связанные с нагрузкой, имеют наибольшие размеры эффекта",
+          "why": "Functional response provides better separation",
+          "whyRu": "Функциональный ответ обеспечивает лучшее разделение",
+          "result": "CONFIRMED: Oldpeak and max heart rate rank highest",
+          "resultRu": "ПОДТВЕРЖДЕНО: Oldpeak и максимальная ЧСС занимают высшие позиции"
+        },
+        {
+          "hypothesis": "Laboratory measurements have smaller effect sizes",
+          "hypothesisRu": "Лабораторные измерения имеют меньшие размеры эффекта",
+          "why": "Static values less discriminative than dynamic response",
+          "whyRu": "Статические значения менее дискриминативны, чем динамический ответ",
+          "result": "CONFIRMED: Cholesterol shows comparatively small effect size",
+          "resultRu": "ПОДТВЕРЖДЕНО: Холестерин показывает сравнительно малый размер эффекта"
+        }
+      ],
+      "outcomes": {
+        "en": [
+          "Oldpeak and thalach dominate effect sizes; age next; cholesterol smaller and unstable.",
+          "Oldpeak has the largest Cohen's d, indicating strongest practical discrimination.",
+          "Effect size analysis more informative than p-values for clinical decision-making."
+        ],
+        "ru": [
+          "Oldpeak и thalach лидируют по d; далее возраст; холестерин меньший и нестабильный.",
+          "Oldpeak имеет наибольший d Коэна, указывая на сильнейшую практическую дискриминацию.",
+          "Анализ размера эффекта более информативен, чем p-значения для клинического принятия решений."
+        ]
+      },
+      "referenceTo": {
+        "baseResearchId": 1
+      },
+      "tools": ["Python", "Pandas", "NumPy", "SciPy", "Matplotlib"],
+      "statisticalMethods": ["Cohen's d effect size", "Horizontal bar chart", "Group comparison"],
+      "colabLink": "https://colab.research.google.com/drive/139hZHDxAnGv8CS3GV-HY6hkr-P7dzg8B",
+      "imageUrl": "",
+      "date": "2024-12-15"
     }
   ]
 }
