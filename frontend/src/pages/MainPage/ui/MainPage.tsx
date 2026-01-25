@@ -51,12 +51,20 @@ export function MainPage() {
 
   // Track if initial data was loaded
   const isInitialMount = useRef(true);
+  // Track previous language to detect language changes
+  const prevLanguageRef = useRef(i18n.language);
 
   // Fetch data when search/filters change (SearchBar already has debounce)
   useEffect(() => {
-    // Skip initial mount to avoid duplicate fetch
+    // Skip initial mount to avoid duplicate fetch (MainLayout handles initial load)
     if (isInitialMount.current) {
       isInitialMount.current = false;
+      return;
+    }
+
+    // Skip if only language changed (MainLayout handles language changes)
+    if (prevLanguageRef.current !== i18n.language) {
+      prevLanguageRef.current = i18n.language;
       return;
     }
 

@@ -45,10 +45,10 @@ export const fetchMoreDiseases = createAsyncThunk(
 
 export const fetchRiskFactors = createAsyncThunk(
   'diseases/fetchRiskFactors',
-  async (_, { rejectWithValue }) => {
+  async (locale: string | undefined, { rejectWithValue }) => {
     try {
-      logger.debug(logMessages.FETCH_RISK_FACTORS_START);
-      const result = await getRiskFactors();
+      logger.debug(logMessages.FETCH_RISK_FACTORS_START, { locale });
+      const result = await getRiskFactors(locale);
       logger.debug('Risk factors fetched successfully', { count: result.length });
       return result;
     } catch (error) {
@@ -60,10 +60,10 @@ export const fetchRiskFactors = createAsyncThunk(
 
 export const fetchSymptoms = createAsyncThunk(
   'diseases/fetchSymptoms',
-  async (_, { rejectWithValue }) => {
+  async (locale: string | undefined, { rejectWithValue }) => {
     try {
-      logger.debug(logMessages.FETCH_SYMPTOMS_START);
-      const result = await getSymptoms();
+      logger.debug(logMessages.FETCH_SYMPTOMS_START, { locale });
+      const result = await getSymptoms(locale);
       logger.debug('Symptoms fetched successfully', { count: result.length });
       return result;
     } catch (error) {

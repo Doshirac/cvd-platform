@@ -71,15 +71,19 @@ export function ResearchModal({ research, isOpen, onClose }: ResearchModalProps)
         </header>
 
         <div className={styles.content}>
-          {research.imageUrl && (
+          {research.imageUrl ? (
             <div className={styles['image-wrapper']}>
               <img
                 src={research.imageUrl}
                 alt={title}
                 className={styles.image}
+                onError={(e) => {
+                  console.error('Image failed to load:', research.imageUrl);
+                  (e.target as HTMLImageElement).style.display = 'none';
+                }}
               />
             </div>
-          )}
+          ) : null}
 
           <p className={styles.description}>{description}</p>
 

@@ -213,7 +213,7 @@
       "tools": ["Python", "Pandas", "NumPy", "Matplotlib", "SciPy"],
       "statisticalMethods": ["Welch's t-test", "Chi-square test", "Cohen's d effect size", "Pearson correlation"],
       "colabLink": "https://colab.research.google.com/drive/139hZHDxAnGv8CS3GV-HY6hkr-P7dzg8B",
-      "imageUrl": "",
+      "imageUrl": "/correlation_statlog.png",
       "date": "2025-01-20"
     },
     {
@@ -340,7 +340,7 @@
       "tools": ["Python", "Pandas", "NumPy", "Matplotlib", "SciPy"],
       "statisticalMethods": ["Welch's t-test", "Chi-square test", "Cohen's d", "Correlation matrix"],
       "colabLink": "https://colab.research.google.com/drive/1_cl0Nq0X2drrn6Esprw4-jaOzT1m7Qjd",
-      "imageUrl": "",
+      "imageUrl": "/correlation_with_target.png",
       "date": "2025-01-18"
     },
     {
@@ -468,7 +468,7 @@
       "tools": ["Python", "Pandas", "NumPy", "Matplotlib", "SciPy"],
       "statisticalMethods": ["Welch's t-test", "Chi-square test", "Cohen's d effect size", "Correlation matrix"],
       "colabLink": "https://colab.research.google.com/drive/1WnrHF8mhSjNdPGSoEicCKynz6lCvEZTG",
-      "imageUrl": "",
+      "imageUrl": "/heart_disease_prevalence.png",
       "date": "2025-01-15"
     },
     {
@@ -613,7 +613,7 @@
       "tools": ["Python", "Pandas", "NumPy", "Matplotlib", "SciPy"],
       "statisticalMethods": ["Welch's t-test", "Chi-square test", "Cohen's d", "Correlation analysis"],
       "colabLink": "https://colab.research.google.com/drive/1Cvhrqh39Pa_IFBUay20E6-SD9hs5Uuk9",
-      "imageUrl": "",
+      "imageUrl": "/heart_attack_rate_by_age_group.png",
       "date": "2025-01-12"
     },
     {
@@ -677,7 +677,7 @@
       "tools": ["Python", "Pandas", "Matplotlib", "Seaborn"],
       "statisticalMethods": ["Chi-square test", "Disease rate analysis", "Cross-tabulation"],
       "colabLink": "https://colab.research.google.com/drive/139hZHDxAnGv8CS3GV-HY6hkr-P7dzg8B",
-      "imageUrl": "",
+      "imageUrl": "/disease_rate_by_risk_factor.png",
       "date": "2025-01-10"
     },
     {
@@ -748,7 +748,7 @@
       "tools": ["Python", "Pandas", "NumPy", "SciPy", "Matplotlib"],
       "statisticalMethods": ["Welch's t-test", "Cohen's d effect size", "Boxplot analysis"],
       "colabLink": "https://colab.research.google.com/drive/139hZHDxAnGv8CS3GV-HY6hkr-P7dzg8B",
-      "imageUrl": "",
+      "imageUrl": "/distribution_comparison_healthy_vs_diseased.png",
       "date": "2025-01-08"
     },
     {
@@ -811,7 +811,7 @@
       "tools": ["Python", "Pandas", "NumPy", "SciPy", "Matplotlib"],
       "statisticalMethods": ["Welch's t-test", "Distribution histograms", "Boxplot analysis"],
       "colabLink": "https://colab.research.google.com/drive/139hZHDxAnGv8CS3GV-HY6hkr-P7dzg8B",
-      "imageUrl": "",
+      "imageUrl": "/effect_size_ranking.png",
       "date": "2025-01-05"
     },
     {
@@ -896,7 +896,7 @@
       "tools": ["Python", "Pandas", "NumPy", "SciPy", "Matplotlib"],
       "statisticalMethods": ["Chi-square test", "Disease rate analysis", "Correlation analysis"],
       "colabLink": "https://colab.research.google.com/drive/1WnrHF8mhSjNdPGSoEicCKynz6lCvEZTG",
-      "imageUrl": "",
+      "imageUrl": "/heart_disease_rate_by_stress_level.png",
       "date": "2025-01-02"
     },
     {
@@ -957,7 +957,7 @@
       "tools": ["Python", "Pandas", "NumPy", "SciPy", "Matplotlib"],
       "statisticalMethods": ["Welch's t-test", "Cohen's d", "Correlation analysis"],
       "colabLink": "https://colab.research.google.com/drive/139hZHDxAnGv8CS3GV-HY6hkr-P7dzg8B",
-      "imageUrl": "",
+      "imageUrl": "/BMI_distribution_by_heart_disease_status.png",
       "date": "2024-12-28"
     },
     {
@@ -1022,7 +1022,7 @@
       "tools": ["Python", "Pandas", "Matplotlib", "SciPy"],
       "statisticalMethods": ["Chi-square test", "Disease rate analysis", "Cross-tabulation"],
       "colabLink": "https://colab.research.google.com/drive/139hZHDxAnGv8CS3GV-HY6hkr-P7dzg8B",
-      "imageUrl": "",
+      "imageUrl": "/effect_size_ranking_2.png",
       "date": "2024-12-25"
     },
     {
@@ -1112,7 +1112,7 @@
       "tools": ["Python", "Pandas", "NumPy", "Matplotlib"],
       "statisticalMethods": ["Pearson correlation", "Correlation matrix", "Heatmap visualization"],
       "colabLink": "https://colab.research.google.com/drive/139hZHDxAnGv8CS3GV-HY6hkr-P7dzg8B",
-      "imageUrl": "",
+      "imageUrl": "/correlation_matrix_prediction_dataset.png",
       "date": "2024-12-20"
     },
     {
@@ -1181,8 +1181,128 @@
       "tools": ["Python", "Pandas", "NumPy", "SciPy", "Matplotlib"],
       "statisticalMethods": ["Cohen's d effect size", "Horizontal bar chart", "Group comparison"],
       "colabLink": "https://colab.research.google.com/drive/139hZHDxAnGv8CS3GV-HY6hkr-P7dzg8B",
-      "imageUrl": "",
+      "imageUrl": "/effect_size_3.png",
       "date": "2024-12-15"
+    },
+    {
+      "id": 13,
+      "title": "Cholesterol Distribution Analysis in Heart Attack Risk",
+      "titleRu": "Анализ распределения холестерина при риске инфаркта",
+      "category": "visualization",
+      "why": {
+        "en": "Examine whether cholesterol alone provides strong discriminative power for heart attack risk prediction.",
+        "ru": "Исследовать, обеспечивает ли холестерин сам по себе сильную дискриминативную способность для прогнозирования риска инфаркта."
+      },
+      "description": "Analysis of cholesterol level distributions between patients with and without heart attack risk. This visualization demonstrates that cholesterol distributions overlap substantially between groups, suggesting limited discriminative power when considered as an isolated predictor.",
+      "descriptionRu": "Анализ распределения уровней холестерина между пациентами с риском инфаркта и без него. Эта визуализация демонстрирует, что распределения холестерина существенно перекрываются между группами, что указывает на ограниченную дискриминативную способность при рассмотрении в качестве изолированного предиктора.",
+      "dataset": {
+        "file": "heart_attack_prediction_dataset.csv",
+        "samples": 8763,
+        "features": 26,
+        "target": "Heart Attack Risk (1=Risk, 0=No Risk)",
+        "targetRu": "Риск инфаркта (1=Риск, 0=Нет риска)"
+      },
+      "analyzedFeatures": [
+        "Cholesterol - Serum cholesterol levels (mg/dl)",
+        "Heart Attack Risk - Target variable for comparison"
+      ],
+      "analyzedFeaturesRu": [
+        "Cholesterol - Уровень холестерина сыворотки (мг/дл)",
+        "Heart Attack Risk - Целевая переменная для сравнения"
+      ],
+      "hypotheses": [
+        {
+          "hypothesis": "Cholesterol levels significantly differ between risk groups",
+          "hypothesisRu": "Уровни холестерина значительно различаются между группами риска",
+          "why": "Cholesterol is a traditional CVD risk factor",
+          "whyRu": "Холестерин — традиционный фактор риска ССЗ",
+          "result": "PARTIALLY REFUTED: Distributions overlap substantially",
+          "resultRu": "ЧАСТИЧНО ОПРОВЕРГНУТО: Распределения существенно перекрываются"
+        }
+      ],
+      "outcomes": {
+        "en": [
+          "Cholesterol distributions overlap substantially between attack and non-attack groups.",
+          "Cholesterol alone provides limited discriminative power for heart attack prediction.",
+          "Multi-factorial approach is necessary — cholesterol should be considered alongside other risk factors.",
+          "Results support the concept that CVD risk is complex and multi-dimensional."
+        ],
+        "ru": [
+          "Распределения холестерина существенно перекрываются между группами с инфарктом и без.",
+          "Холестерин сам по себе обеспечивает ограниченную дискриминативную способность для прогнозирования инфаркта.",
+          "Необходим многофакторный подход — холестерин следует рассматривать совместно с другими факторами риска.",
+          "Результаты подтверждают концепцию того, что риск ССЗ сложен и многомерен."
+        ]
+      },
+      "referenceTo": {
+        "baseResearchId": 4
+      },
+      "tools": ["Python", "Pandas", "Matplotlib"],
+      "statisticalMethods": ["Distribution histograms", "Group comparison", "Overlap analysis"],
+      "colabLink": "https://colab.research.google.com/drive/1Cvhrqh39Pa_IFBUay20E6-SD9hs5Uuk9",
+      "imageUrl": "/cholesterol_distribution.png",
+      "date": "2024-12-10"
+    },
+    {
+      "id": 14,
+      "title": "Missing Data Impact on Cardiovascular Risk Analysis",
+      "titleRu": "Влияние пропущенных данных на анализ сердечно-сосудистого риска",
+      "category": "analysis",
+      "why": {
+        "en": "Highlight data quality considerations that affect interpretation of cardiovascular risk factor associations.",
+        "ru": "Выделить аспекты качества данных, влияющие на интерпретацию ассоциаций факторов риска ССЗ."
+      },
+      "description": "Analysis of missing data patterns across cardiovascular risk datasets. Understanding missingness is crucial because it can bias category comparisons and affect statistical conclusions. This study examines which features have incomplete data and discusses implications for risk factor analysis.",
+      "descriptionRu": "Анализ паттернов пропущенных данных в датасетах факторов риска ССЗ. Понимание пропусков критически важно, поскольку они могут искажать сравнения категорий и влиять на статистические выводы. Это исследование изучает, какие признаки имеют неполные данные, и обсуждает последствия для анализа факторов риска.",
+      "dataset": {
+        "file": "heart_disease.csv",
+        "samples": 10000,
+        "features": 20,
+        "target": "Heart Disease Status (Yes/No)",
+        "targetRu": "Статус сердечного заболевания (Да/Нет)"
+      },
+      "analyzedFeatures": [
+        "Alcohol Consumption - Most incomplete feature in dataset",
+        "All features - Systematic missing value assessment",
+        "Data completeness patterns across variable types"
+      ],
+      "analyzedFeaturesRu": [
+        "Alcohol Consumption - Наиболее неполный признак в датасете",
+        "Все признаки - Систематическая оценка пропущенных значений",
+        "Паттерны полноты данных по типам переменных"
+      ],
+      "hypotheses": [
+        {
+          "hypothesis": "Missing data is randomly distributed across features",
+          "hypothesisRu": "Пропущенные данные случайно распределены по признакам",
+          "why": "Random missingness would minimize bias in analysis",
+          "whyRu": "Случайные пропуски минимизировали бы смещение в анализе",
+          "result": "PARTIALLY REFUTED: Alcohol Consumption shows highest missingness",
+          "resultRu": "ЧАСТИЧНО ОПРОВЕРГНУТО: Alcohol Consumption показывает наибольшую долю пропусков"
+        }
+      ],
+      "outcomes": {
+        "en": [
+          "Some features contain significant missing values, especially Alcohol Consumption.",
+          "Missingness can bias category comparisons unless explicitly handled.",
+          "Recommended strategies: drop missing rows per feature or treat missing as 'Unknown' category.",
+          "Data quality assessment is essential before drawing clinical conclusions."
+        ],
+        "ru": [
+          "Некоторые признаки содержат значительные пропуски, особенно Alcohol Consumption.",
+          "Пропуски могут искажать сравнения категорий, если не обрабатываются явно.",
+          "Рекомендуемые стратегии: удаление пропущенных строк по признаку или трактовка пропусков как категории 'Неизвестно'.",
+          "Оценка качества данных необходима перед формулировкой клинических выводов."
+        ]
+      },
+      "referenceTo": {
+        "baseResearchId": 3
+      },
+      "tools": ["Python", "Pandas", "Matplotlib"],
+      "statisticalMethods": ["Missing value analysis", "Data quality assessment", "Completeness metrics"],
+      "colabLink": "https://colab.research.google.com/drive/1WnrHF8mhSjNdPGSoEicCKynz6lCvEZTG",
+      "imageUrl": "",
+      "date": "2024-12-05"
     }
   ]
 }

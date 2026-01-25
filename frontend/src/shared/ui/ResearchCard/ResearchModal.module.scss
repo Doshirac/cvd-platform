@@ -17,11 +17,11 @@
 
   background: var(--modal-bg);
   border-radius: $radius-xl;
-  max-width: 700px;
+  max-width: 43.75rem;
   width: 100%;
   max-height: 90vh;
   overflow: hidden;
-  box-shadow: 0 20px 60px $shadow-dark-subtle;
+  box-shadow: 0 1.25rem 3.75rem $shadow-dark-subtle;
 }
 
 .header {
@@ -48,15 +48,22 @@
 
 .image-wrapper {
   width: 100%;
-  max-height: 300px;
+  min-height: 31.25rem;
   border-radius: $radius-lg;
   overflow: hidden;
+  background: var(--muted-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  min-height: 15.625rem;
+  max-height: 31.25rem;
+  object-fit: contain;
+  display: block;
 }
 
 .description {
@@ -148,7 +155,7 @@
 
   color: var(--muted-text);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.03125rem;
 }
 
 .hypotheses {
@@ -164,7 +171,7 @@
   padding: 0.75rem;
   background: var(--muted-bg);
   border-radius: $radius-md;
-  border-left: 3px solid var(--primary);
+  border-left: 0.1875rem solid var(--primary);
 }
 
 .hypothesis-text {
@@ -266,8 +273,8 @@
     --muted-text: #{$light-muted-text};
     --muted-bg: #{$light-muted-bg};
     --primary: #{$light-primary};
-    --success: #16a34a;
-    --danger: #dc2626;
+    --success: #{$light-success};
+    --danger: #{$light-danger};
   }
 }
 
@@ -279,7 +286,7 @@
     --muted-text: #{$dark-muted-text};
     --muted-bg: #{$dark-muted-bg};
     --primary: #{$dark-primary};
-    --success: #22c55e;
-    --danger: #ef4444;
+    --success: #{$dark-success};
+    --danger: #{$dark-danger};
   }
 }
