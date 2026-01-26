@@ -56,19 +56,13 @@
 }
 
 .title {
-  @include typography($font-sans, 2rem, $fw-medium);
+  @include typography($font-sans, 3rem, $fw-medium);
 
   color: var(--text);
   margin: 0;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
 
   @include responsive(md) {
     font-size: 2.5rem;
-  }
-
-  @include responsive(lg) {
-    font-size: 3rem;
   }
 
   @include responsive(xs) {
@@ -77,14 +71,13 @@
 }
 
 .subtitle {
-  @include typography($font-sans, $fs-md, $fw-regular);
+  @include typography($font-sans, 1.125rem, $fw-regular);
 
   color: var(--muted-text);
   margin: 0;
-  line-height: 1.6;
 
-  @include responsive(md) {
-    font-size: $fs-lg;
+  @include responsive(xs) {
+    font-size: $fs-md;
   }
 }
 

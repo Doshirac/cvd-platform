@@ -130,9 +130,25 @@ export class DiseaseRepository implements IDiseaseRepository {
       skip: pagination.skip,
       take: pagination.take,
       include: {
-        symptoms: { include: { symptom: true } },
-        risks: { include: { riskFactor: true } },
-        translations: language === "ru" ? true : false,
+        symptoms: { 
+          include: { 
+            symptom: {
+              include: {
+                translations: language === "ru" ? { where: { locale: "ru" } } : false,
+              },
+            },
+          },
+        },
+        risks: { 
+          include: { 
+            riskFactor: {
+              include: {
+                translations: language === "ru" ? { where: { locale: "ru" } } : false,
+              },
+            },
+          },
+        },
+        translations: language === "ru" ? { where: { locale: "ru" } } : false,
       },
     });
 
@@ -146,8 +162,19 @@ export class DiseaseRepository implements IDiseaseRepository {
       prevention: language === "ru" && disease.translations?.[0]?.prevention 
         ? disease.translations[0].prevention 
         : disease.prevention || undefined,
-      symptoms: disease.symptoms.map((s) => ({ code: s.symptom.code, name: s.symptom.term, priority: s.priority })),
-      risks: disease.risks.map((r) => ({ code: r.riskFactor.code, name: r.riskFactor.name })),
+      symptoms: disease.symptoms.map((s) => ({
+        code: s.symptom.code,
+        name: language === "ru" && (s.symptom as any).translations?.[0]?.term 
+          ? (s.symptom as any).translations[0].term 
+          : s.symptom.term,
+        priority: s.priority,
+      })),
+      risks: disease.risks.map((r) => ({
+        code: r.riskFactor.code,
+        name: language === "ru" && (r.riskFactor as any).translations?.[0]?.name 
+          ? (r.riskFactor as any).translations[0].name 
+          : r.riskFactor.name,
+      })),
     }));
   }
 
@@ -288,9 +315,25 @@ export class DiseaseRepository implements IDiseaseRepository {
       skip: pagination.skip,
       take: pagination.take,
       include: {
-        symptoms: { include: { symptom: true } },
-        risks: { include: { riskFactor: true } },
-        translations: language === "ru" ? true : false,
+        symptoms: { 
+          include: { 
+            symptom: {
+              include: {
+                translations: language === "ru" ? { where: { locale: "ru" } } : false,
+              },
+            },
+          },
+        },
+        risks: { 
+          include: { 
+            riskFactor: {
+              include: {
+                translations: language === "ru" ? { where: { locale: "ru" } } : false,
+              },
+            },
+          },
+        },
+        translations: language === "ru" ? { where: { locale: "ru" } } : false,
       },
     });
 
@@ -304,8 +347,19 @@ export class DiseaseRepository implements IDiseaseRepository {
       prevention: language === "ru" && disease.translations?.[0]?.prevention 
         ? disease.translations[0].prevention 
         : disease.prevention || undefined,
-      symptoms: disease.symptoms.map((s) => ({ code: s.symptom.code, name: s.symptom.term, priority: s.priority })),
-      risks: disease.risks.map((r) => ({ code: r.riskFactor.code, name: r.riskFactor.name })),
+      symptoms: disease.symptoms.map((s) => ({
+        code: s.symptom.code,
+        name: language === "ru" && (s.symptom as any).translations?.[0]?.term 
+          ? (s.symptom as any).translations[0].term 
+          : s.symptom.term,
+        priority: s.priority,
+      })),
+      risks: disease.risks.map((r) => ({
+        code: r.riskFactor.code,
+        name: language === "ru" && (r.riskFactor as any).translations?.[0]?.name 
+          ? (r.riskFactor as any).translations[0].name 
+          : r.riskFactor.name,
+      })),
     }));
   }
 
